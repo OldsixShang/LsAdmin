@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CAAAB9DF-F783-4C21-B5E5-E3F9ABB71060}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ls</RootNamespace>
+    <AssemblyName>Ls</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=3.4.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.3.4.0\lib\net45\Castle.Windsor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Application\ApplicationServiceBase.cs" />
+    <Compile Include="Application\Dto\IDto.cs" />
+    <Compile Include="Application\Dto\IInputDto.cs" />
+    <Compile Include="Application\Dto\IOutputDto.cs" />
+    <Compile Include="Application\Dto\IPagedList.cs" />
+    <Compile Include="Application\Dto\PagedList.cs" />
+    <Compile Include="Application\Dto\PagedListExtension.cs" />
+    <Compile Include="Application\IApplicationService.cs" />
+    <Compile Include="Authorization\AuthorizeAttribute.cs" />
+    <Compile Include="Authorization\Interceptor\AuthorizationInterceptor.cs" />
+    <Compile Include="Authorization\Interceptor\AuthorizationInterceptorRegistrar.cs" />
+    <Compile Include="Authorization\IPermissionChecker.cs" />
+    <Compile Include="Authorization\IUser.cs" />
+    <Compile Include="Authorization\IUserStore.cs" />
+    <Compile Include="Authorization\NullPermissionChecker.cs" />
+    <Compile Include="Authorization\Permission.cs" />
+    <Compile Include="Authorization\PermissionChecker.cs" />
+    <Compile Include="Authorization\Role.cs" />
+    <Compile Include="Caching\CacheExtensions.cs" />
+    <Compile Include="Caching\ICacheManager.cs" />
+    <Compile Include="Caching\MemoryCacheManager.cs" />
+    <Compile Include="Components\ComponentBase.cs" />
+    <Compile Include="Components\ComponentCollection.cs" />
+    <Compile Include="Components\ComponentDescription.cs" />
+    <Compile Include="Components\ComponentFinder.cs" />
+    <Compile Include="Components\ComponentManager.cs" />
+    <Compile Include="Components\DependsOnAttribute.cs" />
+    <Compile Include="Components\IComponentFinder.cs" />
+    <Compile Include="Components\IComponentManager.cs" />
+    <Compile Include="Configutation\CommonHelper.cs" />
+    <Compile Include="Configutation\GenericListTypeConverter.cs" />
+    <Compile Include="Configutation\ISettings.cs" />
+    <Compile Include="Configutation\ISettingService.cs" />
+    <Compile Include="Configutation\Setting.cs" />
+    <Compile Include="Configutation\SettingExtensions.cs" />
+    <Compile Include="Configutation\SettingService.cs" />
+    <Compile Include="Domain\Entities\CreatedEntity.cs" />
+    <Compile Include="Domain\Entities\CreatedLastUpdateEntity.cs" />
+    <Compile Include="Domain\Entities\CreatedLastUpdateSoftDeleteEntity.cs" />
+    <Compile Include="Domain\Entities\CreatedSoftDeleteEntity.cs" />
+    <Compile Include="Domain\Entities\Entity.cs" />
+    <Compile Include="Domain\Entities\EntityOfTId.cs" />
+    <Compile Include="Domain\Entities\ICreatedBy.cs" />
+    <Compile Include="Domain\Entities\ICreatedTime.cs" />
+    <Compile Include="Domain\Entities\IEntity.cs" />
+    <Compile Include="Domain\Entities\IEntityOfTId.cs" />
+    <Compile Include="Domain\Entities\ILastUpdateBy.cs" />
+    <Compile Include="Domain\Entities\ILastUpdateTime.cs" />
+    <Compile Include="Domain\Entities\IMultiTenancy.cs" />
+    <Compile Include="Domain\Entities\ISoftDelete.cs" />
+    <Compile Include="Domain\Entities\SoftDeleteEntity.cs" />
+    <Compile Include="Domain\Entities\SoftDeleteEntityOfTId.cs" />
+    <Compile Include="Domain\Repositories\IQueryHandler.cs" />
+    <Compile Include="Domain\Repositories\IRepository.cs" />
+    <Compile Include="Domain\Repositories\IRepositoryOfTEntity.cs" />
+    <Compile Include="Domain\Repositories\IRepositoryOfTEntityAndTId.cs" />
+    <Compile Include="Domain\Repositories\QueryHandler.cs" />
+    <Compile Include="Domain\Repositories\Repository.cs" />
+    <Compile Include="Domain\Repositories\SortOrder.cs" />
+    <Compile Include="Domain\UnitOfWork\Interceptor\UnitOfWorkInterceptor.cs" />
+    <Compile Include="Domain\UnitOfWork\Interceptor\UnitOfWorkInterceptorRegistrar.cs" />
+    <Compile Include="Domain\UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="Domain\UnitOfWork\IUnitOfWorkProvider.cs" />
+    <Compile Include="Domain\UnitOfWork\UnitOfWorkAttribute.cs" />
+    <Compile Include="Domain\UnitOfWork\UnitOfWorkBase.cs" />
+    <Compile Include="Domain\UnitOfWork\UnitOfWorkCreator.cs" />
+    <Compile Include="Domain\UnitOfWork\UnitOfWorkOptions.cs" />
+    <Compile Include="Domain\UnitOfWork\UnitOfWorkProvider.cs" />
+    <Compile Include="Extensions\CollectionExtension.cs" />
+    <Compile Include="IoC\BasicConventionalRegistrar.cs" />
+    <Compile Include="IoC\LsInstaller.cs" />
+    <Compile Include="IoC\ConventionalRegistrationContext.cs" />
+    <Compile Include="IoC\DependencyLiftCycle.cs" />
+    <Compile Include="IoC\IConventionalDependencyRegistrar.cs" />
+    <Compile Include="IoC\IConventionalRegistrationContext.cs" />
+    <Compile Include="IoC\IDependency.cs" />
+    <Compile Include="IoC\IIocManager.cs" />
+    <Compile Include="IoC\IocManager.cs" />
+    <Compile Include="Logging\ILog.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\ILoggerAdapter.cs" />
+    <Compile Include="Logging\LogBase.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Logging\LoggerAdapterBase.cs" />
+    <Compile Include="Logging\LogLevel.cs" />
+    <Compile Include="Logging\LogManager.cs" />
+    <Compile Include="Logging\NullLog.cs" />
+    <Compile Include="LsConst.cs" />
+    <Compile Include="LsCoreComponent.cs" />
+    <Compile Include="LsException.cs" />
+    <Compile Include="LsExceptionEnum.cs" />
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs" />
+    <Compile Include="Reflection\CurrentDomainAssemblyFinder.cs" />
+    <Compile Include="Reflection\IAssemblyFinder.cs" />
+    <Compile Include="Reflection\ITypeFinder.cs" />
+    <Compile Include="Reflection\ReflectionHelper.cs" />
+    <Compile Include="Reflection\TypeFinder.cs" />
+    <Compile Include="Session\ILsSession.cs" />
+    <Compile Include="Session\NullLsSession.cs" />
+    <Compile Include="Utilities\LsIdGenerator.cs" />
+    <Compile Include="Utilities\ObjectExtensions.cs" />
+    <Compile Include="Utilities\ParamterCheckExtensions.cs" />
+    <Compile Include="Utilities\TypeExtensions.cs" />
+    <Compile Include="Validation\LsValidationException.cs" />
+    <Compile Include="Validation\ICustomValidate.cs" />
+    <Compile Include="Validation\Interception\InputDtoValidator.cs" />
+    <Compile Include="Validation\Interception\ValidationInterceptor.cs" />
+    <Compile Include="Validation\Interception\ValidationInterceptorRegistrar.cs" />
+    <Compile Include="Validation\IValidate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".nuspec" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
