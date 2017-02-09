@@ -4,4 +4,6 @@
     }
 }
 
-Get-ChildItem | Where-Object{$_.Extension -eq ".nupkg"} | ForEach-Object{.\nuget.exe push -Source 'http://localhost:8090/' -apikey 111111 $_}
+Get-ChildItem | Where-Object{$_.Extension -eq ".nupkg"} | ForEach-Object{.\nuget.exe push -Source 'http://172.18.14.64:21/' -apikey 111111 $_}
+Write-Host 'Press Any Key!' -NoNewline
+$null = [Console]::ReadKey('?')

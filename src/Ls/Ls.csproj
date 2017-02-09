@@ -38,8 +38,8 @@
       <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -126,6 +126,7 @@
     <Compile Include="Domain\UnitOfWork\UnitOfWorkOptions.cs" />
     <Compile Include="Domain\UnitOfWork\UnitOfWorkProvider.cs" />
     <Compile Include="Extensions\CollectionExtension.cs" />
+    <Compile Include="Extensions\IQueryableExtension.cs" />
     <Compile Include="IoC\BasicConventionalRegistrar.cs" />
     <Compile Include="IoC\LsInstaller.cs" />
     <Compile Include="IoC\ConventionalRegistrationContext.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="LsException.cs" />
     <Compile Include="LsExceptionEnum.cs" />
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Model\Pager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs" />
     <Compile Include="Reflection\CurrentDomainAssemblyFinder.cs" />
@@ -158,9 +160,12 @@
     <Compile Include="Reflection\TypeFinder.cs" />
     <Compile Include="Session\ILsSession.cs" />
     <Compile Include="Session\NullLsSession.cs" />
+    <Compile Include="Utilities\CryptTool.cs" />
     <Compile Include="Utilities\LsIdGenerator.cs" />
+    <Compile Include="Utilities\MD5Util.cs" />
     <Compile Include="Utilities\ObjectExtensions.cs" />
     <Compile Include="Utilities\ParamterCheckExtensions.cs" />
+    <Compile Include="Utilities\SafeConvert.cs" />
     <Compile Include="Utilities\TypeExtensions.cs" />
     <Compile Include="Validation\LsValidationException.cs" />
     <Compile Include="Validation\ICustomValidate.cs" />
