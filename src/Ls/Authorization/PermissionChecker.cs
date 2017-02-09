@@ -78,7 +78,7 @@ namespace Ls.Authorization
             }
         }
 
-        private bool IsGrant(Role role, string permissionString)
+        private bool IsGrant(IRole role, string permissionString)
         {
             string key = string.Format(PERMISSIONS_ALLOWED_KEY, role.Id, permissionString);
             return _cacheManager.Get(key, () =>

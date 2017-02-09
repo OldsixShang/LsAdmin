@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<package >
+  <metadata>
+    <id>Ls.Mvc</id>
+    <version>0.0.1</version>
+    <authors>CharlesShang</authors>
+    <owners>CharlesShang</owners>
+    <licenseUrl>http://www.njlemai.com/</licenseUrl>
+    <projectUrl>http://www.njlemai.com/</projectUrl>
+    <iconUrl>http://172.18.0.108:1379/icon/ctw.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Ls开发框架 MVC 组件</description>
+    <releaseNotes>第一个发布版本，初步确定框架功能及使用方式。</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>Ls MVC</tags>
+    <dependencies>
+      <dependency id="Castle.Core" version="3.3.0" />
+      <dependency id="Castle.Windsor" version="3.3.0" />
+      <dependency id="log4net" version="2.0.3" />
+      <dependency id="Microsoft.AspNet.Mvc" version="5.2.3" />
+      <dependency id="Microsoft.AspNet.Razor" version="3.2.3" />
+      <dependency id="Microsoft.AspNet.WebPages" version="3.2.3" />
+      <dependency id="Microsoft.Web.Infrastructure" version="1.0.0.0" />
+    </dependencies>
+  </metadata>
+</package>

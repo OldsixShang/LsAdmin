@@ -31,11 +31,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+      <HintPath>..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Castle.Windsor, Version=3.4.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Castle.Windsor.3.4.0\lib\net45\Castle.Windsor.dll</HintPath>
+    <Reference Include="Castle.Windsor, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
@@ -70,10 +70,11 @@
     <Compile Include="Authorization\IPermissionChecker.cs" />
     <Compile Include="Authorization\IUser.cs" />
     <Compile Include="Authorization\IUserStore.cs" />
+    <Compile Include="Authorization\IMenu.cs" />
     <Compile Include="Authorization\NullPermissionChecker.cs" />
-    <Compile Include="Authorization\Permission.cs" />
+    <Compile Include="Authorization\IPermission.cs" />
     <Compile Include="Authorization\PermissionChecker.cs" />
-    <Compile Include="Authorization\Role.cs" />
+    <Compile Include="Authorization\IRole.cs" />
     <Compile Include="Caching\CacheExtensions.cs" />
     <Compile Include="Caching\ICacheManager.cs" />
     <Compile Include="Caching\MemoryCacheManager.cs" />

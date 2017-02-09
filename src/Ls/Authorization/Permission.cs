@@ -31,5 +31,7 @@ namespace Ls.Authorization {
             get { return _children??(_children=new List<Permission>()); }
             set { _children = value; }
         }
+
+        public long? MenuId { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace Ls.Authorization {
         /// <summary>
         /// 角色。
         /// </summary>
-         Role Role { get; set; }
+         IRole Role { get; set; }
 
     }
 }
