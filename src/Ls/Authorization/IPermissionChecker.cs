@@ -6,7 +6,8 @@
         /// <summary>
         /// 检查权限。
         /// </summary>
-        /// <param name="permission">权限</param>
-        void Check(string permission);
+        /// <param name="permissionId">权限编号</param>
+        /// <param name="requestUri">请求地址</param>
+        void Check(long? permissionId,string requestUri);
     }
 }

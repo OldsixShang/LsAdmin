@@ -32,7 +32,7 @@ namespace Ls.Authorization.Interceptor {
                 throw new LsException("未指定权限名称。");
             }
 
-            _permissionChecker.Check(authorizationAttribute.Permissions[0]);
+            //_permissionChecker.Check(authorizationAttribute.Permissions[0]);
             invocation.Proceed();
         }
     }

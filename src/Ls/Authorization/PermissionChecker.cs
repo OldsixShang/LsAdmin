@@ -16,13 +16,12 @@ namespace Ls.Authorization
 
         #region Constants
         /// <summary>
-        /// Key for caching
+        /// 角色对应权限列表缓存键值
         /// </summary>
         /// <remarks>
-        /// {0} : customer role ID
-        /// {1} : permission system name
+        /// {0} : 角色编号
         /// </remarks>
-        public const string PERMISSIONS_ALLOWED_KEY = "Ls.permission.allowed-{0}-{1}";
+        public const string ROLE_PERMISSIONS_KEY = "Ls.role.permission-{0}";
         /// <summary>
         /// Key pattern to clear cache
         /// </summary>
@@ -30,18 +29,18 @@ namespace Ls.Authorization
         #endregion
 
         private readonly ICacheManager _cacheManager;
-        private readonly IUserStore _userStore;
+        private readonly IAuthStore _authStore;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="cacheManager"></param>
-        /// <param name="userStore"></param>
+        /// <param name="authStore"></param>
         public PermissionChecker(ICacheManager cacheManager,
-            IUserStore userStore)
+            IAuthStore authStore)
         {
             _cacheManager = cacheManager;
-            _userStore = userStore;
+            _authStore = authStore;
         }
 
         /// <summary>
@@ -52,43 +51,51 @@ namespace Ls.Authorization
         /// <summary>
         /// 检查权限。
         /// </summary>
-        /// <param name="permission">权限</param>
-        public void Check(string permission)
+        /// <param name="permissionId">权限编号</param>
+        /// <param name="requestUri">请求地址</param>
+        public void Check(long? permissionId,string requestUri)
         {
-            if (string.IsNullOrEmpty(permission))
+            if (string.IsNullOrEmpty(requestUri))
             {
-                throw new LsException("请提供权限名称", LsExceptionEnum.NoPermission);
+                throw new LsException("无效的请求", LsExceptionEnum.BusinessException);
+            }
+            if (permissionId == null)
+            {
+                throw new LsException("请提供权限编号", LsExceptionEnum.NoPermission);
             }
             if (!LsSession.UserId.HasValue)
             {
                 throw new LsException("请登录。", LsExceptionEnum.NoLogin);
             }
-            if (LsSession.UserId == 1)
-            {
-                return;
-            }
-            var role = _userStore.Get(LsSession.UserId.Value).Role;
+            //超级用户
+            //if (LsSession.UserId == 1)
+            //{
+            //    return;
+            //}
+            var role = _authStore.GetRole(LsSession.RoleId);
             if (role == null)
             {
                 throw new LsException("获取用户角色失败。", LsExceptionEnum.NoRole);
             }
-            if (!IsGrant(role, permission))
+            if (!IsGrant(permissionId, requestUri))
             {
-                throw new LsException(string.Format("用户无操作 {0} 的执行权限。", permission), LsExceptionEnum.NoPermission);
+                throw new LsException(string.Format("用户无操作 {0} 的执行权限。", permissionId), LsExceptionEnum.NoPermission);
             }
         }
 
-        private bool IsGrant(IRole role, string permissionString)
+        private bool IsGrant(long? permissionId, string requestUri)
         {
-            string key = string.Format(PERMISSIONS_ALLOWED_KEY, role.Id, permissionString);
-            return _cacheManager.Get(key, () =>
+            string key = string.Format(ROLE_PERMISSIONS_KEY, LsSession.RoleId);
+            var rolePermissions= _cacheManager.Get(key, () =>
             {
-                foreach (var permission1 in role.Permissions)
-                    if (permission1.Name.Equals(permissionString, StringComparison.InvariantCultureIgnoreCase))
-                        return true;
-
-                return false;
+                return _authStore.GetPermissions(LsSession.RoleId);
             });
+            foreach(var per in rolePermissions)
+            {
+                if (per.Id == permissionId && per.Uri == requestUri)
+                    return true;
+            }
+            return false;
         }
     }
 }

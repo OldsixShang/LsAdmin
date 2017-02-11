@@ -1,4 +1,6 @@
-﻿namespace Ls.Session {
+﻿using System;
+
+namespace Ls.Session {
     /// <summary>
     /// 默认的空 Session。
     /// </summary>
@@ -38,6 +40,14 @@
         public string UserIp
         {
             get { return null; }
+        }
+
+        public long? RoleId
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }
