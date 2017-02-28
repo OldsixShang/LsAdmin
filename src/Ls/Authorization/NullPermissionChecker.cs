@@ -1,4 +1,6 @@
-﻿namespace Ls.Authorization {
+﻿using System;
+
+namespace Ls.Authorization {
     /// <summary>
     /// 空权限验证器。
     /// </summary>
@@ -11,13 +13,10 @@
         public static NullPermissionChecker Instance { get { return instance; } }
 
         private NullPermissionChecker() { }
-
-        /// <summary>
-        /// 检查权限。
-        /// </summary>
-        /// <param name="permission">权限</param>
-        public void Check(string permission) {
-
+        
+        public void Check(long? permissionId, string requestUri)
+        {
+            throw new NotImplementedException();
         }
     }
 }

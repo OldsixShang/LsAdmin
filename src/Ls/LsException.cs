@@ -73,6 +73,7 @@ namespace Ls {
         /// <summary>
         /// 用户没有权限访问
         /// </summary>
-        NoPermission
+        NoPermission,
+
     }
 }

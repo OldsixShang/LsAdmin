@@ -7,8 +7,10 @@ using Ls.Authorization;
 using Ls.Domain.Repositories;
 using Ls.Domain.UnitOfWork;
 using TTS.Framework.Extension;
+using Newtonsoft.Json;
 
-namespace Ls.Mvc {
+namespace Ls.Mvc
+{
     /// <summary>
     /// MVC Session 实现。
     /// </summary>
@@ -17,23 +19,25 @@ namespace Ls.Mvc {
 
         private readonly HttpContextBase _context;
 
-        public LsSession( HttpContextBase context)
+        public LsSession(HttpContextBase context)
         {
             _context = context;
         }
-
-
-
-        /// <summary>
-        /// 请求上下文。
-        /// </summary>
-       //
-       // public HttpContextBase Context { get; set; }
-
+        
+        public IUser UserData
+        {
+            get
+            {
+                if (!_context.User.Identity.IsAuthenticated) throw new LsException("请先认证!", LsExceptionEnum.NoLogin);
+                IUser userdata =JsonConvert.DeserializeObject( ((FormsIdentity)_context.User.Identity).Ticket.UserData) as IUser;
+                return userdata;
+            }
+        }
         /// <summary>
         /// 租户编号。
         /// </summary>
-        public int? TenantId {
+        public int? TenantId
+        {
             get { return 0; }
         }
 
@@ -44,11 +48,7 @@ namespace Ls.Mvc {
         {
             get
             {
-                long _uid;
-                if (!_context.User.Identity.IsAuthenticated) throw new LsException("请先认证!", LsExceptionEnum.NoLogin);
-                string userdata = ((FormsIdentity)_context.User.Identity).Ticket.UserData;
-                if (!long.TryParse(userdata, out _uid)) throw new LsException("请先认证!", LsExceptionEnum.NoLogin);
-                return _uid;
+                return UserData.Id;
             }
         }
 
@@ -58,13 +58,12 @@ namespace Ls.Mvc {
 
             var ticket = new FormsAuthenticationTicket(
                 1 /*version*/,
-                string.IsNullOrEmpty(user.UserName)?"匿名用户":user.UserName,
+                string.IsNullOrEmpty(user.UserName) ? "匿名用户" : user.UserName,
                 now,
                 now.Add(FormsAuthentication.Timeout),
                 createPersistentCookie,
-                user.Id.ToString(),
+                JsonConvert.SerializeObject(user),
                 FormsAuthentication.FormsCookiePath);
-
             var encryptedTicket = FormsAuthentication.Encrypt(ticket);
 
             var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
@@ -86,11 +85,18 @@ namespace Ls.Mvc {
         {
             FormsAuthentication.SignOut();
         }
-
-
+        
         public string UserIp
         {
             get { return _context.Request.GetIpAddress(); }
+        }
+
+        public long? RoleId
+        {
+            get
+            {
+                return UserData.RoleId;
+            }
         }
     }
 }

@@ -2,6 +2,7 @@
 using Ls.Authorization;
 using Ls.Domain.UnitOfWork;
 using Ls.IoC;
+using Ls.Utilities;
 
 namespace Ls.Mvc
 {
@@ -27,10 +28,12 @@ namespace Ls.Mvc
             if (!Permissions.Any()) return true;
             try
             {
+                long perId = SafeConvert.ToInt64(httpContext.Request.Params["perId"]);
+                var requestUrl = httpContext.Request.Url.LocalPath;
                 using (var uow=IocManager.Instance.Resolve<IUnitOfWorkProvider>().NewUnitOfWork())
                 {
                     uow.Begin();
-                    IocManager.Instance.Resolve<IPermissionChecker>().Check(Permissions[0]);
+                    IocManager.Instance.Resolve<IPermissionChecker>().Check(perId, requestUrl);
                     uow.Complete();
                 }
                 return true;

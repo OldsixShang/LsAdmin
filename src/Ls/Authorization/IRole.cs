@@ -12,11 +12,9 @@ namespace Ls.Authorization {
         /// 角色名称。
         /// </summary>
         string Name { get; set; }
-
-        /// <summary>
-        /// 角色对应的权限。
-        /// </summary>
-        ICollection<IPermission> Permissions { get; set; }
         
+        ICollection<IPermission> Permissions { get; set; }
+
+        string Description { get;set; }
     }
 }

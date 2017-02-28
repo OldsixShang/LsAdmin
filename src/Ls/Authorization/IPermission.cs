@@ -23,6 +23,9 @@ namespace Ls.Authorization {
         /// 子级权限。
         /// </summary>
         ICollection<IPermission> Children { get; set; }
-        
+        /// <summary>
+        /// 地址
+        /// </summary>
+        string Uri { get; set; }
     }
 }
