@@ -14,6 +14,7 @@ namespace Ls.Mvc {
     /// Ls Web 应用程序入口。
     /// </summary>
     public abstract class LsHttpApplication : HttpApplication {
+        protected string ApplicationName { get; set; }
         protected Bootstrapper Bootstrapper { get; set; }
 
         protected LsHttpApplication() {
