@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutDialogPage.cshtml";
+}
+@using Example.Dto.Business.Sys.RoleManage
+@model RoleDto
+@section script{
+    <script type="text/javascript">
+        var dialog = top.dialog.get(window);
+        var dialogObj = {
+            Ok: function () {
+                var url = $.ls.isNullOrEmpty($("#hidId").val()) ? '@Url.Action("Add","RoleManage")' : '@Url.Action("Modify", "RoleManage")';
+                $("#formEdit").submitForm({
+                    url: url,
+                    onSuccess: function (data) {
+                        dialog.Close(true);
+                    }
+                });
+            },
+            Cancel: function () {
+                dialog.Close(false); 
+            }
+        };
+    </script>
+}
+<div class="container">
+    <form id="formEdit" class="form-horizontal">
+        @Html.HiddenFor(x => x.Id,new {@id = "hidId"})
+        <table>
+            <tr>
+                <td>@Html.LabelFor(x => x.RoleName)</td>
+                <td>@Html.TextBoxFor(x => x.RoleName, new { @class = "easyui-textbox" })</td>
+            </tr>
+        </table>
+    </form>
+</div>
+@section buttons{
+    <button class="btn btn-primary" onclick="dialogObj.Ok()">确认</button>
+    <button class="btn btn-primary" onclick="dialogObj.Cancel()">取消</button>
+}

@@ -7,7 +7,7 @@ using System.Reflection;
 using Example.Domain;
 using Example.Domain.Entities.Authorization;
 
-namespace Tts.Platform.Application
+namespace Example.Application
 {
     [DependsOn(typeof(DomainComponent))]
     public class ApplicationComponent : ComponentBase {

@@ -1,0 +1,63 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutDialogPage.cshtml";
+}
+@using Example.Dto.Business.Sys.UserManage
+@model UserDto
+@section script{
+    <script type="text/javascript">
+        var dialog = top.dialog.get(window);
+        var dialogObj = {
+            Ok: function () {
+                $("#formEdit").submitForm({
+                    url: '@Url.Action("ModifyUser")',
+                    onSuccess: function (data) {
+                        dialog.Close(true);
+                    }
+                });
+            },
+            Cancel: function () {
+                dialog.Close(false);
+            }
+        };
+    </script>
+}
+<div class="container">
+    <form id="formEdit" class="form-horizontal">
+        @Html.HiddenFor(x => x.Id, new { @id = "hidId" })
+        <table>
+            <tr>
+                <td>@Html.LabelFor(x => x.UserName)</td>
+                <td>
+                    @Html.HiddenFor(x => x.UserName)
+                    <span>@Model.UserName</span>
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.RoleId)</td>
+                <td>
+                    @Html.HiddenFor(x => x.RoleId)
+                    <span>@Model.Role.RoleName</span>
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.RealName)</td>
+                <td>@Html.TextBoxFor(x => x.RealName, new { @class = "easyui-textbox" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.Phone)</td>
+                <td>@Html.TextBoxFor(x => x.Phone, new { @class = "easyui-textbox" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.Email)</td>
+                <td>@Html.TextBoxFor(x => x.Email, new { @class = "easyui-textbox" })</td>
+            </tr>
+        </table>
+    </form>
+</div>
+@section buttons{
+    <button class="btn btn-primary" onclick="dialogObj.Ok()">确认</button>
+}
+
+
+
+

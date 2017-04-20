@@ -1,0 +1,89 @@
+﻿@using Example.Dto.UI
+@model IndexPageDto
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>欢迎使用客运数据平台</title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/easyui/jquery.easyui.min.js"></script>
+    <link href="~/Content/easyui/themes/material/easyui.css" rel="stylesheet" />
+    <script src="~/Scripts/ls/ls.common.js"></script>
+    <script src="~/Scripts/ls/ls.controls.js"></script>
+    <script src="~/Scripts/ls/ls.layout.index.js"></script>
+    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <script src="~/Components/artDialog/js/dialog-plus.js"></script>
+    <link href="~/Components/artDialog/css/ui-dialog.css" rel="stylesheet" />
+    <link href="~/Content/easyui/tts.easyui.theme.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            index.init();
+        });
+
+        var index = {
+            init: function () {
+                $("#exit").lsHeaderMenu({
+                    menus: [
+                        {
+                            text: "用户信息", icon: "user", click: function () {
+                                $.ls.showDialog({
+                                    title: '用户信息',
+                                    url: '@Url.Action("UserInfo")',
+                                    width: 400,
+                                    height: 200,
+                                    onClose: function (result) {
+                                    }
+                                });
+                            }
+                        },
+                        {
+                            text: "修改密码", icon: "edit", click: function () {
+                                $.ls.showDialog({
+                                    title: '修改密码',
+                                    url: '@Url.Action("ModifyPassword")',
+                                    width: 400,
+                                    height: 200,
+                                    onClose: function (result) {
+                                        if (result) {
+                                            $.ls.success($.ls.messages.SuccessModified)
+                                        }
+                                    }
+                                });
+                            }
+                        },
+                        {
+                            text: "退出系统",
+                            icon: "sign-out",
+                            click: function () {
+                                $.ls.confirm("确定退出系统?", function (result) {
+                                    if (result) {
+                                        //退出系统
+                                        window.location = '@Url.Action("Logout")';
+                                    }
+                                }, "确认")
+                            }
+                        }
+                    ]
+                });
+            }
+        }
+    </script>
+</head>
+<body class="easyui-layout" fit="true">
+    <div id="content" data-options="region:'center',split:false">
+        @Html.Partial("Index/_center", Model.SolidNavMenuList)
+    </div>
+    <div data-options="region:'north',split:false,border:false" class="index-header">
+        @Html.Partial("Index/_north",Model.TopNavMenuList)
+    </div>
+    <div data-options="region:'west',title:'菜单列表',split:true" style="width:200px;" class="sidebar-nav">
+        @Html.Partial("Index/_west", Model.LeftNavMenuList)
+    </div>
+</body>
+</html>

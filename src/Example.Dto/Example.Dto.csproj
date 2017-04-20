@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auth\PermissionMenuDto.cs" />
+    <Compile Include="DistributePageDto.cs" />
+    <Compile Include="IndexPageDto.cs" />
     <Compile Include="LoginDto.cs" />
     <Compile Include="LoginResultDto.cs" />
     <Compile Include="ModifyPasswordDto.cs" />
@@ -66,6 +68,10 @@
     <Compile Include="Sys\UserManage\PageDto.cs" />
     <Compile Include="Sys\UserManage\QueryConditionDto.cs" />
     <Compile Include="Sys\UserManage\UserDto.cs" />
+    <Compile Include="UI\easyUI\ComboboxItem.cs" />
+    <Compile Include="UI\easyUI\ComboTreeItem.cs" />
+    <Compile Include="UI\easyUI\DataGrid.cs" />
+    <Compile Include="UI\easyUI\TreeGrid.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ls\Ls.csproj">

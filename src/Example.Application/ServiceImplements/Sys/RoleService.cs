@@ -9,9 +9,9 @@ using Ls.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Tts.Platform.Application.ServiceInterfaces.Sys;
+using Example.Application.ServiceInterfaces.Sys;
 
-namespace Tts.Platform.Application.ServiceImplements.Sys
+namespace Example.Application.ServiceImplements.Sys
 {
     /// <summary>
     /// 角色领域服务

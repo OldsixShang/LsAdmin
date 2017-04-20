@@ -1,0 +1,90 @@
+﻿@using Example.Dto.Business.Sys.UserManage
+@model PageDto
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutNormalFuncPage.cshtml";
+}
+@section head{
+    <script type="text/javascript">
+        var $lsGrid = {};
+        $(document).ready(function () {
+            $lsGrid = $("#grid").lsGrid({
+                url: '@Url.Action("Query", "UserManage")',
+                title: "用户信息",
+                fit: true,
+                columns: [[
+                    { title: 'Id', field: 'Id', width: 100, hidden: true },
+                    { title: '用户名', field: 'UserName', width: 150, sortable: true },
+                    { title: '角色', field: 'Role', width: 100, formatter: function (val, row, index) { return val.RoleName; } },
+                    { title: '真实姓名', field: 'RealName', width: 120, sortable: true },
+                    { title: '联系电话', field: 'Phone', width: 150, sortable: true },
+                    { title: '邮箱', field: 'Email', width: 200, sortable: true },
+                    { title: '创建时间', field: 'CreatedTime', width: 200, sortable: true },
+                    { title: '更新时间', field: 'LastUpdateTime', width: 200, sortable: true }
+                ]]
+            });
+            page.init();
+        });
+
+        $.extend(page, {
+            init: function () {
+                $lsGrid.reload();
+                $("#combo-role").lsCombobox({ data: page.JsonData.Roles });
+            },
+            query: function () {
+                $lsGrid.reload();
+            },
+            add: function () {
+                $.ls.showDialog({
+                    title: '新增用户',
+                    url: '@Url.Action("UserEdit")',
+                    width: 400,
+                    height: 250,
+                    onClose: function (result) {
+                        if (result) {
+                            $.ls.success($.ls.messages.SuccessAdded);
+                            $lsGrid.reload();
+                        }
+                    }
+                });
+            },
+            modify: function () {
+                var row = $lsGrid.getSelectedRow();
+                if ($.ls.isNullOrEmpty(row)) return;
+                $.ls.showDialog({
+                    title: '修改用户',
+                    url: '@Url.Action("UserEdit")' + "?id=" + row.Id,
+                    width: 400,
+                    height: 250,
+                    onClose: function (result) {
+                        if (result) {
+                            $.ls.success($.ls.messages.SuccessModified);
+                            $lsGrid.reload();
+                        }
+                    }
+                });
+            },
+            remove: function () {
+                var row = $lsGrid.getSelectedRow();
+                if ($.ls.isNullOrEmpty(row)) return;
+                $.ls.confirm('确定删除?', function (result) {
+                    if (result) {
+                        $.ls.ajax({
+                            url: '@Url.Action("Remove")' + '?id=' + row.Id,
+                            onSuccess: function (data) {
+                                $.ls.success($.ls.messages.SuccessDeleted);
+                                $lsGrid.reload();
+                            }
+                        });
+                    }
+                })
+            }
+        });
+    </script>
+}
+@section queryform{
+    @Html.Partial("_queryForm", Model.QueryForm)
+}
+<table id="grid"></table>
+
+

@@ -1,6 +1,6 @@
 ﻿using Ls.Application;
 
-namespace Tts.Platform.Application
+namespace Example.Application
 {
     public class BaseService : ApplicationServiceBase
     {

@@ -27,5 +27,7 @@ namespace Ls.Mvc {
         public LsControllerBase() {
             LsSession = NullLsSession.Instance;
         }
+
+
     }
 }

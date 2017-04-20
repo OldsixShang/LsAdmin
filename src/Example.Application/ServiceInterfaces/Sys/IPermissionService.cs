@@ -4,7 +4,7 @@ using Example.Dto.Sys.PermissionManage;
 using Example.Dto;
 using Example.Dto.Auth;
 
-namespace Tts.Platform.Application.ServiceInterfaces.Sys
+namespace Example.Application.ServiceInterfaces.Sys
 {
     public interface IPermissionService
     {

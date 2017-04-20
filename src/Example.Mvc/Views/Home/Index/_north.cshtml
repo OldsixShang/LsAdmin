@@ -1,0 +1,14 @@
+﻿@using Example.Dto.UI
+@using Tts.Framework.AspNetMvc.Extension
+@model IEnumerable<PermissionMenuDto>
+<span class="h3 index-header-title" style="margin-right:5px;"><i class="fa fa-x fa-bar-chart"></i>客运数据平台</span>
+
+@foreach (var item in Model)
+{
+    <span class="h3 index-header-title index-header-title-btn" onclick="addTab('@Url.Content((item.Url ?? "~/Home/ErrorPage_400") + "?pageId=" + item.Id, true)','@item.MenuName','@item.Id')"><i class="fa fa-x @item.Icon"></i>@item.MenuName</span>
+}
+<a id="exit" class="index-header-signout">
+    <span style="font-size:1em;">Hi!,@Context.User.Identity.Name</span>
+    <i class="fa fa-caret-down"></i>
+</a>
+

@@ -1,0 +1,97 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutDialogPage.cshtml";
+}
+@using Example.Dto.UI
+@model DistributePageDto
+@helper RenderMenu(IEnumerable<PermissionMenuActionDto> menus)
+{
+    foreach (var item in menus)
+    {
+        if (item.Children == null)
+        {
+            <li checked="@item.Checked" id="@item.Id">
+                <span>@item.Name</span>
+            </li>
+        }
+        else
+        {
+            <li id="@item.Id">
+                <span>@item.Name</span>
+                <ul style="display:none;">
+                    @RenderMenu(item.Children)
+                </ul>
+            </li>
+        }
+    }
+}
+@section script{
+    <script type="text/javascript">
+        var dialog = top.dialog.get(window);
+        var dialogObj = {
+            Ok: function () {
+                var permissionIds = [];
+                var solidPMenuNodes = $("#solidPMenuTree").tree('getChecked', ['checked', 'indeterminate']),
+                    leftNavPMenuNodes = $("#leftNavPMenuTree").tree('getChecked', ['checked', 'indeterminate']),
+                    topPMenuNodes = $("#topPMenuTree").tree('getChecked', ['checked', 'indeterminate']),
+                    apiPMenuNodes = $("#apiPMenuTree").tree('getChecked', ['checked', 'indeterminate']);
+                for (var i = 0, len = solidPMenuNodes.length; i < len; i++) {
+                    permissionIds.push(solidPMenuNodes[i].id);
+                }
+                for (var i = 0, len = leftNavPMenuNodes.length; i < len; i++) {
+                    permissionIds.push(leftNavPMenuNodes[i].id);
+                }
+                for (var i = 0, len = topPMenuNodes.length; i < len; i++) {
+                    permissionIds.push(topPMenuNodes[i].id);
+                }
+                for (var i = 0, len = apiPMenuNodes.length; i < len; i++) {
+                    permissionIds.push(apiPMenuNodes[i].id);
+                }
+                console.log(permissionIds);
+                $.ls.ajax({
+                    url: '@Url.Action("DistributePermission")',
+                    data: {
+                        RoleId: $("#hidRoleId").val(),
+                        PermissionIds:permissionIds
+                    },
+                    onSuccess: function (data) {
+                        dialog.Close(true);
+                    }
+                });
+            },
+            Cancel: function () {
+                dialog.Close(false); 
+            }
+        };
+    </script>
+}
+<div class="container">
+    <form id="formDistribute" class="form-horizontal">
+        @Html.HiddenFor(x => x.RoleId, new { @id = "hidRoleId" })
+        <div id="menutypes" class="easyui-accordion" style="width:380px;height:450px;">
+            <div title="固定菜单权限列表"  style="overflow:auto;padding:10px;">
+                <ul id="solidPMenuTree" class="easyui-tree" data-options="checkbox:true,cascadeCheck:true">
+                    @RenderMenu(Model.SolidNavMenuList)
+                </ul>
+            </div>
+            <div title="左侧导航菜单权限列表" style="overflow: auto; padding: 10px;">
+                <ul id="leftNavPMenuTree" class="easyui-tree" data-options="checkbox:true,cascadeCheck:true">
+                    @RenderMenu(Model.LeftNavMenuList)
+                </ul>
+            </div>
+            <div title="顶部快捷菜单权限列表" style="overflow: auto; padding: 10px;">
+                <ul id="topPMenuTree" class="easyui-tree" data-options="checkbox:true,cascadeCheck:true">
+                    @RenderMenu(Model.TopNavMenuList)
+                </ul>
+            </div>
+            <div title="Api权限列表" style="overflow: auto; padding: 10px;">
+                <ul id="apiPMenuTree" class="easyui-tree" data-options="checkbox:true,cascadeCheck:true">
+                    @RenderMenu(Model.APIMenuList)
+                </ul>
+            </div>
+        </div>  
+    </form>
+</div>
+@section buttons{
+    <button class="btn btn-primary" onclick="dialogObj.Ok()">确认</button>
+    <button class="btn btn-primary" onclick="dialogObj.Cancel()">取消</button>
+}

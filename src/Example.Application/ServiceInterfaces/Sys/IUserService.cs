@@ -3,7 +3,7 @@ using Ls.Model;
 using Example.Dto.Sys.UserManage;
 using Example.Dto;
 
-namespace Tts.Platform.Application.ServiceInterfaces.Sys
+namespace Example.Application.ServiceInterfaces.Sys
 {
     public interface IUserService
     {

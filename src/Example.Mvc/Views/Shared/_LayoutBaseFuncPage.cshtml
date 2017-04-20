@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.easyui.min.js"></script>
+    <link href="~/Content/easyui/themes/material/easyui.css" rel="stylesheet" />
+    <script type="text/javascript">
+        var page = {
+            comboData :eval('('+'@Html.Raw(ViewBag.comboData == null ? "{}" : ViewBag.comboData)'+')')
+        };
+    </script>
+    @RenderSection("head", false)
+</head>
+<body class="easyui-layout" >
+    <div class="container-btn" data-options="region:'north',height:'auto',border:'false'">
+        <div style="float:right;">
+            @RenderSection("btncontainer")
+        </div>
+    </div>
+    <div data-options="region:'center'">
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

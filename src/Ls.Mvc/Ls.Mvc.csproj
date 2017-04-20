@@ -60,6 +60,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authorization\ActionTemplateAttribute.cs" />
+    <Compile Include="Authorization\ActionTemplate.cs" />
+    <Compile Include="Authorization\PlatformAuthorizationAttribute.cs" />
     <Compile Include="LsControllerBase.cs" />
     <Compile Include="LsControllerFactory.cs" />
     <Compile Include="LsHttpApplication.cs" />

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tts.Platform.Application
+namespace Example.Application
 {
     /// <summary>
     /// 缓存键值

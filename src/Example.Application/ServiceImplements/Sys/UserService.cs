@@ -7,12 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Tts.Platform.Application.ServiceInterfaces.Sys;
+using Example.Application.ServiceInterfaces.Sys;
 using UserManage = Example.Dto.Sys.UserManage;
 using RoleManage = Example.Dto.Sys.RoleManage;
 using Ls.Model;
 
-namespace Tts.Platform.Application.ServiceImplements.Sys
+namespace Example.Application.ServiceImplements.Sys
 {
     /// <summary>
     /// 用户领域服务

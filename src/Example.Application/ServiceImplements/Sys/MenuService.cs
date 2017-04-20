@@ -3,11 +3,11 @@ using Example.Domain.Repositories.Authorization;
 using Example.Dto.Sys.MenuManage;
 using System;
 using System.Collections.Generic;
-using Tts.Platform.Application.ServiceInterfaces.Sys;
+using Example.Application.ServiceInterfaces.Sys;
 using Ls.Utilities;
 using Ls.Model;
 
-namespace Tts.Platform.Application.ServiceImplements.Sys
+namespace Example.Application.ServiceImplements.Sys
 {
     /// <summary>
     /// 菜单领域服务

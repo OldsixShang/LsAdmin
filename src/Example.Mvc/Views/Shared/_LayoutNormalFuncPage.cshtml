@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/easyui/jquery.easyui.min.js"></script>
+    <script src="~/Components/artDialog/js/dialog-plus.js"></script>
+    <link href="~/Content/easyui/themes/material/easyui.css" rel="stylesheet" />
+    <link href="~/Components/artDialog/css/ui-dialog.css" rel="stylesheet" />
+    <script src="~/Scripts/ls/jquery.easyui.extension.validate.js"></script>
+    <script src="~/Scripts/ls/jquery.ls.extension.js"></script>
+    <script src="~/Scripts/easyui/easyui-lang-zh_CN.js"></script>
+    <script src="~/Scripts/ls/ls.common.js"></script>
+    <script src="~/Scripts/ls/ls.form.js"></script>
+    <script src="~/Scripts/ls/ls.controls.js"></script>
+    <link href="~/Content/easyui/tts.easyui.theme.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script type="text/javascript">
+        var page = {
+            JsonData: eval('(' + '@Html.Raw(ViewBag.JsonData == null ? "{}" : ViewBag.JsonData)' + ')'),
+            loaded: function () {
+                $.ls.loading(false);
+            }
+        };
+    </script>
+    @RenderSection("head", false)
+    @helper RenderPermissionParts() { 
+        foreach (var p in PermissionData)
+        {
+           <span>@Html.Partial("../Templates/"+p.HtmlTemplate)</span>
+        }
+    }
+</head>
+<body onload="page.loaded()">
+    <input id="_hidPageId" type="hidden" value="@Request.QueryString["pageId"]" />
+    <div class="easyui-layout" data-options="fit:true" >
+        <div data-options="region:'center',border:false,fit:true">
+            <div class="easyui-layout" data-options="fit:true">
+                <div data-options=" region:'north',split:false,border:false">
+                <div style="float:right;line-height:40px; padding-right:15px;">
+                    @RenderPermissionParts()
+                </div>
+            </div>
+                <div data-options="region:'center',border:false,fit:true">
+                    <div class="easyui-layout" data-options="border:false,fit:true">
+                        <div data-options="region:'north',height:'auto',border:false,split:false" >
+                            <div class="easyui-panel" style="padding:8px 10px 8px 10px;">
+                                <form id="QueryForm">
+                                    @RenderSection("queryform")
+                                </form>
+                            </div>
+                        </div>
+                        <div data-options="region:'center',border:false" style="margin-top:10px;padding-bottom:55px;">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

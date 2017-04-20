@@ -1,0 +1,64 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutDialogPage.cshtml";
+}
+@using Example.Dto.Business.Sys.UserManage
+@model UserDto
+@section script{
+    <script type="text/javascript">
+
+        var dialog = top.dialog.get(window);
+        var dialogObj = {
+            Ok: function () {
+                var url = $.ls.isNullOrEmpty($("#hidId").val()) ? '@Url.Action("Add","UserManage")' : '@Url.Action("Modify","UserManage")';
+                $("#formEdit").submitForm({
+                    url: url,
+                    onSuccess: function (data) {
+                        dialog.Close(true);
+                    }
+                });
+            },
+            Cancel: function () {
+                dialog.Close(false);
+            }
+        };
+
+        $(document).ready(function () {
+            $("#combo-role").lsCombobox({ data: page.JsonData.Roles });
+        });
+    </script>
+}
+<div class="container">
+    <form id="formEdit" class="form-horizontal">
+        @Html.HiddenFor(x => x.Id, new { @id = "hidId" })
+        <table>
+            <tr>
+                <td>@Html.LabelFor(x => x.UserName)</td>
+                <td>@Html.TextBoxFor(x => x.UserName, new { @class = "easyui-textbox" })</td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.RoleId)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.RoleId, new { @class = "easyui-textbox", @id = "combo-role", @placeholder = "请选择" })
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.RealName)</td>
+                <td>@Html.TextBoxFor(x => x.RealName, new { @class = "easyui-textbox" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.Phone)</td>
+                <td>@Html.TextBoxFor(x => x.Phone, new { @class = "easyui-textbox" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.Email)</td>
+                <td>@Html.TextBoxFor(x => x.Email, new { @class = "easyui-textbox" })</td>
+            </tr>
+        </table>
+    </form>
+</div>
+@section buttons{
+    <button class="btn btn-primary" onclick="dialogObj.Ok()">确认</button>
+    <button class="btn btn-primary" onclick="dialogObj.Cancel()">取消</button>
+}

@@ -1,0 +1,124 @@
+﻿@{
+    Layout = null;
+}
+@model Example.Dto.Business.LoginDto
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>登录</title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/easyui/jquery.easyui.min.js"></script>
+    <link href="~/Content/easyui/themes/material/easyui.css" rel="stylesheet" />
+    <script src="~/Scripts/ls/jquery.ls.extension.js"></script>
+    <script src="~/Scripts/ls/ls.common.js"></script>
+    <script src="~/Scripts/ls/ls.form.js"></script>
+    <script src="~/Scripts/ls/ls.controls.js"></script>
+    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <script src="~/Components/artDialog/js/dialog-plus.js"></script>
+    <link href="~/Components/artDialog/css/ui-dialog.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/easyui/tts.easyui.theme.css" rel="stylesheet" />
+    <link href="~/Content/login.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //登录表单提交
+            function submit() {
+                $("#login").submitForm({
+                    url: '@Url.Action("UserLogin")',
+                    onSuccess: function (content, data) {
+                        if (content.Result === 101) {
+                            $.ls.warning("用户名不存在！");
+                        }
+                        else if (content.Result === 102) {
+                            $.ls.warning("用户名或密码错误！");
+                        }
+                        else if (content.Result === 100) {
+                            $.ls.success("登录成功！");
+                            window.location = '@Url.Action("Index")';
+                        }
+                    }
+                })
+            };
+            //事件绑定
+            $("#txtUserName").keypress(function (e) {
+                if (e.keyCode == 13) $("#txtPassword").focus();
+            });
+            $("#txtPassword").keypress(function (e) {
+                if (e.keyCode == 13) submit();
+            });
+            $("#submit").click(submit);
+        });
+    </script>
+</head>
+<body style="background:#4C6983;">
+
+    <div class="container" style="margin-top:80px;">
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4" style="text-align:center;">
+                <img height="110" src="~/Content/Images/logo_Icon.png" />
+                <img height="100" src="~/Content/Images/logo_word.png" style="margin:-10px;" />
+            </div>
+            <div class="col-md-4">
+
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <h2 style="text-align: center;font-size:2.5em; font-family: 'Microsoft YaHei'; color: #fbfbfb; padding-left:40px;">
+                    <span class="data active">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </span>
+                    &nbsp;&nbsp;&nbsp;客运数据平台
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <h4 style="text-align:center;">&nbsp;</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <form role="form" id="login">
+                    <fieldset>
+                        <div class="form-group">
+                            @Html.TextBoxFor(t => t.UserName, new { @class = "form-control", @placeholder = "请输入用户名", @autofocus = "true", @id = "txtUserName" })
+                        </div>
+                        <div class="form-group">
+                            @Html.PasswordFor(t => t.Password, new { @class = "form-control", @placeholder = "请输入密码", @id = "txtPassword" })
+                        </div>
+                        @*<div class="checkbox">
+                            <label>
+                                <input name="RememberMe" type="checkbox" value="Remember Me">记住我
+                            </label>
+                        </div>*@
+                        <!-- Change this to a button or input when using this as a form -->
+                        <input type="button" id="submit" style="background:#273952;height:38px;" class="btn btn-primary btn-block" value="登录" />
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:150px;">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6" style="text-align:center;color:#aaa;">
+                <span><i class="fa fa-bell"></i>&nbsp;技术支持:南京畅途网交通技术系统有限公司&nbsp;客运研发中心</span>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

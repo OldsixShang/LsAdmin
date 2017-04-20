@@ -2,7 +2,7 @@
 using Ls.Model;
 using System.Collections.Generic;
 
-namespace Tts.Platform.Application.ServiceInterfaces.Sys
+namespace Example.Application.ServiceInterfaces.Sys
 {
     public interface IMenuService
     {

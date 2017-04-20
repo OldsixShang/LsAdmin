@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutDialogPage.cshtml";
+}
+@using Example.Dto.Business.Sys.ActionManage
+@model ActionDto
+@section script{
+    <script type="text/javascript">
+        var dialog = top.dialog.get(window);
+        var dialogObj = {
+            Ok: function () {
+                var url = $.ls.isNullOrEmpty($("#hidId").val()) ? '@Url.Action("Add","ActionManage")' : '@Url.Action("Modify","ActionManage")';
+                $("#formEdit").submitForm({
+                    url: url,
+                    onSuccess: function (data) {
+                        dialog.Close(true);
+                    }
+                });
+            },
+            Cancel: function () {
+                dialog.Close(false); 
+            }
+        };
+    </script>
+}
+<div class="container">
+    <form id="formEdit" class="form-horizontal">
+        @Html.HiddenFor(x => x.Id,new {@id = "hidId"})
+        <table>
+            <tr>
+                <td>@Html.LabelFor(x => x.Name)</td>
+                <td>@Html.TextBoxFor(x => x.Name, new { @class = "easyui-textbox" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.HtmlTemplate)</td>
+                <td>@Html.TextBoxFor(x => x.HtmlTemplate, new { @class = "easyui-textbox" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.Description)</td>
+                <td>@Html.TextBoxFor(x => x.Description, new { @class = "easyui-textbox" })</td>
+            </tr>
+        </table>
+    </form>
+</div>
+@section buttons{
+    <button class="btn btn-primary" onclick="dialogObj.Ok()">确认</button>
+    <button class="btn btn-primary" onclick="dialogObj.Cancel()">取消</button>
+}

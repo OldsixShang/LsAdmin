@@ -1,0 +1,57 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutDialogPage.cshtml";
+}
+@using Example.Dto.Business.Sys.MenuManage
+@model MenuDto
+@section script{
+    <script type="text/javascript">
+        var dialog = top.dialog.get(window);
+        var dialogObj = {
+            Ok: function () {
+                var url = $.ls.isNullOrEmpty($("#hidId").val()) ? '@Url.Action("Add","MenuManage")' : '@Url.Action("Modify","MenuManage")';
+                $("#formEdit").submitForm({
+                    url: url,
+                    onSuccess: function (data) {
+                        dialog.Close(true);
+                    }
+                });
+            },
+            Cancel: function () {
+                dialog.Close(false);
+            }
+        };
+
+        $(document).ready(function () {
+            {//下拉列表初始化
+                $("#cmbMenuType").lsCombobox({ data: page.JsonData.MenuTypes, required: true });
+            }
+        });
+    </script>
+}
+<div class="container">
+    <form id="formEdit" class="form-horizontal">
+        @Html.HiddenFor(x => x.Id, new { @id = "hidId" })
+        <table>
+            <tr>
+                <td>@Html.LabelFor(x => x.Name)</td>
+                <td>@Html.TextBoxFor(x => x.Name, new { @class = "easyui-textbox" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.MenuType)</td>
+                <td>@Html.TextBoxFor(x => x.MenuType, new { @class = "easyui-combobox", @id = "cmbMenuType" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.Url)</td>
+                <td>@Html.TextBoxFor(x => x.Url, new { @class = "easyui-textbox" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.Icon)</td>
+                <td>@Html.TextBoxFor(x => x.Icon, new { @class = "easyui-textbox" })</td>
+            </tr>
+        </table>
+    </form>
+</div>
+@section buttons{
+    <button class="btn btn-primary" onclick="dialogObj.Ok()">确认</button>
+    <button class="btn btn-primary" onclick="dialogObj.Cancel()">取消</button>
+}

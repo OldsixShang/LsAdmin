@@ -1,0 +1,85 @@
+﻿<script src="~/Components/ECharts/echarts.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var myChart = echarts.init(document.getElementById('_containerSellFetchCharts'));
+        var currentYear = parseInt('@DateTime.Now.Year');
+        var comboData = [
+            { id: '2017', text: '2017年' },
+            { id: currentYear - 1, text: (currentYear - 1).toString() + '年' },
+            { id: currentYear - 2, text: (currentYear - 2).toString() + '年' }
+        ];
+        var $cmbSellTkAmount = $("#_cmbSellAmountCharts").lsCombobox({
+            value: currentYear,
+            required: true,
+            data:comboData ,
+            onSelect: function (re) {
+                $.ls.ajax({
+                    url: '@Url.Action("SellFetchTicketCountsOneYear","Charts")',
+                    data: { year: re.id },
+                    onSuccess: function (data) {
+                        option = {
+                            title: {
+                                text: re.text + '-售取票数统计'
+                            },
+                            tooltip: {
+                                trigger: 'axis'
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataView: { show: false, readOnly: false },
+                                    magicType: { show: true, type: ['line', 'bar'] },
+                                    restore: { show: false },
+                                    saveAsImage: { show: true }
+                                }
+                            },
+                            legend: {
+                                data: ['取票数', '售票数']
+                            },
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    name: '售取票数/张',
+                                    axisLabel: {
+                                        formatter: '{value}'
+                                    }
+                                }
+                            ],
+                            series: [
+                                {
+                                    name: '取票数',
+                                    type: 'bar',
+                                    data: data.Fetch
+                                },
+                                {
+                                    name: '售票数',
+                                    type: 'bar',
+                                    data: data.Sell
+                                }
+                            ]
+                        };
+                        myChart.setOption(option);
+                    }
+                });
+            }
+        });
+
+    });
+</script>
+<div class="col-lg-6">
+    <div class="panel panel-default">
+        <div class="panel-heading tabindex-panel-heading">
+            请选择年份：
+            <input id="_cmbSellAmountCharts" class="easyui-combobox" style="width:100px;" />
+        </div>
+        <div class="panel-body tabindex-panel-body">
+            <div id="_containerSellFetchCharts" style="min-width:400px;height:400px"></div>
+        </div>
+    </div>
+</div>
+

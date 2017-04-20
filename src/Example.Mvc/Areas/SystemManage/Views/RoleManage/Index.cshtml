@@ -1,0 +1,103 @@
+﻿@using Example.Dto.Business.Sys.RoleManage
+@model PageDto
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutNormalFuncPage.cshtml";
+}
+@section head{
+    <script type="text/javascript">
+        var $lsGrid = {};
+        $(document).ready(function () {
+            $lsGrid = $("#dataGrid").lsGrid({
+                url: '@Url.Action("Query", "RoleManage")',
+                title: "角色信息",
+                fit: true,
+                columns: [[
+                    { title: 'Id', field: 'Id', width: 100, hidden: true },
+                    { title: '角色名称', field: 'RoleName', width: 150, sortable: true },
+                    { title: '角色描述', field: 'RealName', width: 120 }
+                ]]
+            });
+            page.init();
+        });
+
+        $.extend(page, {
+            init:function(){
+                $lsGrid.reload();
+            },
+            query: function () {
+                $lsGrid.reload();
+            },
+            add: function () {
+                $.ls.showDialog({
+                    title: '新增角色',
+                    url: '@Url.Action("RoleEdit")',
+                    width: 400,
+                    height: 200,
+                    onClose: function (result) {
+                        if (result) {
+                            $.ls.success($.ls.messages.SuccessAdded);
+                            $lsGrid.reload();
+                        }
+                    }
+                });
+            },
+            modify: function () {
+                var row = $lsGrid.getSelectedRow();
+                if ($.ls.isNullOrEmpty(row)) return;
+                $.ls.showDialog({
+                    title: '修改角色',
+                    url: '@Url.Action("RoleEdit")' + "?id=" + row.Id,
+                    width: 400,
+                    height: 200,
+                    onClose: function (result) {
+                        if (result) {
+                            $.ls.success($.ls.messages.SuccessModified);
+                            $lsGrid.reload();
+                        }  
+                    }
+                });
+            },
+            remove: function () {
+                var row = $lsGrid.getSelectedRow();
+                if ($.ls.isNullOrEmpty(row)) return;
+                $.ls.confirm('确定删除?', function (result) {
+                    if (result) {
+                        $.ls.ajax({
+                            url: '@Url.Action("Remove")' + '?id=' + row.Id,
+                            onSuccess: function (data) {
+                                $.ls.success($.ls.messages.SuccessDeleted);
+                                $lsGrid.reload();
+                            }
+                        });
+                    }
+                })
+            },
+            distributePermission: function () {
+                var row = $lsGrid.getSelectedRow();
+                if ($.ls.isNullOrEmpty(row)) return;
+                $.ls.showDialog({
+                    title: '分配权限',
+                    url: '@Url.Action("Distribute")' + "?id=" + row.Id,
+                    width: 400,
+                    height: 500,
+                    onClose: function (result) {
+                        if (result) {
+                            $.ls.success($.ls.messages.SuccessOperation);
+                            $lsGrid.reload();
+                        } 
+                    }
+                });
+            }
+        });
+    </script>
+}
+@section queryform{
+    <div class="container-fluid">
+        @Html.Partial("_queryForm", Model.QueryForm)
+    </div>
+}
+
+<table id="dataGrid"></table>
+
+

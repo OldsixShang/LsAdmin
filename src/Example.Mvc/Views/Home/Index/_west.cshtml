@@ -1,0 +1,58 @@
+﻿@using Example.Dto.UI
+@using Tts.Framework.AspNetMvc.Extension
+@model IEnumerable<PermissionMenuDto>
+@helper RenderMenu(IEnumerable<PermissionMenuDto> menus)
+{
+    foreach (var item in menus)
+    {
+        if (item.Children == null)
+        {
+            <li>
+                <a class="node" onclick="addTab('@Url.Content((item.Url ?? "~/Home/ErrorPage_404") + "?pageId=" + item.Id, true)','@item.MenuName','@item.Id',this)">
+                    <i class="fa @item.Icon fa-fw" aria-hidden="true"></i>
+                    <span>@item.MenuName</span>
+                </a>
+            </li>
+        }
+        else
+        {
+            <li>
+                <a class="node" onclick="expand(this)" >
+                    <i class="fa @item.Icon fa-fw" aria-hidden="true"></i>
+                    <span>@item.MenuName</span>
+                    <b class="expandable fa fa-plus" aria-hidden="true"></b>
+                </a>
+                <ul style="display:none;">
+                    @RenderMenu(item.Children)
+                </ul>
+            </li>
+        }
+    }
+}
+<div>
+    <ul id="side-menu">
+        @RenderMenu(Model)
+    </ul>
+</div>
+
+<script type="text/javascript">
+    function addTab(url, name, id,node) {
+        $.ls.addIframeTab('tabs', { tabId: id, tabTitle: name, iframeUrl: url });
+        $("#side-menu li a").removeClass('selected');
+        if(node)
+            $(node).addClass('selected');
+    }
+
+    function expand(item) {
+        if ($(item).children("b").hasClass('fa-plus'))
+        {
+            $(item).parent().children("ul").slideDown(300);
+            $(item).children("b").removeClass('fa-plus').addClass('fa-minus');
+        }
+        else {
+            $(item).parent().children("ul").hide(300);
+            $(item).children("b").removeClass('fa-minus').addClass('fa-plus');
+        }
+            
+    }
+</script>

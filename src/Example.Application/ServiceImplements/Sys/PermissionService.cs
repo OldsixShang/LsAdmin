@@ -2,7 +2,7 @@
 using Example.Domain.Repositories.Authorization;
 using System;
 using System.Collections.Generic;
-using Tts.Platform.Application.ServiceInterfaces.Sys;
+using Example.Application.ServiceInterfaces.Sys;
 using Ls.Utilities;
 using Ls.Model;
 using Ls.Caching;
@@ -13,7 +13,7 @@ using Example.Dto;
 using Ls.Dto.Extension;
 using Example.Dto.Auth;
 
-namespace Tts.Platform.Application.ServiceImplements.Sys
+namespace Example.Application.ServiceImplements.Sys
 {
     /// <summary>
     /// 权限领域服务

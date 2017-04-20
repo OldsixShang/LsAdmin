@@ -3,7 +3,7 @@ using Ls.Domain.Entities;
 using Ls.Dto;
 using System.Collections.Generic;
 
-namespace Tts.Platform.Application
+namespace Example.Application
 {
     /// <summary>
     /// 配置关系扩展方法

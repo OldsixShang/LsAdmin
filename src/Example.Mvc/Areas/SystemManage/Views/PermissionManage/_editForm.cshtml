@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutDialogPage.cshtml";
+}
+@using Example.Dto.Business.Sys.PermissionManage
+@model PermissionDto
+@section script{
+    <script type="text/javascript">
+        var dialog = top.dialog.get(window);
+        var dialogObj = {
+            Ok: function () {
+                var url = $.ls.isNullOrEmpty($("#hidId").val()) ? '@Url.Action("Add","PermissionManage")' : '@Url.Action("Modify","PermissionManage")';
+                $("#formEdit").submitForm({
+                    url: url,
+                    onSuccess: function (data) {
+                        dialog.Close(true);
+                    }
+                });
+            },
+            Cancel: function () {
+                dialog.Close(false);
+            }
+        };
+
+        $(document).ready(function () {
+            {//初始化下拉列表
+                $("#cmbTreeParentId").lsComboTree({ data: page.JsonData.Permissions })
+                $("#cmbActionId").lsCombobox({ data: page.JsonData.Actions });
+                $("#cmbMenuId").lsCombobox({ data: page.JsonData.Menus });
+            }
+            
+        });
+    </script>
+}
+<div class="container">
+    <form id="formEdit" class="form-horizontal">
+        @Html.HiddenFor(x => x.Id, new { @id = "hidId" })
+        <table>
+            <tr>
+                <td>@Html.LabelFor(x => x.Name)</td>
+                <td>@Html.TextBoxFor(x => x.Name, new { @class = "easyui-textbox" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.ParentId)</td>
+                <td>@Html.TextBoxFor(x => x.ParentId, new { @class = "easyui-combotree", @id = "cmbTreeParentId" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.MenuId)</td>
+                <td>@Html.TextBoxFor(x => x.MenuId, new { @class = "easyui-combobox", @id = "cmbMenuId" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.ActionId)</td>
+                <td>@Html.TextBoxFor(x => x.ActionId, new { @class = "easyui-combobox", @id = "cmbActionId" })</td>
+            </tr>
+        </table>
+    </form>
+</div>
+@section buttons{
+    <button class="btn btn-primary" onclick="dialogObj.Ok()">确认</button>
+    <button class="btn btn-primary" onclick="dialogObj.Cancel()">取消</button>
+}

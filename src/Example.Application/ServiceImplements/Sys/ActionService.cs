@@ -4,9 +4,9 @@ using Example.Dto.Sys.ActionManage;
 using Ls.Model;
 using Ls.Utilities;
 using System.Collections.Generic;
-using Tts.Platform.Application.ServiceInterfaces.Sys;
+using Example.Application.ServiceInterfaces.Sys;
 
-namespace Tts.Platform.Application.ServiceImplements.Sys
+namespace Example.Application.ServiceImplements.Sys
 {
     /// <summary>
     /// 操作领域服务

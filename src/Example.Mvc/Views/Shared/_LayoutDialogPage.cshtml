@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/easyui/jquery.easyui.min.js"></script>
+    <script src="~/Components/artDialog/js/dialog-plus.js"></script>
+    <link href="~/Content/easyui/themes/material/easyui.css" rel="stylesheet" />
+    <link href="~/Components/artDialog/css/ui-dialog.css" rel="stylesheet" />
+    <script src="~/Scripts/ls/jquery.easyui.extension.validate.js"></script>
+    <script src="~/Scripts/easyui/easyui-lang-zh_CN.js"></script>
+    <script src="~/Scripts/ls/jquery.ls.extension.js"></script>
+    <script src="~/Scripts/ls/ls.common.js"></script>
+    <script src="~/Scripts/ls/ls.form.js"></script>
+    <script src="~/Scripts/ls/ls.controls.js"></script>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/easyui/tts.easyui.theme.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <script type="text/javascript">
+        var page = {
+            JsonData: eval('(' + '@Html.Raw(ViewBag.JsonData == null ? "{}" : ViewBag.JsonData)' + ')')
+        };
+    </script>
+    @RenderSection("head", false)
+    @RenderSection("script",false)
+</head>
+<body>
+    <input id="_hidPageId" type="hidden" value="@Request.QueryString["pageId"]" />
+    <div class="container">
+        @RenderBody()
+    </div>
+    <div class="container" style="text-align:right;position:absolute;bottom:15px;right:30px;">
+        @RenderSection("buttons",false)
+    </div>
+</body>
+</html>

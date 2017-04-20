@@ -1,0 +1,24 @@
+﻿.data{width: 200px;height: auto;position: relative;left:-40px;}
+.data i{width: 8px;height: 5px;position: absolute;bottom:0;background-color: #fbfbfb;}
+.data i:nth-of-type(1){left:0;}
+.data i:nth-of-type(2){left:12px;}
+.data i:nth-of-type(3){left:24px;}
+.data i:nth-of-type(4){left:36px;}
+.data i:nth-of-type(5){left:48px;}
+.data i:nth-of-type(6){left:60px;}
+.data.active i:nth-of-type(1){-webkit-animation:wave 0.66s linear infinite;animation:wave 0.66s linear infinite;}
+.data.active i:nth-of-type(2){-webkit-animation:wave 0.8s linear infinite;animation:wave 0.8s linear infinite;}
+.data.active i:nth-of-type(3){-webkit-animation:wave 0.7s linear infinite;animation:wave 0.7s linear infinite;}
+.data.active i:nth-of-type(4){-webkit-animation:wave 0.5s linear infinite;animation:wave 0.5s linear infinite;}
+.data.active i:nth-of-type(5){-webkit-animation:wave 0.9s linear infinite;animation:wave 0.9s linear infinite;}
+.data.active i:nth-of-type(6){-webkit-animation:wave 1.2s linear infinite;animation:wave 1.2s linear infinite;}
+@-webkit-keyframes wave{
+	0%{height:8px}
+	50%{height: 48px}
+	100%{height: 28px}
+}
+@keyframes wave{
+	0%{height:8px}
+	50%{height: 48px}
+	100%{height: 28px}
+}

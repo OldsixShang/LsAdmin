@@ -1,0 +1,12 @@
+﻿@using Example.Dto.Business.Sys.UserManage
+@model QueryConditionDto
+<table>
+    <tr>
+        <td>@Html.LabelFor(t => t.UserName)</td>
+        <td>@Html.TextBoxFor(t => t.UserName, new { @class = "easyui-textbox", @placeholder = "用户名" })</td>
+        <td>@Html.LabelFor(t => t.RoleId)</td>
+        <td>@Html.TextBoxFor(t => t.RoleId, new { @class = "easyui-combobox",@id="combo-role", @placeholder = "角色"})</td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>

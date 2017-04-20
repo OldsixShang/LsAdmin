@@ -60,11 +60,13 @@
     <Compile Include="BaseService.cs" />
     <Compile Include="Const.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceImplements\Common\ComboService.cs" />
     <Compile Include="ServiceImplements\Sys\ActionService.cs" />
     <Compile Include="ServiceImplements\Sys\MenuService.cs" />
     <Compile Include="ServiceImplements\Sys\PermissionService.cs" />
     <Compile Include="ServiceImplements\Sys\RoleService.cs" />
     <Compile Include="ServiceImplements\Sys\UserService.cs" />
+    <Compile Include="ServiceInterfaces\Common\IComboService.cs" />
     <Compile Include="ServiceInterfaces\Sys\IActionService.cs" />
     <Compile Include="ServiceInterfaces\Sys\IMenuService.cs" />
     <Compile Include="ServiceInterfaces\Sys\IPermissionService.cs" />

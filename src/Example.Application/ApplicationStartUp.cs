@@ -9,7 +9,7 @@ using Ls.Utilities;
 using Ls.Utilities.Formatter;
 using System;
 
-namespace Tts.Platform.Application
+namespace Example.Application
 {
     public static class ApplicationStartUp
     {
