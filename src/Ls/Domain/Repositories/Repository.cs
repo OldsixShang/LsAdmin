@@ -102,16 +102,12 @@ namespace Ls.Domain.Repositories
             {
                 case SortOrder.Default:
                     return GetTable().Where(predicate).ToList();
-                    break;
                 case SortOrder.Asc:
                     return GetTable().Where(predicate).OrderBy(sortPredicate).ToList();
-                    break;
                 case SortOrder.Desc:
                     return GetTable().Where(predicate).OrderByDescending(sortPredicate).ToList();
-                    break;
                 default:
                     return GetTable().Where(predicate).ToList();
-                    break;
             }
         }
 
@@ -130,17 +126,12 @@ namespace Ls.Domain.Repositories
             {
                 case SortOrder.Default:
                     return GetTable().Where(predicate).ToPagedList(skip, count);
-                    //return GetTable().Where(predicate).Skip(skip).Take(count).ToList();
-                    break;
                 case SortOrder.Asc:
                     return GetTable().Where(predicate).OrderBy(sortPredicate).ToPagedList(skip, count);
-                    break;
                 case SortOrder.Desc:
                     return GetTable().Where(predicate).OrderByDescending(sortPredicate).ToPagedList(skip, count);
-                    break;
                 default:
                     return GetTable().Where(predicate).ToPagedList(skip, count);
-                    break;
             }
         }
 

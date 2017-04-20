@@ -58,7 +58,7 @@ namespace Ls.Mvc
 
             var ticket = new FormsAuthenticationTicket(
                 1 /*version*/,
-                string.IsNullOrEmpty(user.UserName) ? "匿名用户" : user.UserName,
+                string.IsNullOrEmpty(user.Name) ? "匿名用户" : user.Name,
                 now,
                 now.Add(FormsAuthentication.Timeout),
                 createPersistentCookie,

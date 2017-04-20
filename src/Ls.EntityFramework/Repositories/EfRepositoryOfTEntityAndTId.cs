@@ -54,9 +54,9 @@ namespace Ls.EntityFramework.Repositories
             {
                 (entity as ILastUpdateBy).LastUpdaterId = LsSession.UserId.Value;
             }
-            if (entity is ILastUpdateTime)
+            if (entity is ILastUpdatedTime)
             {
-                (entity as ILastUpdateTime).LastUpdateTime = DateTime.Now;
+                (entity as ILastUpdatedTime).LastUpdatedTime = DateTime.Now;
             }
             Context.Set<TEntity>().Add(entity);
         }
@@ -106,9 +106,9 @@ namespace Ls.EntityFramework.Repositories
         /// <param name="entity">实体对象</param>
         public override void Update(TEntity entity)
         {
-            if (entity is ILastUpdateTime)
+            if (entity is ILastUpdatedTime)
             {
-                (entity as ILastUpdateTime).LastUpdateTime = DateTime.Now;
+                (entity as ILastUpdatedTime).LastUpdatedTime = DateTime.Now;
             }
             if (entity is ILastUpdateBy)
             {
@@ -116,7 +116,7 @@ namespace Ls.EntityFramework.Repositories
             }
             AttachIfNot(entity);
             Context.Entry(entity).State = EntityState.Modified;
-            DbEntityEntry<TEntity> entry = Context.Entry<TEntity>(entity); //context.Entry<Book>(book);
+            DbEntityEntry<TEntity> entry = Context.Entry<TEntity>(entity); 
             if (entity is ICreatedBy)
             {
                 entry.Property("CreaterId").IsModified = false;

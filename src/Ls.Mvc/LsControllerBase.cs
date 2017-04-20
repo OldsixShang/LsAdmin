@@ -12,12 +12,7 @@ namespace Ls.Mvc {
         /// 用户信息 Session。
         /// </summary>
         public ILsSession LsSession { get; set; }
-
-        /// <summary>
-        /// 日志记录器。
-        /// </summary>
-        //public ILogger Log { get; set; }
-        //public ILogger Log = null;//LogManager.GetLogger(typeof(LsControllerBase));
+        
         protected ILogger Log {
             get
             {
@@ -30,8 +25,6 @@ namespace Ls.Mvc {
         /// Controller 基类构造函数，初始化 Session。
         /// </summary>
         public LsControllerBase() {
-
-         
             LsSession = NullLsSession.Instance;
         }
     }

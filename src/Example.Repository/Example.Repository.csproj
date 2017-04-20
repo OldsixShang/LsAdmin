@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CB41A5D0-92B4-461E-9B0C-E624F441D7F5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Example.Repository</RootNamespace>
+    <AssemblyName>Example.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Mapping\Authorizations\AuthActionMap.cs" />
+    <Compile Include="Mapping\Authorizations\MenuMap.cs" />
+    <Compile Include="Mapping\Authorizations\PermissionMap.cs" />
+    <Compile Include="Mapping\Authorizations\RoleMap.cs" />
+    <Compile Include="Mapping\Authorizations\UserMap.cs" />
+    <Compile Include="Mapping\BaseEntityTypeConfiguration.cs" />
+    <Compile Include="Mapping\Schema.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PlatformDbContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Authorizations\ActionRepository.cs" />
+    <Compile Include="Repositories\Authorizations\MenuRepository.cs" />
+    <Compile Include="Repositories\Authorizations\PermissionRepository.cs" />
+    <Compile Include="Repositories\Authorizations\RoleRepository.cs" />
+    <Compile Include="Repositories\Authorizations\UserRepository.cs" />
+    <Compile Include="Repositories\AuthStore.cs" />
+    <Compile Include="RepositoryComponent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Example.Domain\Example.Domain.csproj">
+      <Project>{411b14fc-13de-42cd-afd7-c5878cd57dfb}</Project>
+      <Name>Example.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ls.EntityFramework\Ls.EntityFramework.csproj">
+      <Project>{d1420789-d011-4375-bb98-f5b0faa4e2a5}</Project>
+      <Name>Ls.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ls\Ls.csproj">
+      <Project>{caaab9df-f783-4c21-b5e5-e3f9abb71060}</Project>
+      <Name>Ls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

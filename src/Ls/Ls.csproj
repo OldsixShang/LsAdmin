@@ -129,8 +129,15 @@
     <Compile Include="Domain\UnitOfWork\UnitOfWorkCreator.cs" />
     <Compile Include="Domain\UnitOfWork\UnitOfWorkOptions.cs" />
     <Compile Include="Domain\UnitOfWork\UnitOfWorkProvider.cs" />
+    <Compile Include="Dto\BaseDto%27.cs" />
+    <Compile Include="Dto\BaseDto.cs" />
+    <Compile Include="Dto\CreatedAndUpdatedDto.cs" />
+    <Compile Include="Dto\Extension\DtoExtension.cs" />
+    <Compile Include="Dto\Response\ResponseDto.cs" />
+    <Compile Include="Dto\TreeNodeDto.cs" />
     <Compile Include="Extensions\CollectionExtension.cs" />
     <Compile Include="Extensions\IQueryableExtension.cs" />
+    <Compile Include="Authorization\IAction.cs" />
     <Compile Include="IoC\BasicConventionalRegistrar.cs" />
     <Compile Include="IoC\LsInstaller.cs" />
     <Compile Include="IoC\ConventionalRegistrationContext.cs" />
@@ -165,6 +172,7 @@
     <Compile Include="Session\ILsSession.cs" />
     <Compile Include="Session\NullLsSession.cs" />
     <Compile Include="Utilities\CryptTool.cs" />
+    <Compile Include="Utilities\Formatter\DateTimeFormatterConstString.cs" />
     <Compile Include="Utilities\LsIdGenerator.cs" />
     <Compile Include="Utilities\MD5Util.cs" />
     <Compile Include="Utilities\ObjectExtensions.cs" />
@@ -180,11 +188,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".nuspec" />
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
