@@ -53,10 +53,6 @@ namespace Example.Domain.Entities.Authorization
         /// </summary>
         public virtual Role Role { get; set; }
         /// <summary>
-        /// 用户名。
-        /// </summary>
-        public string UserName { get; set; }
-        /// <summary>
         /// 租户编号。
         /// </summary>
         public int TenantId { get; set; }

@@ -9,7 +9,7 @@ namespace Example.Repository.Mapping.Authorization
     {
         public AuthActionMap()
         {
-            ToTable("AuthAction", Schema.AuthorityExtension);
+            ToTable("AuthAction", Schema.Authority);
 
             this.HasKey(x => x.Id);
             this.Property(x => x.Name)

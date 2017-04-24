@@ -14,7 +14,7 @@ namespace ExampleRepository.Mapping.Authorization
         {
             ToTable("Users", Schema.Authority);
 
-            this.Property(x => x.UserName)
+            this.Property(x => x.Name)
                 .HasMaxLength(50)
                 .IsRequired();
             this.Property(x => x.LoginId)

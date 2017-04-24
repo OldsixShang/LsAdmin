@@ -26,6 +26,13 @@ namespace Example.Mvc
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            //ls相关控件
+            bundles.Add(new ScriptBundle("~/bundles/ls")
+                .Include(
+                "~/Scripts/ls/ls.common.js",
+                "~/Scripts/ls/ls.form.js",
+                "~/Scripts/ls/ls.controls.js"));
         }
     }
 }

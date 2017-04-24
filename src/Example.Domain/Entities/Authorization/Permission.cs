@@ -11,6 +11,10 @@ namespace Example.Domain.Entities.Authorization
     public class Permission : Entity, IPermission<Permission, AuthAction, Menu>
     {
         /// <summary>
+        /// 父级权限Id
+        /// </summary>
+        public long ? ParentId { get; set; }
+        /// <summary>
         /// 权限名称
         /// </summary>
         public string Name { get; set; }

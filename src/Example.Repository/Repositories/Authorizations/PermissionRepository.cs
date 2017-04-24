@@ -15,7 +15,7 @@ namespace ExampleRepository.Repositories.Authorizations
     /// <summary>
     /// 权限仓储实现
     /// </summary>
-    public class PermissionRepository : EfRepository<PlatformDbContext, Permission>, IPermissionRepository
+    public class PermissionRepository : EfRepository<ExampleDbContext, Permission>, IPermissionRepository
     {
         public dynamic QueryPermission(string name = "")
         {

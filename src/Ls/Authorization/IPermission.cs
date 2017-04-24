@@ -10,23 +10,16 @@ namespace Ls.Authorization
     /// <summary>
     /// 权限。
     /// </summary>
-    public interface IPermission<TPermission, TAction, TMenu> : IEntity<Int64>
-        where TPermission : IPermission<TPermission, TAction, TMenu>
-        where TAction : IAction
-        where TMenu : IMenu
+    public interface IPermission: IEntity<Int64>
     {
         /// <summary>
-        /// 父级权限。
+        /// 父级权限Id
         /// </summary>
-        TPermission Parent { get; set; }
+        long? ParentId { get; set; }
         /// <summary>
         /// 权限名。
         /// </summary>
         string Name { get; set; }
-        /// <summary>
-        /// 子级权限。
-        /// </summary>
-        ICollection<TPermission> Children { get; set; }
 
         /// <summary>
         /// 菜单Id
@@ -36,6 +29,24 @@ namespace Ls.Authorization
         /// 操作Id
         /// </summary>
         long? ActionId { get; set; }
+    }
+
+    /// <summary>
+    /// 权限。
+    /// </summary>
+    public interface IPermission<TPermission, TAction, TMenu> : IPermission
+        where TPermission : IPermission<TPermission, TAction, TMenu>
+        where TAction : IAction
+        where TMenu : IMenu
+    {
+        /// <summary>
+        /// 父级权限。
+        /// </summary>
+        TPermission Parent { get; set; }
+        /// <summary>
+        /// 子级权限。
+        /// </summary>
+        ICollection<TPermission> Children { get; set; }
         /// <summary>
         /// 菜单
         /// </summary>

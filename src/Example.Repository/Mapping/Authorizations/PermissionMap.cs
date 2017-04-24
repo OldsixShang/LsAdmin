@@ -18,6 +18,7 @@ namespace Example.Repository.Mapping.Authorization
                 .IsRequired();
             this.HasOptional(t => t.Parent)
                 .WithMany(t => (IList<Permission>)t.Children)
+                .HasForeignKey(t => t.ParentId)
                 .WillCascadeOnDelete(false);
             this.HasOptional(t => t.Menu);
             this.HasOptional(t => t.Action);

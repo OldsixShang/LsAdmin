@@ -13,7 +13,7 @@ namespace ExampleRepository.Repositories.Authorizations
     /// <summary>
     /// 系统操作仓储实现
     /// </summary>
-    public class ActionRepository : EfRepository<PlatformDbContext, AuthAction>, IActionRepository
+    public class ActionRepository : EfRepository<ExampleDbContext, AuthAction>, IActionRepository
     {
         /// <summary>
         /// 分页查询系统操作信息

@@ -58,8 +58,16 @@
     <Compile Include="Mapping\Authorizations\UserMap.cs" />
     <Compile Include="Mapping\BaseEntityTypeConfiguration.cs" />
     <Compile Include="Mapping\Schema.cs" />
+    <Compile Include="Migrations\201704240842552__InitCreate.cs" />
+    <Compile Include="Migrations\201704240842552__InitCreate.Designer.cs">
+      <DependentUpon>201704240842552__InitCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704240929018__delete_user_username.cs" />
+    <Compile Include="Migrations\201704240929018__delete_user_username.Designer.cs">
+      <DependentUpon>201704240929018__delete_user_username.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="PlatformDbContext.cs" />
+    <Compile Include="ExampleDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Authorizations\ActionRepository.cs" />
     <Compile Include="Repositories\Authorizations\MenuRepository.cs" />
@@ -86,6 +94,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201704240842552__InitCreate.resx">
+      <DependentUpon>201704240842552__InitCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704240929018__delete_user_username.resx">
+      <DependentUpon>201704240929018__delete_user_username.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

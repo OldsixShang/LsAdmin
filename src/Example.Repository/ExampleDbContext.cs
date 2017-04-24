@@ -8,29 +8,30 @@ using Example.Repository.Mapping;
 
 namespace Example.Repository
 {
-    public class PlatformDbContext : LsDbContext
+    public class ExampleDbContext : LsDbContext
     {
-        public PlatformDbContext(string conn)
-            : base(conn)
+        public ExampleDbContext()
+            : base("conn_debug")
         {
+
         }
 #if Debug
-        public PlatformDbContext()
+        public ExampleDbContext()
             : base("conn_debug")
         {
             
         }
 #endif
 #if Release
-        public PlatformDbContext()
+        public ExampleDbContext()
             : base("conn_release")
         {
             
         }
 #endif
-        static PlatformDbContext()
+        static ExampleDbContext()
         {
-            System.Data.Entity.Database.SetInitializer<PlatformDbContext>(null);
+            System.Data.Entity.Database.SetInitializer<ExampleDbContext>(null);
         }
 
 

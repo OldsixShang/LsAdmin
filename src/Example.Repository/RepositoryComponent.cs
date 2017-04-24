@@ -1,6 +1,9 @@
 ﻿using Ls.Components;
 using System.Reflection;
 using Example.Domain;
+using Ls.Authorization;
+using Example.Domain.Entities.Authorization;
+using Example.Repository.Repositories;
 
 namespace ExampleRepository
 {

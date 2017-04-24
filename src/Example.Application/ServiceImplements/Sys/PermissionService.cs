@@ -23,14 +23,14 @@ namespace Example.Application.ServiceImplements.Sys
         #region 字段
         private readonly IPermissionRepository _permissionRepository;
         private readonly IRoleRepository _roleRepository;
-        private readonly IAuthStore<User, Role, Permission, AuthAction, Menu> _authStore;
+        private readonly IAuthStore _authStore;
         private readonly ICacheManager _cacheManager;
         #endregion
 
         public PermissionService(
             IPermissionRepository permissionRepository,
             IRoleRepository roleRepository,
-            IAuthStore<User, Role, Permission, AuthAction, Menu> authStore,
+            IAuthStore authStore,
             ICacheManager cacheManager
             )
         {
@@ -109,8 +109,7 @@ namespace Example.Application.ServiceImplements.Sys
         #region 菜单权限
         public IList<PermissionMenuDto> QueryNavMenuPermission()
         {
-            var user = _authStore.GetUser(LsSession.UserId.Value);
-            dynamic entities = _permissionRepository.QueryMenuPermission(user.Role.Id, MenuType.左侧导航栏);
+            dynamic entities = _permissionRepository.QueryMenuPermission(LsSession.RoleId.Value, MenuType.左侧导航栏);
             List<PermissionMenuDto> dtos = AutoMapExtensions.ToDtoList<PermissionMenuDto>(entities);
             return dtos.ToStandardFormatTree();
         }
@@ -118,14 +117,14 @@ namespace Example.Application.ServiceImplements.Sys
         {
           
             var user = _authStore.GetUser(LsSession.UserId.Value);
-            dynamic entities = _permissionRepository.QueryMenuPermission(user.Role.Id, MenuType.固定);
+            dynamic entities = _permissionRepository.QueryMenuPermission(LsSession.RoleId.Value, MenuType.固定);
             List<PermissionMenuDto> dtos = AutoMapExtensions.ToDtoList<PermissionMenuDto>(entities);
             return dtos.ToStandardFormatTree();
         }
         public IList<PermissionMenuDto> QueryTopNavMenuPermission()
         {
             var user = _authStore.GetUser(LsSession.UserId.Value);
-            dynamic entities = _permissionRepository.QueryMenuPermission(user.Role.Id, MenuType.顶部快捷菜单栏);
+            dynamic entities = _permissionRepository.QueryMenuPermission(LsSession.RoleId.Value, MenuType.顶部快捷菜单栏);
             List<PermissionMenuDto> dtos = AutoMapExtensions.ToDtoList<PermissionMenuDto>(entities);
             return dtos.ToStandardFormatTree();
         }
@@ -152,8 +151,7 @@ namespace Example.Application.ServiceImplements.Sys
             Role role;
             if (roleId == -1)
             {
-                var user = _authStore.GetUser(LsSession.UserId.Value);
-                role = _roleRepository.GetRole(user.Role.Id);
+                role = _roleRepository.GetRole(LsSession.RoleId.Value);
             }
             else
             {

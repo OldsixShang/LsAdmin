@@ -14,7 +14,7 @@ namespace ExampleRepository.Repositories.Authorizations
     /// <summary>
     /// 用户仓储实现
     /// </summary>
-    public class RoleRepository : EfRepository<PlatformDbContext, Role>, IRoleRepository
+    public class RoleRepository : EfRepository<ExampleDbContext, Role>, IRoleRepository
     {
         /// <summary>
         /// 分页查询角色信息

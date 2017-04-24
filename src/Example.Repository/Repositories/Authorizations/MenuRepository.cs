@@ -13,7 +13,7 @@ namespace ExampleRepository.Repositories.Authorizations
     /// <summary>
     /// 菜单仓储实现
     /// </summary>
-    public class MenuRepository : EfRepository<PlatformDbContext, Menu>, IMenuRepository
+    public class MenuRepository : EfRepository<ExampleDbContext, Menu>, IMenuRepository
     {
         /// <summary>
         /// 分页查询菜单信息

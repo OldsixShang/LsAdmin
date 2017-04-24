@@ -7,19 +7,19 @@ using Example.Domain.Entities.Authorization;
 
 namespace Example.Repository.Repositories
 {
-    public class AuthStore : EfRepository<PlatformDbContext, IUser>, IAuthStore<User, Role, Permission, AuthAction, Menu>
+    public class AuthStore : EfRepository<ExampleDbContext, IUser>, IAuthStore
     {
-        public ICollection<Permission> GetPermissions(long? roleId)
+        public ICollection<IPermission> GetPermissions(long? roleId)
         {
             throw new NotImplementedException();
         }
 
-        public Role GetRole(long? roleId)
+        public IRole GetRole(long? roleId)
         {
             throw new NotImplementedException();
         }
 
-        public User GetUser(long? userId)
+        public IUser GetUser(long? userId)
         {
             throw new NotImplementedException();
         }

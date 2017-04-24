@@ -14,7 +14,7 @@ namespace ExampleRepository.Repositories.Authorizations
     /// <summary>
     /// 用户仓储实现
     /// </summary>
-    public class UserRepository : EfRepository<PlatformDbContext, User>, IUserRepository
+    public class UserRepository : EfRepository<ExampleDbContext, User>, IUserRepository
     {
         /// <summary>
         /// 分页查询
@@ -29,7 +29,7 @@ namespace ExampleRepository.Repositories.Authorizations
             var query = Context.Users
                 .Include(t => t.Role)
                 .AsNoTracking().AsQueryable();
-            if (!string.IsNullOrEmpty(name)) query = query.Where(t => t.UserName.Contains(name));
+            if (!string.IsNullOrEmpty(name)) query = query.Where(t => t.Name.Contains(name));
             if (roleId != null) query = query.Where(t => t.RoleId == roleId);
             if (!string.IsNullOrEmpty(realName)) query = query.Where(t => t.RealName.Contains(realName));
             query = query.Page(pager);

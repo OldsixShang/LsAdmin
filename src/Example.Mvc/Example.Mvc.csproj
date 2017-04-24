@@ -654,6 +654,21 @@
     <Content Include="Content\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\font-awesome\scss\_variables.scss" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Templates\Add.cshtml" />
+    <Content Include="Views\Templates\Delete.cshtml" />
+    <Content Include="Views\Templates\Detail.cshtml" />
+    <Content Include="Views\Templates\DistributePermission.cshtml" />
+    <Content Include="Views\Templates\Export.cshtml" />
+    <Content Include="Views\Templates\HighCharts.cshtml" />
+    <Content Include="Views\Templates\Modify.cshtml" />
+    <Content Include="Views\Templates\Query.cshtml" />
+    <Content Include="Views\Templates\RePull.cshtml" />
+    <Content Include="Views\Templates\SellAmountCharts.cshtml" />
+    <Content Include="Views\Templates\SellFetchCharts.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LayoutBaseFuncPage.cshtml" />
+    <Content Include="Views\Shared\_LayoutDialogPage.cshtml" />
+    <Content Include="Views\Shared\_LayoutNormalFuncPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -665,8 +680,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Charts\" />
-    <Folder Include="Views\Shared\" />
-    <Folder Include="Views\Templates\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Example.Application\Example.Application.csproj">
