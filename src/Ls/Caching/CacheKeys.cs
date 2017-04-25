@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Example.Application
+namespace Ls.Caching
 {
     /// <summary>
     /// 缓存键值

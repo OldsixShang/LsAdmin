@@ -66,6 +66,10 @@
     <Compile Include="Migrations\201704240929018__delete_user_username.Designer.cs">
       <DependentUpon>201704240929018__delete_user_username.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704250317493__initData.cs" />
+    <Compile Include="Migrations\201704250317493__initData.Designer.cs">
+      <DependentUpon>201704250317493__initData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ExampleDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704240929018__delete_user_username.resx">
       <DependentUpon>201704240929018__delete_user_username.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704250317493__initData.resx">
+      <DependentUpon>201704250317493__initData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

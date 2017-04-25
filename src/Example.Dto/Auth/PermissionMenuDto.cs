@@ -12,7 +12,9 @@ namespace Example.Dto.Auth
     /// </summary>
     public class PermissionMenuDto : TreeNodeDto<PermissionMenuDto>
     {
-        public PermissionMenuDto() : base() { }
+        public PermissionMenuDto() : base() {
+
+        }
         /// <summary>
         /// 菜单名称
         /// </summary>
@@ -24,7 +26,7 @@ namespace Example.Dto.Auth
         /// <summary>
         /// 地址
         /// </summary>
-        public string Url { get; private set; }
+        public string Url { get; set; }
 
     }
 }

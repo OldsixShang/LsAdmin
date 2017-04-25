@@ -29,7 +29,7 @@ namespace Ls.Mvc
             get
             {
                 if (!_context.User.Identity.IsAuthenticated) throw new LsException("请先认证!", LsExceptionEnum.NoLogin);
-                IUser userdata =JsonConvert.DeserializeObject( ((FormsIdentity)_context.User.Identity).Ticket.UserData) as IUser;
+                IUser userdata = JsonConvert.DeserializeObject<CurrentUserContext>(((FormsIdentity)_context.User.Identity).Ticket.UserData);
                 return userdata;
             }
         }
@@ -57,11 +57,12 @@ namespace Ls.Mvc
             var now = DateTime.UtcNow.ToLocalTime();
 
             var ticket = new FormsAuthenticationTicket(
-                1 /*version*/,
+                1,
                 string.IsNullOrEmpty(user.Name) ? "匿名用户" : user.Name,
                 now,
                 now.Add(FormsAuthentication.Timeout),
                 createPersistentCookie,
+                
                 JsonConvert.SerializeObject(user),
                 FormsAuthentication.FormsCookiePath);
             var encryptedTicket = FormsAuthentication.Encrypt(ticket);
@@ -78,6 +79,7 @@ namespace Ls.Mvc
             {
                 cookie.Domain = FormsAuthentication.CookieDomain;
             }
+            _context.Response.Cookies.Remove(cookie.Name);
             _context.Response.Cookies.Add(cookie);
         }
 

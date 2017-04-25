@@ -1,4 +1,4 @@
-﻿@using Example.Dto.UI
+﻿@using Example.Dto
 @model IndexPageDto
 @{
     Layout = null;
@@ -13,8 +13,7 @@
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/easyui/jquery.easyui.min.js"></script>
     <link href="~/Content/easyui/themes/material/easyui.css" rel="stylesheet" />
-    <script src="~/Scripts/ls/ls.common.js"></script>
-    <script src="~/Scripts/ls/ls.controls.js"></script>
+    @Scripts.Render("~/bundles/ls")
     <script src="~/Scripts/ls/ls.layout.index.js"></script>
     <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <script src="~/Components/artDialog/js/dialog-plus.js"></script>

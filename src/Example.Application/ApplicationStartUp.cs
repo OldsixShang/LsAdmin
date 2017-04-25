@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Example.Domain.Entities.Authorization;
+using Example.Dto.Auth;
 using Example.Dto.Sys.ActionManage;
 using Example.Dto.Sys.MenuManage;
 using Example.Dto.Sys.PermissionManage;
@@ -8,6 +9,7 @@ using Example.Dto.Sys.UserManage;
 using Ls.Utilities;
 using Ls.Utilities.Formatter;
 using System;
+using System.Collections.Generic;
 
 namespace Example.Application
 {
@@ -55,6 +57,8 @@ namespace Example.Application
                     .AfterMap((src, dest) => dest.Id = LsIdGenerator.CreateIdentity());
                 #endregion
                 #endregion
+
+                config.ToDynamic();
 
             });
            

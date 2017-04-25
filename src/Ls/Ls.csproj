@@ -79,7 +79,9 @@
     <Compile Include="Authorization\IPermission.cs" />
     <Compile Include="Authorization\PermissionChecker.cs" />
     <Compile Include="Authorization\IRole.cs" />
+    <Compile Include="Authorization\CurrentUserContext.cs" />
     <Compile Include="Caching\CacheExtensions.cs" />
+    <Compile Include="Caching\CacheKeys.cs" />
     <Compile Include="Caching\ICacheManager.cs" />
     <Compile Include="Caching\MemoryCacheManager.cs" />
     <Compile Include="Components\ComponentBase.cs" />

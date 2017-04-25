@@ -12,6 +12,8 @@ using System.Linq;
 using Example.Dto;
 using Ls.Dto.Extension;
 using Example.Dto.Auth;
+using EmitMapper;
+using EmitMapper.MappingConfiguration;
 
 namespace Example.Application.ServiceImplements.Sys
 {

@@ -37,7 +37,7 @@ namespace Example.Application.ServiceImplements.Sys
         /// </summary>
         /// <param name="Id">用户唯一标识</param>
         /// <returns>用户信息</returns>
-        public Example.Dto.Sys.UserManage.UserDto GetUser(long Id)
+        public UserManage.UserDto GetUser(long Id)
         {
             User entity = _userRepository.Get(Id);
             return entity.ToDto<UserManage.UserDto>();

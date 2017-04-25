@@ -1,5 +1,7 @@
 namespace Example.Repository.Migrations
 {
+    using Domain.Entities.Authorization;
+    using Ls.Utilities;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -26,6 +28,28 @@ namespace Example.Repository.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            var tenantId = 1;
+            context.Users.AddOrUpdate(p => p.Name,
+                new User
+                {
+                    Id = LsIdGenerator.CreateIdentity(),
+                    Role = new Role
+                    {
+                        Id = LsIdGenerator.CreateIdentity(),
+                        Name = "管理员",
+                        Description = "管理员",
+                        TenantId = tenantId
+                    },
+                    LoginId = "admin",
+                    Name = "admin",
+                    Password = "123456",
+                    Phone = "18795950000",
+                    Email = "Charlesshang@outlook.com",
+                    RealName = "管理员",
+                    TenantId = tenantId,
+                    CreatedTime = DateTime.Now,
+                    LastUpdatedTime = DateTime.Now,
+                });
         }
     }
 }

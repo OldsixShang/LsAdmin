@@ -74,7 +74,7 @@ namespace ExampleRepository.Repositories.Authorizations
                 .Where(t => t.ActionId == null);
             if (roleId > 0)
                 query = query.Where(t => perms.Contains(t.Id));
-            return query;
+            return query.ToList();
         }
 
         public dynamic QueryActionPermission(long roleId, long parentId)
