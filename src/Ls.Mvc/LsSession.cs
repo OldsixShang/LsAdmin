@@ -44,7 +44,7 @@ namespace Ls.Mvc
         /// <summary>
         /// 用户编号。
         /// </summary>
-        public long? UserId
+        public string UserId
         {
             get
             {
@@ -93,7 +93,7 @@ namespace Ls.Mvc
             get { return _context.Request.GetIpAddress(); }
         }
 
-        public long? RoleId
+        public string RoleId
         {
             get
             {

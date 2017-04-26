@@ -16,7 +16,7 @@ namespace Ls.Dto
         /// <summary>
         /// 父级菜单Id
         /// </summary>
-        public long? ParentId { get; set; }
+        public string ParentId { get; set; }
         /// <summary>
         /// 子集元素列表
         /// </summary>

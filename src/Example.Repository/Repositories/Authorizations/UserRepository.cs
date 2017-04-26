@@ -24,7 +24,7 @@ namespace ExampleRepository.Repositories.Authorizations
         /// <param name="realName">真实姓名</param>
         /// <param name="pager">分页信息</param>
         /// <returns>用户信息</returns>
-        public List<User> QueryPager(string name, long? roleId, string realName, Pager pager)
+        public List<User> QueryPager(string name, string roleId, string realName, Pager pager)
         {
             var query = Context.Users
                 .Include(t => t.Role)

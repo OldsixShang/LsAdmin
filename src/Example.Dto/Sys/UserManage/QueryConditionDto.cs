@@ -10,6 +10,6 @@ namespace Example.Dto.Sys.UserManage
         [Display(Name = "真实姓名")]
         public string RealName { get; set; }
         [Display(Name = "角色")]
-        public long? RoleId { get; set; }
+        public string RoleId { get; set; }
     }
 }

@@ -37,7 +37,7 @@ namespace Example.Application.ServiceImplements.Sys
         /// </summary>
         /// <param name="Id">用户唯一标识</param>
         /// <returns>用户信息</returns>
-        public UserManage.UserDto GetUser(long Id)
+        public UserManage.UserDto GetUser(string Id)
         {
             User entity = _userRepository.Get(Id);
             return entity.ToDto<UserManage.UserDto>();
@@ -54,7 +54,7 @@ namespace Example.Application.ServiceImplements.Sys
             #endregion
 
             User entity = dto.ToEntity<User>();
-            entity.Role = _roleRepository.Get((long)dto.RoleId);
+            entity.Role = _roleRepository.Get(dto.RoleId);
             entity.InitPassword();
             _userRepository.Add(entity);
         }
@@ -64,7 +64,7 @@ namespace Example.Application.ServiceImplements.Sys
         /// <param name="dto">传入用户信息</param>
         public void DeleteUser(UserManage.UserDto dto)
         {
-            User entity = _userRepository.Get(SafeConvert.ToInt64(dto.Id));
+            User entity = _userRepository.Get(dto.Id);
             _userRepository.Delete(entity);
         }
         /// <summary>
@@ -73,7 +73,7 @@ namespace Example.Application.ServiceImplements.Sys
         /// <param name="dto">传入用户信息</param>
         public void ModifyUser(UserManage.UserDto dto)
         {
-            User entity = _userRepository.Get(SafeConvert.ToInt64(dto.Id));
+            User entity = _userRepository.Get(dto.Id);
             entity.Email = dto.Email;
             entity.RealName = dto.RealName;
             entity.Phone = dto.Phone;
@@ -98,7 +98,7 @@ namespace Example.Application.ServiceImplements.Sys
         public IList<UserManage.UserDto> QueryPagerUser(UserManage.QueryConditionDto conditionDto, Pager pager)
         {
             var entities = _userRepository.QueryPager(conditionDto.UserName, conditionDto.RoleId, conditionDto.RealName, pager);
-            return entities.ToListDto<User, UserManage.UserDto>();
+            return entities.ToDtoList<User, UserManage.UserDto>();
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Example.Application.ServiceImplements.Sys
         /// <param name="dto">密码修改数据传输对象</param>
         public void ModifyPasswordDto(ModifyPasswordDto dto)
         {
-            var user = _userRepository.Get(LsSession.UserId.Value);
+            var user = _userRepository.Get(LsSession.UserId);
             if (!user.CheckPassword(dto.OldPassword)) throw new LsException("原密码输入不正确");
             user.ModifyPassword(dto.NewPassword);
             _userRepository.Update(user);

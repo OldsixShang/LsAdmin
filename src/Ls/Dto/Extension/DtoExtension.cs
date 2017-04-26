@@ -18,7 +18,7 @@ namespace Ls.Dto.Extension
         public static List<T> ToStandardFormatTree<T>(this List<T> source)
             where T : TreeNodeDto<T>
         {
-            List<T> roots = source.Where(t => !t.ParentId.HasValue).ToList();
+            List<T> roots = source.Where(t => string.IsNullOrEmpty(t.ParentId)).ToList();
             BuidStandardTree(roots, source);
             return roots;
         }

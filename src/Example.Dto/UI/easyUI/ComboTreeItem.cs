@@ -15,11 +15,6 @@ namespace Example.Dto.UI.easyUI
     {
         public ComboTreeItem() : base() { }
         /// <summary>
-        /// 键
-        /// </summary>
-        [JsonProperty("id")]
-        public new string Id { get; set; }
-        /// <summary>
         /// 值
         /// </summary>
         [JsonProperty("text")]

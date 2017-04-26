@@ -38,7 +38,7 @@ namespace Example.Dto.Sys.UserManage
         public string Email { get; set; }
         [Display(Name = "角色")]
         [Required(ErrorMessage = "请选择角色")]
-        public long? RoleId
+        public string RoleId
         {
             get
             {

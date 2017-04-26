@@ -1,5 +1,4 @@
-﻿using Ls.Configutation;
-using Castle.DynamicProxy;
+﻿using Castle.DynamicProxy;
 using Castle.MicroKernel.Registration;
 
 namespace Ls.IoC {

@@ -7,7 +7,7 @@ namespace Ls.Authorization
     /// <summary>
     /// 角色。
     /// </summary>
-    public interface IRole: IMultiTenancy, IEntity<Int64>
+    public interface IRole: IMultiTenancy, IEntity<string>
     {
         /// <summary>
         /// 角色名称。

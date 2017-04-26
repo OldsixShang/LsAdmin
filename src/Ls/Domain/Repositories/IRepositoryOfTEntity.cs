@@ -6,7 +6,7 @@ namespace Ls.Domain.Repositories {
     /// 实体标识类型为 Int64 的仓储接口。
     /// </summary>
     /// <typeparam name="TEntity">实体类型参数</typeparam>
-    public interface IRepository<TEntity> : IRepository<TEntity, Int64>
-        where TEntity : class, IEntity<Int64> {
+    public interface IRepository<TEntity> : IRepository<TEntity, string>
+        where TEntity : class, IEntity<string> {
     }
 }

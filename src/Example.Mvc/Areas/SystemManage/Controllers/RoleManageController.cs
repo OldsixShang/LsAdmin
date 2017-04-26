@@ -12,7 +12,7 @@ using Ls.Model;
 using Example.Dto;
 using System.Linq;
 
-namespace Example.Areas.SystemManage.Controllers
+namespace Example.Mvc.Areas.SystemManage.Controllers
 {
     public class RoleManageController : BaseController
     {
@@ -29,19 +29,19 @@ namespace Example.Areas.SystemManage.Controllers
         {
             return View(new PageDto());
         }
-        public ContentResult Query(QueryConditionDto dto,Pager pager)
+        public ContentResult Query(QueryConditionDto dto, Pager pager)
         {
             var dtos = _roleService.QueryPagerRole(dto, pager);
-            return  ResultDataGrid<RoleDto>(dtos,pager);
+            return ResultDataGrid<RoleDto>(dtos, pager);
         }
 
         public ActionResult RoleEdit(string id)
         {
             if (string.IsNullOrEmpty(id))
-                return PartialView("_editForm",new RoleDto());
+                return PartialView("_editForm", new RoleDto());
             else
             {
-                RoleDto btnDto = _roleService.GetRole( SafeConvert.ToInt64(id));
+                RoleDto btnDto = _roleService.GetRole(id);
                 return PartialView("_editForm", btnDto);
             }
         }
@@ -59,21 +59,22 @@ namespace Example.Areas.SystemManage.Controllers
 
         public ContentResult Remove(string id)
         {
-            _roleService.DeleteRole(new RoleDto { Id = SafeConvert.ToInt64(id)});
+            _roleService.DeleteRole(new RoleDto { Id = id });
             return ResultSuccess<string>("删除成功");
         }
 
-        public ActionResult Distribute(long? id)
+        public ActionResult Distribute(string id)
         {
             var allPermissions = _permissionService.QueryAllPermission(id);
-            DistributePageDto distributePageDto = new DistributePageDto{
+            DistributePageDto distributePageDto = new DistributePageDto
+            {
                 RoleId = id,
-                LeftNavMenuList = allPermissions.Where(p=>p.MenuType=="左侧导航栏").ToList(),
+                LeftNavMenuList = allPermissions.Where(p => p.MenuType == "左侧导航栏").ToList(),
                 SolidNavMenuList = allPermissions.Where(p => p.MenuType == "固定").ToList(),
                 TopNavMenuList = allPermissions.Where(p => p.MenuType == "顶部快捷菜单栏").ToList(),
                 APIMenuList = allPermissions.Where(p => p.MenuType == "WebApi").ToList()
             };
-            return PartialView("_distributePermission",distributePageDto);
+            return PartialView("_distributePermission", distributePageDto);
         }
         /// <summary>
         /// 权限分配
@@ -81,10 +82,10 @@ namespace Example.Areas.SystemManage.Controllers
         /// <param name="roleId"></param>
         /// <param name="permissionIds"></param>
         /// <returns></returns>
-        public ActionResult DistributePermission(long? roleId, long?[] permissionIds)
+        public ActionResult DistributePermission(string roleId, string[] permissionIds)
         {
-            _roleService.DistributePermission(roleId,permissionIds);
+            _roleService.DistributePermission(roleId, permissionIds);
             return ResultSuccess<string>("分配成功！");
         }
-	}
+    }
 }

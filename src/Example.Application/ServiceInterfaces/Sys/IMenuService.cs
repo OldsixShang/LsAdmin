@@ -11,7 +11,7 @@ namespace Example.Application.ServiceInterfaces.Sys
         /// </summary>
         /// <param name="Id">角色唯一标识</param>
         /// <returns>角色信息</returns>
-        MenuDto GetMenu(long Id);
+        MenuDto GetMenu(string Id);
         /// <summary>
         /// 添加角色
         /// </summary>

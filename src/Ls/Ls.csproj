@@ -92,13 +92,6 @@
     <Compile Include="Components\DependsOnAttribute.cs" />
     <Compile Include="Components\IComponentFinder.cs" />
     <Compile Include="Components\IComponentManager.cs" />
-    <Compile Include="Configutation\CommonHelper.cs" />
-    <Compile Include="Configutation\GenericListTypeConverter.cs" />
-    <Compile Include="Configutation\ISettings.cs" />
-    <Compile Include="Configutation\ISettingService.cs" />
-    <Compile Include="Configutation\Setting.cs" />
-    <Compile Include="Configutation\SettingExtensions.cs" />
-    <Compile Include="Configutation\SettingService.cs" />
     <Compile Include="Domain\Entities\CreatedEntity.cs" />
     <Compile Include="Domain\Entities\CreatedLastUpdateEntity.cs" />
     <Compile Include="Domain\Entities\CreatedLastUpdateSoftDeleteEntity.cs" />

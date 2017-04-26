@@ -1,4 +1,4 @@
-﻿@using Example.Dto.Business.Sys.ActionManage
+﻿@using Example.Dto.Sys.ActionManage
 @model PageDto
 @{
     ViewBag.Title = "Index";
@@ -15,7 +15,7 @@
                 columns: [[
                     { title: 'Id', field: 'Id', width: 100, hidden: true },
                     { title: '操作名称', field: 'Name', width: 150, sortable: true },
-                    { title: 'Html模板', field: 'HtmlTemplate', width: 250, sortable: true },
+                    { title: 'Html模板', field: 'Template', width: 250, sortable: true },
                     { title: '描述', field: 'Description', width: 300, sortable: true },
                 ]]
             });

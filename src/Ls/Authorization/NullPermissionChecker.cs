@@ -14,7 +14,7 @@ namespace Ls.Authorization {
 
         private NullPermissionChecker() { }
         
-        public void Check(long? permissionId, string requestUri)
+        public void Check(string permissionId, string requestUri)
         {
             throw new NotImplementedException();
         }

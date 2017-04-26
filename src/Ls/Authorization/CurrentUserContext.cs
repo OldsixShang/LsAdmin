@@ -14,7 +14,7 @@ namespace Ls.Authorization
     {
         public DateTime CreatedTime { get; set; }
 
-        public long Id { get; set; }
+        public string Id { get; set; }
 
         public bool IsDeleted { get; set; }
 
@@ -26,7 +26,7 @@ namespace Ls.Authorization
 
         public string Password { get; set; }
 
-        public long? RoleId { get; set; }
+        public string RoleId { get; set; }
 
         public int TenantId { get; set; }
     }

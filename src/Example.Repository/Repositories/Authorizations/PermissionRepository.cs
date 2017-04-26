@@ -17,92 +17,37 @@ namespace ExampleRepository.Repositories.Authorizations
     /// </summary>
     public class PermissionRepository : EfRepository<ExampleDbContext, Permission>, IPermissionRepository
     {
-        public dynamic QueryPermission(string name = "")
+        public List<Permission> QueryPermission(string name = "")
         {
-            var query = from t1 in Context.Permissions
-                        join t3 in Context.Menus on t1.MenuId equals t3.Id into t3s
-                        join t4 in Context.Actions on t1.ActionId equals t4.Id into t4s
-                        from menu in t3s.DefaultIfEmpty()
-                        from ac in t4s.DefaultIfEmpty()
-                        select new
-                        {
-                            Id = t1.Id,
-                            ParentId = (long?)t1.Parent.Id,
-                            Name = t1.Name,
-                            MenuId = (long?)t1.MenuId,
-                            ActionId = (long?)t1.ActionId,
-                            Url = menu.Url,
-                            MenuType = (MenuType?)menu.MenuType,
-                            MenuName = menu.Name,
-                            ActionName = ac.Name,
-                            HtmlTemplete = ac.Template
-                        };
+            var query = Context.Permissions.Include(t => t.Menu).Include(t => t.Action);
             if (!string.IsNullOrEmpty(name)) query = query.Where(t => t.Name.Contains(name));
-            return query;
+            return query.ToList();
         }
 
-        public dynamic GetPermission(long id)
+        public Permission GetPermission(string id)
         {
             var query = Context.Permissions.Where(t => t.Id == id);
             return query.FirstOrDefault();
         }
 
-        public dynamic QueryMenuPermission(long roleId, MenuType menuType)
+        public List<Permission> QueryMenuPermission(string roleId, MenuType menuType)
         {
             var role = Context.Roles.Include(t => t.Permissions).Where(t => t.Id == roleId).FirstOrDefault();
+            var query = Context.Permissions.Include(t => t.Menu).Include(t => t.Action);
             var perms = role.Permissions.Select(t => t.Id).ToArray();
-            var query = from t1 in Context.Permissions
-                        join t3 in Context.Menus on t1.MenuId equals t3.Id into t3s
-                        join t4 in Context.Actions on t1.ActionId equals t4.Id into t4s
-                        from menu in t3s.DefaultIfEmpty()
-                        from ac in t4s.DefaultIfEmpty()
-                        select new
-                        {
-                            Id = t1.Id,
-                            ParentId = (long?)t1.Parent.Id,
-                            Name = t1.Name,
-                            MenuId = (long?)t1.MenuId,
-                            ActionId = (long?)t1.ActionId,
-                            Url = menu.Url,
-                            MenuType = (MenuType?)menu.MenuType,
-                            MenuName = menu.Name,
-                            ActionName = ac.Name,
-                            HtmlTemplete = ac.Template,
-                            Icon = menu.Icon
-                        };
-            query = query.Where(t => t.MenuType == menuType)
-                .Where(t => t.ActionId == null);
-            if (roleId > 0)
-                query = query.Where(t => perms.Contains(t.Id));
+            query = query.Where(t => t.Menu.MenuType == menuType).Where(t => t.ActionId == null);
+            if (!string.IsNullOrEmpty(roleId)) query = query.Where(t => perms.Contains(t.Id));
             return query.ToList();
         }
 
-        public dynamic QueryActionPermission(long roleId, long parentId)
+        public List<Permission> QueryActionPermission(string roleId, string parentId)
         {
             var role = Context.Roles.Include(t => t.Permissions).Where(t => t.Id == roleId).FirstOrDefault();
+            var query = Context.Permissions.Include(t => t.Menu).Include(t => t.Action).Where(t => t.ActionId != null);
             var perms = role.Permissions.Select(t => t.Id).ToArray();
-            var query = from t1 in Context.Permissions
-                        join t3 in Context.Menus on t1.MenuId equals t3.Id into t3s
-                        join t4 in Context.Actions on t1.ActionId equals t4.Id into t4s
-                        from menu in t3s.DefaultIfEmpty()
-                        from ac in t4s.DefaultIfEmpty()
-                        select new
-                        {
-                            Id = t1.Id,
-                            ParentId = (long?)t1.Parent.Id,
-                            Name = t1.Name,
-                            MenuId = (long?)t1.MenuId,
-                            ActionId = (long?)t1.ActionId,
-                            Url = menu.Url,
-                            MenuType = (MenuType?)menu.MenuType,
-                            MenuName = menu.Name,
-                            ActionName = ac.Name,
-                            HtmlTemplate = ac.Template
-                        };
-            if (parentId > 0) query = query.Where(t => t.ParentId == parentId);
-             query = query.Where(t => t.ActionId != null);
-            if (roleId > 0) query = query.Where(t => perms.Contains(t.Id));
-            return query;
+            if (!string.IsNullOrEmpty(roleId)) query = query.Where(t => perms.Contains(t.Id));
+            if (!string.IsNullOrEmpty(parentId)) query = query.Where(t => t.ParentId == parentId);
+            return query.ToList();
         }
     }
 }

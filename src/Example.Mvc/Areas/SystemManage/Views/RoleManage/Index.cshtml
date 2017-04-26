@@ -1,4 +1,4 @@
-﻿@using Example.Dto.Business.Sys.RoleManage
+﻿@using Example.Dto.Sys.RoleManage
 @model PageDto
 @{
     ViewBag.Title = "Index";
@@ -14,8 +14,8 @@
                 fit: true,
                 columns: [[
                     { title: 'Id', field: 'Id', width: 100, hidden: true },
-                    { title: '角色名称', field: 'RoleName', width: 150, sortable: true },
-                    { title: '角色描述', field: 'RealName', width: 120 }
+                    { title: '角色名称', field: 'Name', width: 150, sortable: true },
+                    { title: '角色描述', field: 'Description', width: 120 }
                 ]]
             });
             page.init();

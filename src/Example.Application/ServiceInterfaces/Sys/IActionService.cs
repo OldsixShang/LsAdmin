@@ -11,7 +11,7 @@ namespace Example.Application.ServiceInterfaces.Sys
         /// </summary>
         /// <param name="Id">操作唯一标识</param>
         /// <returns>操作信息</returns>
-        ActionDto GetAction(long Id);
+        ActionDto GetAction(string Id);
         /// <summary>
         /// 添加操作
         /// </summary>

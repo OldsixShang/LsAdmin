@@ -29,7 +29,7 @@
     @helper RenderPermissionParts() { 
         foreach (var p in PermissionData)
         {
-           <span>@Html.Partial("../Templates/"+p.HtmlTemplate)</span>
+           <span>@Html.Partial("../Templates/"+p.Template.Trim())</span>
         }
     }
 </head>
@@ -38,7 +38,7 @@
     <div class="easyui-layout" data-options="fit:true" >
         <div data-options="region:'center',border:false,fit:true">
             <div class="easyui-layout" data-options="fit:true">
-                <div data-options=" region:'north',split:false,border:false">
+                <div data-options="region:'north',split:false,border:false">
                 <div style="float:right;line-height:40px; padding-right:15px;">
                     @RenderPermissionParts()
                 </div>

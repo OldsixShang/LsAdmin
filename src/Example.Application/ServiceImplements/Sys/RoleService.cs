@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Example.Application.ServiceInterfaces.Sys;
+using Example.Application;
 
 namespace Example.Application.ServiceImplements.Sys
 {
@@ -38,7 +39,7 @@ namespace Example.Application.ServiceImplements.Sys
         /// </summary>
         /// <param name="Id">角色唯一标识</param>
         /// <returns>角色信息</returns>
-        public RoleDto GetRole(long Id)
+        public RoleDto GetRole(string Id)
         {
             Role entity = _roleRepository.Get(Id);
             return entity.ToDto<RoleDto>();
@@ -63,7 +64,7 @@ namespace Example.Application.ServiceImplements.Sys
         /// <param name="dto">传入角色信息</param>
         public void DeleteRole(RoleDto dto)
         {
-            Role entity = _roleRepository.Get(SafeConvert.ToInt64(dto.Id));
+            Role entity = _roleRepository.Get(dto.Id);
             _roleRepository.Delete(entity);
         }
         /// <summary>
@@ -76,7 +77,7 @@ namespace Example.Application.ServiceImplements.Sys
             Role r = _roleRepository.Get(t => t.Name == dto.Name && t.Id != dto.Id);
             if (r != null) throw new LsException(string.Format("角色[{0}]已经存在,请确认！", dto.Name));
             #endregion
-            Role entity = _roleRepository.Get(SafeConvert.ToInt64(dto.Id));
+            Role entity = _roleRepository.Get(dto.Id);
             entity.Name = dto.Name;
             _roleRepository.Update(entity);
         }
@@ -88,7 +89,7 @@ namespace Example.Application.ServiceImplements.Sys
         public IList<RoleDto> QueryRole(Example.Dto.Sys.RoleManage.QueryConditionDto conditionDto)
         {
             List<Role> entities = _roleRepository.Query(conditionDto.RoleName);
-            return entities.ToListDto<Role, RoleDto>();
+            return entities.ToDtoList<Role, RoleDto>();
         }
         /// <summary>
         /// 分页查询角色信息
@@ -99,7 +100,7 @@ namespace Example.Application.ServiceImplements.Sys
         public IList<RoleDto> QueryPagerRole(Example.Dto.Sys.RoleManage.QueryConditionDto conditionDto, Pager pager)
         {
             var entities = _roleRepository.QueryPager(conditionDto.RoleName, pager);
-            return entities.ToListDto<Role, RoleDto>();
+            return entities.ToDtoList<Role, RoleDto>();
         }
 
         /// <summary>
@@ -107,10 +108,10 @@ namespace Example.Application.ServiceImplements.Sys
         /// </summary>
         /// <param name="roleId"></param>
         /// <param name="permissionIds"></param>
-        public void DistributePermission(long? roleId, long?[] permissionIds)
+        public void DistributePermission(string roleId, string[] permissionIds)
         {
             #region 分配权限
-            Role entity = _roleRepository.Get(SafeConvert.ToInt64(roleId));
+            Role entity = _roleRepository.GetRole(roleId);
             var permissions = _permissionRepository.Table.Where(t => permissionIds.Contains(t.Id));
             entity.Permissions.Clear();
             entity.Permissions = permissions.ToList();
@@ -122,13 +123,13 @@ namespace Example.Application.ServiceImplements.Sys
             if (_cacheManager.IsSet(rolePermissionCacheKey))
             {
                 _cacheManager.Remove(rolePermissionCacheKey);
-                dynamic entities = _permissionRepository.QueryActionPermission(entity.Id, -1);
-                var allPermission = AutoMapExtensions.ToDtoList<PermissionDto>(entities);
+                var entities = _permissionRepository.QueryActionPermission(entity.Id, null);
+                var allPermission = entities.ToDtoList<Permission, PermissionDto>();
                 //缓存权限数据
                 _cacheManager.Set(rolePermissionCacheKey, allPermission, 20);
             }
             #endregion
-           
+
         }
     }
 }

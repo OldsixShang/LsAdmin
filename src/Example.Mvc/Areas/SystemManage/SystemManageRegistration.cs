@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Example.Areas.SystemManage
+namespace Example.Mvc.Areas.SystemManage
 {
     public class SystemManageRegistration : AreaRegistration
     {

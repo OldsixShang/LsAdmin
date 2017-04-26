@@ -28,7 +28,7 @@ namespace Ls.Utilities
         /// </summary>
         /// <param name="applicationId">应用程序编号，框架的每个部署都需要对应一个唯一编号</param>
         /// <returns>返回<see cref="Int64"/>类型的 Id。</returns>
-        public static Int64 CreateIdentity(Int32 applicationId = LsConst.ApplicationId)
+        public static string CreateIdentity(Int32 applicationId = LsConst.ApplicationId)
         {
             lock (obj)
             {
@@ -50,13 +50,12 @@ namespace Ls.Utilities
                     lastZeroSeconds = totalSeconds;
                     lastSequenceNo = 1;
                 }
-
                 sb.Append(applicationId);
                 sb.Append(Convert.ToInt16((DateTime.Now - new DateTime(2016, 1, 1)).TotalDays).ToString().PadLeft(4, '0'));
                 sb.Append(totalSeconds.ToString().PadLeft(5, '0'));
                 sb.Append(lastSequenceNo.ToString().PadLeft(4, '0'));
-
-                return Convert.ToInt64(sb.ToString());
+                sb.Append(Thread.CurrentThread.ManagedThreadId.ToString().PadLeft(4, '0')); 
+                return sb.ToString();
             }
         }
 

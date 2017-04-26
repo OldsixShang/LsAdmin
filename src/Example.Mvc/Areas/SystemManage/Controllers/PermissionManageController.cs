@@ -9,7 +9,7 @@ using Ls.Utilities;
 using Ls.Model;
 using Example.Dto.Sys.PermissionManage;
 
-namespace Example.Areas.SystemManage.Controllers
+namespace Example.Mvc.Areas.SystemManage.Controllers
 {
     public class PermissionManageController : BaseController
     {
@@ -58,7 +58,7 @@ namespace Example.Areas.SystemManage.Controllers
                 return PartialView("_editForm", new PermissionDto());
             else
             {
-                PermissionDto btnDto = _permissionService.GetPermission(Convert.ToInt64(id));
+                PermissionDto btnDto = _permissionService.GetPermission(id);
                 return PartialView("_editForm", btnDto);
             }
         }
@@ -74,7 +74,7 @@ namespace Example.Areas.SystemManage.Controllers
             return ResultSuccess<string>("修改成功");
         }
 
-        public ContentResult Remove(long? id)
+        public ContentResult Remove(string id)
         {
             _permissionService.DeletePermission(new PermissionDto { Id = id });
             return ResultSuccess<string>("删除成功");

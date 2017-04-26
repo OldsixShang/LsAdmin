@@ -15,18 +15,18 @@ namespace Ls.Authorization
         /// </summary>
         /// <param name="userId">用户Id</param>
         /// <returns></returns>
-        IUser GetUser(long? userId);
+        IUser GetUser(string userId);
         /// <summary>
         /// 获取角色
         /// </summary>
         /// <param name="roleId">角色Id</param>
         /// <returns></returns>
-        IRole GetRole(long? roleId);
+        IRole GetRole(string roleId);
         /// <summary>
         /// 获取权限列表
         /// </summary>
         /// <param name="roleId">角色Id</param>
         /// <returns></returns>
-        ICollection<IPermission> GetPermissions(long? roleId);
+        ICollection<IPermission> GetPermissions(string roleId);
     }
 }

@@ -1,7 +1,8 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutDialogPage.cshtml";
 }
-@using Example.Dto.UI
+@using Example.Dto;
+@using Example.Dto.Auth;
 @model DistributePageDto
 @helper RenderMenu(IEnumerable<PermissionMenuActionDto> menus)
 {

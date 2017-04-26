@@ -5,7 +5,7 @@ using Example.Dto.Sys.ActionManage;
 using Ls.Model;
 using Ls.Utilities;
 
-namespace  Example.Mvc.Areas.SystemManage.Controllers
+namespace Example.Mvc.Areas.SystemManage.Controllers
 {
     public class ActionManageController : BaseController
     {
@@ -31,7 +31,7 @@ namespace  Example.Mvc.Areas.SystemManage.Controllers
                 return PartialView("_editForm",new ActionDto());
             else
             {
-                ActionDto btnDto = _actionService.GetAction( SafeConvert.ToInt64(id));
+                ActionDto btnDto = _actionService.GetAction( id);
                 return PartialView("_editForm", btnDto);
             }
         }
@@ -49,7 +49,7 @@ namespace  Example.Mvc.Areas.SystemManage.Controllers
 
         public ContentResult Remove(string id)
         {
-            _actionService.DeleteAction(new ActionDto { Id = SafeConvert.ToInt64(id)});
+            _actionService.DeleteAction(new ActionDto { Id = id});
             return ResultSuccess<string>("删除成功");
         }
 	}

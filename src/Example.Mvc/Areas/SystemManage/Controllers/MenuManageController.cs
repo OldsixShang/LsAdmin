@@ -10,7 +10,7 @@ using Ls.Model;
 using Example.Application.ServiceInterfaces.Common;
 using Ls.Utilities;
 
-namespace Example.Areas.SystemManage.Controllers
+namespace Example.Mvc.Areas.SystemManage.Controllers
 {
     public class MenuManageController : BaseController
     {
@@ -53,7 +53,7 @@ namespace Example.Areas.SystemManage.Controllers
                 return PartialView("_editForm", new MenuDto());
             else
             {
-                MenuDto btnDto = _menuService.GetMenu(SafeConvert.ToInt64(id));
+                MenuDto btnDto = _menuService.GetMenu(id);
                 return PartialView("_editForm", btnDto);
             }
         }
@@ -71,7 +71,7 @@ namespace Example.Areas.SystemManage.Controllers
 
         public ContentResult Remove(string id)
         {
-            _menuService.DeleteMenu(new MenuDto { Id = SafeConvert.ToInt64(id) });
+            _menuService.DeleteMenu(new MenuDto { Id = id });
             return ResultSuccess<string>("删除成功");
         }
     }

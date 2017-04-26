@@ -48,11 +48,11 @@ namespace Ls.EntityFramework.Repositories
             }
             if (entity is ICreatedBy)
             {
-                (entity as ICreatedBy).CreaterId = LsSession.UserId.Value;
+                (entity as ICreatedBy).CreaterId = LsSession.UserId;
             }
             if (entity is ILastUpdateBy)
             {
-                (entity as ILastUpdateBy).LastUpdaterId = LsSession.UserId.Value;
+                (entity as ILastUpdateBy).LastUpdaterId = LsSession.UserId;
             }
             if (entity is ILastUpdatedTime)
             {
@@ -112,7 +112,7 @@ namespace Ls.EntityFramework.Repositories
             }
             if (entity is ILastUpdateBy)
             {
-                (entity as ILastUpdateBy).LastUpdaterId = LsSession.UserId.Value;
+                (entity as ILastUpdateBy).LastUpdaterId = LsSession.UserId;
             }
             AttachIfNot(entity);
             Context.Entry(entity).State = EntityState.Modified;

@@ -8,6 +8,6 @@
         /// <summary>
         /// 最后一次修改者Id
         /// </summary>
-        long LastUpdaterId { get; set; }
+        string LastUpdaterId { get; set; }
     }
 }

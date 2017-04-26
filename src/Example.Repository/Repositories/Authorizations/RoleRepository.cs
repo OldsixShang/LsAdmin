@@ -54,13 +54,12 @@ namespace ExampleRepository.Repositories.Authorizations
             query = query.Take(remoteCount);
             return query.ToList();
         }
-
         /// <summary>
         /// 获取角色信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Role GetRole(long id)
+        public Role GetRole(string id)
         {
             return Context.Roles.Include(t => t.Permissions).Where(t => t.Id == id).FirstOrDefault();
         }

@@ -55,10 +55,21 @@ namespace Example.Application
                 #region 权限管理
                 config.CreateMap<PermissionDto, Permission>()
                     .AfterMap((src, dest) => dest.Id = LsIdGenerator.CreateIdentity());
+                config.CreateMap<Permission, PermissionDto>()
+                    .ForMember(ts => ts.MenuName, opt => opt.MapFrom(td => td.Menu.Name))
+                    .ForMember(ts => ts.MenuType, opt => opt.MapFrom(td => td.Menu.MenuType.ToString()))
+                    .ForMember(ts => ts.Url, opt => opt.MapFrom(td => td.Menu.Url??""))
+                    .ForMember(ts => ts.ActionName, opt => opt.MapFrom(td => td.Action.Name))
+                    .ForMember(ts => ts.Template, opt => opt.MapFrom(td => td.Action.Template));
+                config.CreateMap<Permission, PermissionMenuDto>()
+                    .ForMember(ts => ts.MenuName, opt => opt.MapFrom(td => td.Menu.Name))
+                    .ForMember(ts => ts.Url, opt => opt.MapFrom(td => td.Menu.Url))
+                    .ForMember(ts => ts.Icon, opt => opt.MapFrom(td => td.Menu.Icon));
+                config.CreateMap<Permission, PermissionMenuActionDto>()
+                    .ForMember(ts => ts.MenuType, opt => opt.MapFrom(td => td.Menu.MenuType.ToString()))
+                    .ForMember(ts => ts.Icon, opt => opt.MapFrom(td => td.Menu.Icon));
                 #endregion
                 #endregion
-
-                config.ToDynamic();
 
             });
            

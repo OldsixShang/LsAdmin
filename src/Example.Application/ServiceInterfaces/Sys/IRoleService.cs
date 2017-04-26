@@ -12,7 +12,7 @@ namespace Example.Application.ServiceInterfaces.Sys
         /// </summary>
         /// <param name="Id">角色唯一标识</param>
         /// <returns>角色信息</returns>
-        RoleDto GetRole(long Id);
+        RoleDto GetRole(string Id);
         /// <summary>
         /// 添加角色
         /// </summary>
@@ -47,7 +47,7 @@ namespace Example.Application.ServiceInterfaces.Sys
         /// </summary>
         /// <param name="roleId">角色Id</param>
         /// <param name="permissionIds">权限列表</param>
-        void DistributePermission(long? roleId,long?[] permissionIds);
+        void DistributePermission(string roleId,string[] permissionIds);
 
     }
 }

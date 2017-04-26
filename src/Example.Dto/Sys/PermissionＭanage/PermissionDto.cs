@@ -17,14 +17,14 @@ namespace Example.Dto.Sys.PermissionManage
         /// </summary>
         [Display(Name = "父级权限")]
         [JsonProperty("_parentId")]
-        public long? ParentId { get; set; }
+        public string ParentId { get; set; }
 
         #region 菜单相关
         /// <summary>
         /// 菜单Id
         /// </summary>
         [Display(Name="菜单")]
-        public long? MenuId { get; set; }
+        public string MenuId { get; set; }
         /// <summary>
         /// 菜单名称
         /// </summary>
@@ -44,7 +44,7 @@ namespace Example.Dto.Sys.PermissionManage
         /// 操作Id
         /// </summary>
         [Display(Name = "操作")]
-        public long? ActionId { get; set; }
+        public string ActionId { get; set; }
         /// <summary>
         /// 操作名称
         /// </summary>
@@ -52,7 +52,7 @@ namespace Example.Dto.Sys.PermissionManage
         /// <summary>
         /// Html模板
         /// </summary>
-        public string HtmlTemplate { get; set; } 
+        public string Template { get; set; } 
         #endregion
     }
 }

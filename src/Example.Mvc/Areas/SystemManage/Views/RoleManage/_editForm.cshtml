@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutDialogPage.cshtml";
 }
-@using Example.Dto.Business.Sys.RoleManage
+@using Example.Dto.Sys.RoleManage
 @model RoleDto
 @section script{
     <script type="text/javascript">
@@ -27,8 +27,8 @@
         @Html.HiddenFor(x => x.Id,new {@id = "hidId"})
         <table>
             <tr>
-                <td>@Html.LabelFor(x => x.RoleName)</td>
-                <td>@Html.TextBoxFor(x => x.RoleName, new { @class = "easyui-textbox" })</td>
+                <td>@Html.LabelFor(x => x.Name)</td>
+                <td>@Html.TextBoxFor(x => x.Name, new { @class = "easyui-textbox" })</td>
             </tr>
         </table>
     </form>

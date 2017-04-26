@@ -35,6 +35,6 @@ namespace Example.Domain.Repositories.Authorization
         /// </summary>
         /// <param name="id">角色Id</param>
         /// <returns></returns>
-        Role GetRole(long id);
+        Role GetRole(string id);
     }
 }

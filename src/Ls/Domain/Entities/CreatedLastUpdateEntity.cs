@@ -12,7 +12,7 @@ namespace Ls.Domain.Entities
         /// <summary>
         /// 最后一次修改者Id
         /// </summary>
-        public long LastUpdaterId { get; set; }
+        public string LastUpdaterId { get; set; }
 
         /// <summary>
         /// 最后一次修改者的 实体

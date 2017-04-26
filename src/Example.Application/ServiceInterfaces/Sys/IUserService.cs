@@ -18,7 +18,7 @@ namespace Example.Application.ServiceInterfaces.Sys
         /// </summary>
         /// <param name="Id">用户唯一标识</param>
         /// <returns>用户信息</returns>
-        UserDto GetUser(long Id);
+        UserDto GetUser(string Id);
         /// <summary>
         /// 添加用户
         /// </summary>

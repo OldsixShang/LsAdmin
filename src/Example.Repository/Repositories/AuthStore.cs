@@ -24,24 +24,24 @@ namespace Example.Repository.Repositories
             _roleRepository = roleRepository;
         }
 
-        public ICollection<IPermission> GetPermissions(long? roleId)
+        public ICollection<IPermission> GetPermissions(string roleId)
         {
             string rolePermissionCacheKey = string.Format(CacheKeys.ALL_PERMISSIONS, roleId);
             if (!_cacheManager.IsSet(rolePermissionCacheKey))
             {
-                dynamic permissions = _permissionRepository.QueryActionPermission(roleId.Value, -1);
+                dynamic permissions = _permissionRepository.QueryActionPermission(roleId,null);
                 //缓存权限数据
                 _cacheManager.Set(rolePermissionCacheKey, permissions, 20);
             }
             return _cacheManager.Get<ICollection<IPermission>>(rolePermissionCacheKey);
         }
 
-        public IRole GetRole(long? roleId)
+        public IRole GetRole(string roleId)
         {
-            return _roleRepository.Get(roleId.Value);
+            return _roleRepository.Get(roleId);
         }
 
-        public IUser GetUser(long? userId)
+        public IUser GetUser(string userId)
         {
             return Context.Users.Where(t => t.Id == userId).FirstOrDefault();
         }

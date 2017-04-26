@@ -8,6 +8,6 @@
         /// <summary>
         /// 创建者Id
         /// </summary>
-        long CreaterId { get; set; }
+        string CreaterId { get; set; }
     }
 }

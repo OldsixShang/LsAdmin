@@ -28,7 +28,7 @@ namespace Example.Application.ServiceImplements.Sys
         /// </summary>
         /// <param name="Id">菜单唯一标识</param>
         /// <returns>菜单信息</returns>
-        public MenuDto GetMenu(long Id)
+        public MenuDto GetMenu(string Id)
         {
            Menu entity = _menuRepository.Get(Id);
            return entity.ToDto<MenuDto>();
@@ -48,7 +48,7 @@ namespace Example.Application.ServiceImplements.Sys
         /// <param name="dto">传入菜单信息</param>
         public void DeleteMenu(MenuDto dto)
         {
-            Menu entity = _menuRepository.Get(SafeConvert.ToInt64(dto.Id));
+            Menu entity = _menuRepository.Get(dto.Id);
             _menuRepository.Delete(entity);
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Example.Application.ServiceImplements.Sys
         /// <param name="dto">传入菜单信息</param>
         public void ModifyMenu(MenuDto dto)
         {
-            Menu entity = _menuRepository.Get(SafeConvert.ToInt64(dto.Id));
+            Menu entity = _menuRepository.Get(dto.Id);
             entity.Name = dto.Name;
             entity.Url = dto.Url;
             entity.Icon = dto.Icon;
@@ -72,7 +72,7 @@ namespace Example.Application.ServiceImplements.Sys
         public IList<MenuDto> QueryMenu(QueryConditionDto conditionDto)
         {
             List<Menu> entities = _menuRepository.Query(conditionDto.Name);
-            return entities.ToListDto<Menu, MenuDto>();
+            return entities.ToDtoList<Menu, MenuDto>();
         }
         /// <summary>
         /// 分页查询菜单信息
@@ -83,7 +83,7 @@ namespace Example.Application.ServiceImplements.Sys
         public IList<MenuDto> QueryPagerMenu(QueryConditionDto conditionDto,Pager pager)
         {
             var entities = _menuRepository.QueryPager(conditionDto.Name, pager);
-            return entities.ToListDto<Menu,MenuDto>();
+            return entities.ToDtoList<Menu,MenuDto>();
         }
     }
 }

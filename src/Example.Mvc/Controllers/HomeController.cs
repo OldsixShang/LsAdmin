@@ -58,7 +58,7 @@ namespace  Example.Mvc.Controllers
         #region 用户信息
         public ActionResult UserInfo()
         {
-            var user =  _userService.GetUser(LsSession.UserId.Value);
+            var user =  _userService.GetUser(LsSession.UserId);
             return View(user);
         }
         public ActionResult ModifyUser(UserDto dto)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ls.Dto
 {
-    public class BaseDto:BaseDto<long?>
+    public class BaseDto:BaseDto<string>
     {
     }
 }

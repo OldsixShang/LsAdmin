@@ -47,12 +47,11 @@ namespace Example.Application.ServiceImplements.Common
             var query = _roleRepository.GetTable();
             if (remote) query = query.Take(remoteCount);
             if (!string.IsNullOrEmpty(name)) query = query.Where(t => t.Name.Contains(name));
-            dynamic entities = query.Select(t => new
+            return query.Select(t => new ComboboxItem
             {
-                Id = t.Id,
+                Id = t.Id.ToString(),
                 Text = t.Name
-            });
-            return AutoMapExtensions.ToDtoList<ComboboxItem>(entities);
+            }).ToList();
         }
         /// <summary>
         /// 获取操作列表
@@ -66,12 +65,11 @@ namespace Example.Application.ServiceImplements.Common
             var query = _actionRepository.GetTable();
             if (remote) query = query.Take(remoteCount);
             if (!string.IsNullOrEmpty(name)) query = query.Where(t => t.Name.Contains(name));
-            dynamic entities = query.Select(t => new
+            return query.Select(t => new ComboboxItem
             {
-                Id = t.Id,
+                Id = t.Id.ToString(),
                 Text = t.Name
-            });
-            return AutoMapExtensions.ToDtoList<ComboboxItem>(entities);
+            }).ToList();
         }
         /// <summary>
         /// 获取所有菜单类型列表
@@ -93,12 +91,11 @@ namespace Example.Application.ServiceImplements.Common
         public List<ComboboxItem> GetMenus()
         {
             var query = _menuRepository.GetTable();
-            dynamic entities = query.Select(t => new
+            return query.Select(t => new ComboboxItem
             {
-                Id = t.Id,
+                Id = t.Id.ToString(),
                 Text = t.Name
-            });
-            return AutoMapExtensions.ToDtoList<ComboboxItem>(entities);
+            }).ToList();
         }
         /// <summary>
         /// 获取所有菜单树列表
@@ -114,15 +111,14 @@ namespace Example.Application.ServiceImplements.Common
         /// <returns>权限列表</returns>
         public List<ComboTreeItem> GetAllPermissions()
         {
-            dynamic entities = _permissionRepository.GetTable()
-                .Select(t => new
+            var items = _permissionRepository.GetTable()
+                .Select(t => new ComboTreeItem
                 {
                     Id = t.Id,
                     Text = t.Name,
-                    ParentId = t.Parent == null ? "" : t.Parent.Id.ToString()
-                });
-            List<ComboTreeItem> dtos = AutoMapExtensions.ToDtoList<ComboTreeItem>(entities);
-            return dtos.ToStandardFormatTree();
+                    ParentId = t.ParentId
+                }).ToList();
+            return items.ToStandardFormatTree();
         }
 
         #endregion

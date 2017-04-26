@@ -18,6 +18,6 @@ namespace Example.Domain.Repositories.Authorization
         /// <param name="realName">真实姓名</param>
         /// <param name="pager">分页信息</param>
         /// <returns>用户信息</returns>
-        List<User> QueryPager(string name, long? roleId, string realName, Pager pager);
+        List<User> QueryPager(string name, string roleId, string realName, Pager pager);
     }
 }

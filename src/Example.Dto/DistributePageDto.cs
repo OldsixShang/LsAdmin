@@ -19,7 +19,7 @@ namespace Example.Dto
         /// <summary>
         /// 角色Id
         /// </summary>
-        public long? RoleId { get; set; }
+        public string RoleId { get; set; }
         /// <summary>
         /// 左侧导航栏权限列表
         /// </summary>

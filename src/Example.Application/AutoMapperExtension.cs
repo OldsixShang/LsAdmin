@@ -49,54 +49,17 @@ namespace Example.Application
         /// entity列表转化为dto列表
         /// </summary>
         /// <typeparam name="Entity">entity</typeparam>
-        /// <typeparam name="Output">dto</typeparam>
+        /// <typeparam name="TDto">dto</typeparam>
         /// <param name="value">实体列表</param>
         /// <returns></returns>
-        public static List<Output> ToListDto<Entity, Output>(this IList<Entity> value)
+        public static List<TDto> ToDtoList<TEnity,TDto>(this List<TEnity> value)
+            where TEnity : Entity
+            where TDto : BaseDto
         {
-            return Mapper.Map<List<Output>>(value);
+            return Mapper.Map<List<TDto>>(value);
         }
-
-        /// <summary>
-        /// dynamic列表转化为dto列表
-        /// </summary>
-        /// <typeparam name="dynamic">entity</typeparam>
-        /// <typeparam name="T">dto</typeparam>
-        /// <param name="value">实体列表</param>
-        /// <returns></returns>
-        public static List<T> ToDynamicListDto<T>(dynamic value) where T : BaseDto
-        {
-            return Mapper.Map<List<T>>(value);
-        }
-
-        /// <summary>
-        /// dynamic 转 dto
-        /// </summary>
-        /// <typeparam name="dynamic">entity</typeparam>
-        /// <typeparam name="T">dto</typeparam>
-        /// <param name="value">动态类型的实体</param>
-        /// <returns></returns>
-        public static T DynamicToDto<T>(dynamic value)
-        {
-            return Mapper.Map<T>(value);
-        }
-
         #endregion
 
-        #region 动态类型
-        /// <summary>
-        /// dynamic转化为dto列表
-        /// </summary>
-        /// <typeparam name="dynamic">entity</typeparam>
-        /// <typeparam name="T">dto</typeparam>
-        /// <param name="value">实体列表</param>
-        /// <returns></returns>
-        public static List<T> ToDtoList<T>(dynamic value)
-            where T : class
-        {
-            return Mapper.Map<List<T>>(value);
-        }
-        #endregion
 
     }
 }

@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutDialogPage.cshtml";
 }
-@using Example.Dto.Business.Sys.ActionManage
+@using Example.Dto.Sys.ActionManage
 @model ActionDto
 @section script{
     <script type="text/javascript">
@@ -31,8 +31,8 @@
                 <td>@Html.TextBoxFor(x => x.Name, new { @class = "easyui-textbox" })</td>
             </tr>
             <tr>
-                <td>@Html.LabelFor(x => x.HtmlTemplate)</td>
-                <td>@Html.TextBoxFor(x => x.HtmlTemplate, new { @class = "easyui-textbox" })</td>
+                <td>@Html.LabelFor(x => x.Template)</td>
+                <td>@Html.TextBoxFor(x => x.Template, new { @class = "easyui-textbox" })</td>
             </tr>
             <tr>
                 <td>@Html.LabelFor(x => x.Description)</td>

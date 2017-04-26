@@ -12,8 +12,7 @@ namespace Ls.Mvc
     public class LsMvcAuthorizeAttribute : System.Web.Mvc.AuthorizeAttribute
     {
         public string[] Permissions { get; set; }
-
-
+        
         public LsMvcAuthorizeAttribute(params string[] permissions)
         {
             Permissions = permissions;
@@ -28,7 +27,7 @@ namespace Ls.Mvc
             if (!Permissions.Any()) return true;
             try
             {
-                long perId = SafeConvert.ToInt64(httpContext.Request.Params["perId"]);
+                string perId = httpContext.Request.Params["perId"];
                 var requestUrl = httpContext.Request.Url.LocalPath;
                 using (var uow=IocManager.Instance.Resolve<IUnitOfWorkProvider>().NewUnitOfWork())
                 {

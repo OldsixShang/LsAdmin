@@ -29,12 +29,12 @@ namespace Ls.Session {
         /// <summary>
         /// 用户编号。
         /// </summary>
-        long? UserId { get; }
+        string UserId { get; }
 
         /// <summary>
         /// 角色编号
         /// </summary>
-        long? RoleId { get; }
+        string RoleId { get; }
 
         /// <summary>
         /// 用户Ip地址

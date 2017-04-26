@@ -10,7 +10,7 @@ using Example.Dto.Sys.UserManage;
 using Ls.Utilities;
 using Ls.Model;
 
-namespace Example.Areas.SystemManage.Controllers
+namespace Example.Mvc.Areas.SystemManage.Controllers
 {
     public class UserManageController : BaseController
     {
@@ -61,7 +61,7 @@ namespace Example.Areas.SystemManage.Controllers
                 return PartialView("_editForm", new UserDto());
             else
             {
-                UserDto btnDto = _userService.GetUser(SafeConvert.ToInt64(id));
+                UserDto btnDto = _userService.GetUser(id);
                 return PartialView("_editForm", btnDto);
             }
         }
@@ -81,7 +81,7 @@ namespace Example.Areas.SystemManage.Controllers
         }
 
         [ActionTemplate(Template = ActionTemplate.Delete)]
-        public ContentResult Remove(long? id)
+        public ContentResult Remove(string id)
         {
             _userService.DeleteUser(new UserDto { Id = id});
             return ResultSuccess<string>("删除成功");

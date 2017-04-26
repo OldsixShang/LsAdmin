@@ -27,7 +27,7 @@ namespace Ls.Authorization
         /// </summary>
         public const string PERMISSIONS_PATTERN_KEY = "Ls.permission";
 
-        public void Check(long? permissionId, string requestUri)
+        public void Check(string permissionId, string requestUri)
         {
             throw new NotImplementedException();
         }

@@ -594,6 +594,7 @@
     <Compile Include="Areas\SystemManage\SystemManageRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Framework\Base\BaseController.cs" />
+    <Compile Include="Framework\Base\LsWebViewPage.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

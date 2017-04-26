@@ -10,12 +10,12 @@ namespace Ls.Authorization
     /// <summary>
     /// 权限。
     /// </summary>
-    public interface IPermission: IEntity<Int64>
+    public interface IPermission: IEntity<string>
     {
         /// <summary>
         /// 父级权限Id
         /// </summary>
-        long? ParentId { get; set; }
+        string ParentId { get; set; }
         /// <summary>
         /// 权限名。
         /// </summary>
@@ -24,11 +24,11 @@ namespace Ls.Authorization
         /// <summary>
         /// 菜单Id
         /// </summary>
-        long? MenuId { get; set; }
+        string MenuId { get; set; }
         /// <summary>
         /// 操作Id
         /// </summary>
-        long? ActionId { get; set; }
+        string ActionId { get; set; }
     }
 
     /// <summary>

@@ -8,6 +8,6 @@
         /// </summary>
         /// <param name="permissionId">权限编号</param>
         /// <param name="requestUri">请求地址</param>
-        void Check(long? permissionId,string requestUri);
+        void Check(string permissionId,string requestUri);
     }
 }

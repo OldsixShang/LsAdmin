@@ -11,7 +11,7 @@
         /// <summary>
         /// 框架版本号。
         /// </summary>
-        public const string Version = "0.8.2";
+        public const string Version = "0.0.2";
 
         /// <summary>
         /// 应用程序编号。

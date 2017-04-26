@@ -27,7 +27,7 @@ namespace Example.Application.ServiceImplements.Sys
         /// </summary>
         /// <param name="Id">操作唯一标识</param>
         /// <returns>操作信息</returns>
-        public ActionDto GetAction(long Id)
+        public ActionDto GetAction(string Id)
         {
            AuthAction entity = _actionRepository.Get(Id);
            return entity.ToDto<ActionDto>();
@@ -47,7 +47,7 @@ namespace Example.Application.ServiceImplements.Sys
         /// <param name="dto">传入操作信息</param>
         public void DeleteAction(ActionDto dto)
         {
-            AuthAction entity = _actionRepository.Get(SafeConvert.ToInt64(dto.Id));
+            AuthAction entity = _actionRepository.Get(dto.Id);
             _actionRepository.Delete(entity);
         }
         /// <summary>
@@ -56,7 +56,7 @@ namespace Example.Application.ServiceImplements.Sys
         /// <param name="dto">传入操作信息</param>
         public void ModifyAction(ActionDto dto)
         {
-            AuthAction entity = _actionRepository.Get(SafeConvert.ToInt64(dto.Id));
+            AuthAction entity = _actionRepository.Get(dto.Id);
             entity.Name = dto.Name;
             entity.Template = dto.Template;
             entity.Description = dto.Description;
@@ -70,7 +70,7 @@ namespace Example.Application.ServiceImplements.Sys
         public IList<ActionDto> QueryAction(QueryConditionDto conditionDto)
         {
             List<AuthAction>  entities = _actionRepository.Query(conditionDto.ActionName);
-            return entities.ToListDto<AuthAction, ActionDto>();
+            return entities.ToDtoList<AuthAction, ActionDto>();
         }
         /// <summary>
         /// 分页查询操作信息
@@ -81,7 +81,7 @@ namespace Example.Application.ServiceImplements.Sys
         public IList<ActionDto> QueryPagerAction(QueryConditionDto conditionDto,Pager pager)
         {
             var entities = _actionRepository.QueryPager(conditionDto.ActionName, pager);
-            return entities.ToListDto<AuthAction, ActionDto>();
+            return entities.ToDtoList<AuthAction, ActionDto>();
         }
     }
 }

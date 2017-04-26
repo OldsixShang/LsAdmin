@@ -70,6 +70,10 @@
     <Compile Include="Migrations\201704250317493__initData.Designer.cs">
       <DependentUpon>201704250317493__initData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704260809218__update_col_id_long[nullable]_to_string.cs" />
+    <Compile Include="Migrations\201704260809218__update_col_id_long[nullable]_to_string.Designer.cs">
+      <DependentUpon>201704260809218__update_col_id_long[nullable]_to_string.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ExampleDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704250317493__initData.resx">
       <DependentUpon>201704250317493__initData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704260809218__update_col_id_long[nullable]_to_string.resx">
+      <DependentUpon>201704260809218__update_col_id_long[nullable]_to_string.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -47,7 +47,7 @@ namespace Example.Domain.Entities.Authorization
         /// <summary>
         /// 角色编号。
         /// </summary>
-        public virtual long? RoleId { get; set; }
+        public virtual string RoleId { get; set; }
         /// <summary>
         /// 角色。
         /// </summary>

@@ -22,7 +22,7 @@ namespace Ls.Authorization
         /// <summary>
         /// 角色Id
         /// </summary>
-        long? RoleId { get; set; }
+        string RoleId { get; set; }
 
     }
     /// <summary>

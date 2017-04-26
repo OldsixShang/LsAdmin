@@ -13,7 +13,7 @@ namespace Example.Application.ServiceInterfaces.Sys
         /// </summary>
         /// <param name="Id">权限唯一标识</param>
         /// <returns>权限信息</returns>
-        PermissionDto GetPermission(long Id);
+        PermissionDto GetPermission(string Id);
         /// <summary>
         /// 添加权限
         /// </summary>
@@ -41,7 +41,7 @@ namespace Example.Application.ServiceInterfaces.Sys
         /// 查询所有权限信息
         /// </summary>
         /// <returns>权限信息</returns>
-        IList<PermissionMenuActionDto> QueryAllPermission(long? roleId = -1);
+        IList<PermissionMenuActionDto> QueryAllPermission(string roleId);
         /// <summary>
         /// 分页查询权限信息
         /// </summary>
@@ -75,6 +75,6 @@ namespace Example.Application.ServiceInterfaces.Sys
         /// </summary>
         /// <param name="menuPermissionId">菜单权限Id</param>
         /// <returns>操作权限信息</returns>
-        IList<PermissionDto> QueryActionPermission(long menuPermissionId);
+        IList<PermissionDto> QueryActionPermission(string menuPermissionId);
     }
 }

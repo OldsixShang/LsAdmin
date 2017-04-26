@@ -12,7 +12,7 @@ namespace Ls.Domain.Entities
         /// <summary>
         /// 创建者Id
         /// </summary>
-        public long CreaterId { get; set; }
+        public string CreaterId { get; set; }
 
         /// <summary>
         /// 创建者 实体

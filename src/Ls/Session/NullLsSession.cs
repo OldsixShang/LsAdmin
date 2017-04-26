@@ -22,7 +22,7 @@ namespace Ls.Session {
         /// <summary>
         /// 空用户编号。
         /// </summary>
-        public long? UserId { get { return null; } }
+        public string UserId { get { return null; } }
 
       
 
@@ -42,7 +42,7 @@ namespace Ls.Session {
             get { return null; }
         }
 
-        public long? RoleId
+        public string RoleId
         {
             get
             {

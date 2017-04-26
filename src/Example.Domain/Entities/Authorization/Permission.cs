@@ -6,14 +6,14 @@ using Ls.Domain.Entities;
 namespace Example.Domain.Entities.Authorization
 {
     /// <summary>
-    /// 权限拓展
+    /// 权限
     /// </summary>
     public class Permission : Entity, IPermission<Permission, AuthAction, Menu>
     {
         /// <summary>
         /// 父级权限Id
         /// </summary>
-        public long ? ParentId { get; set; }
+        public string ParentId { get; set; }
         /// <summary>
         /// 权限名称
         /// </summary>
@@ -21,11 +21,11 @@ namespace Example.Domain.Entities.Authorization
         /// <summary>
         /// 菜单Id
         /// </summary>
-        public long? MenuId { get; set; }
+        public string MenuId { get; set; }
         /// <summary>
         /// 操作Id
         /// </summary>
-        public long? ActionId { get; set; }
+        public string ActionId { get; set; }
         /// <summary>
         /// 操作
         /// </summary>
