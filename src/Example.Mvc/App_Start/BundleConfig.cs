@@ -27,12 +27,28 @@ namespace Example.Mvc
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            //js 基础组件
+            bundles.Add(new ScriptBundle("~/bundles/baseComponents")
+                .Include(
+                "~/Scripts/jquery-1.10.2.min.js",
+                "~/Scripts/easyUI/jquery.easyui.min.js",
+                "~/Scripts/easyUI/easyui-lang-zh_CN.js",
+                "~/Scripts/json2.js",
+                "~/Components/artDialog/js/dialog-plus-min.js"));
             //ls相关控件
             bundles.Add(new ScriptBundle("~/bundles/ls")
                 .Include(
+                "~/Scripts/ls/jquery.ls.extension.js",
                 "~/Scripts/ls/ls.common.js",
                 "~/Scripts/ls/ls.form.js",
                 "~/Scripts/ls/ls.controls.js"));
+            //css 基础组件
+            bundles.Add(new StyleBundle("~/bundles/baseComponentsStyle")
+                .Include(
+                "~/Content/bootstrap.css",
+                "~/Content/easyui/themes/material/easyui.css",
+                "~/Content/font-awesome/css/font-awesome.css",
+                "~/Components/artDialog/css/ui-dialog.css"));
         }
     }
 }

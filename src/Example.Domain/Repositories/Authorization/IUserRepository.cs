@@ -11,6 +11,12 @@ namespace Example.Domain.Repositories.Authorization
     public interface IUserRepository :IRepository<User>
     {
         /// <summary>
+        /// 根据登录名获取用户
+        /// </summary>
+        /// <param name="loginId">登录名</param>
+        /// <returns></returns>
+        User GetUser(string loginId);
+        /// <summary>
         /// 分页查询
         /// </summary>
         /// <param name="name">用户名</param>

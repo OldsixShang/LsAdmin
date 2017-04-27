@@ -49,8 +49,8 @@ namespace Example.Application.ServiceImplements.Sys
         public void AddUser(UserManage.UserDto dto)
         {
             #region 业务验证
-            User user = _userRepository.Get(t => t.LoginId == dto.UserName);
-            if (user != null) throw new LsException(string.Format("用户名[{0}]已经存在,请确认！", dto.UserName));
+            User user = _userRepository.Get(t => t.LoginId == dto.Name);
+            if (user != null) throw new LsException(string.Format("用户名[{0}]已经存在,请确认！", dto.Name));
             #endregion
 
             User entity = dto.ToEntity<User>();
@@ -108,8 +108,8 @@ namespace Example.Application.ServiceImplements.Sys
         /// <returns>登录结果</returns>
         public LoginResultDto Login(LoginDto dto)
         {
-            LoginResultDto result = new LoginResultDto { User = new UserManage.UserDto { UserName = dto.UserName }, Result = LoginResult.UserNameNotExist };
-            var user = _userRepository.Get(t => t.LoginId == dto.UserName);
+            LoginResultDto result = new LoginResultDto { User = new UserManage.UserDto { Name = dto.UserName }, Result = LoginResult.UserNameNotExist };
+            var user = _userRepository.GetUser(dto.UserName);
             if (user == null) return result;
             if (!user.CheckPassword(dto.Password))
                 result.Result = LoginResult.InvalidPassword;

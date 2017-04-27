@@ -15,7 +15,7 @@ namespace Example.Dto.Sys.UserManage
         /// </summary>
         [Display(Name = "用户名")]
         [Required(ErrorMessage = "请输入用户名")]
-        public string UserName { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// 密码
         /// </summary>

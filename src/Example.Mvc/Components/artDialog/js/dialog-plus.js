@@ -78,7 +78,7 @@ function Popup () {
 
     this.__backdrop = this.__mask = $('<div />')
     .css({
-        opacity: .7,
+        opacity: .2,
         background: '#000'
     });
 

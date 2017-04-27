@@ -10,21 +10,16 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>欢迎使用客运数据平台</title>
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
-    <script src="~/Scripts/easyui/jquery.easyui.min.js"></script>
-    <link href="~/Content/easyui/themes/material/easyui.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/baseComponents")
     @Scripts.Render("~/bundles/ls")
+    @Styles.Render("~/bundles/baseComponentsStyle")
     <script src="~/Scripts/ls/ls.layout.index.js"></script>
-    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <script src="~/Components/artDialog/js/dialog-plus.js"></script>
-    <link href="~/Components/artDialog/css/ui-dialog.css" rel="stylesheet" />
     <link href="~/Content/easyui/tts.easyui.theme.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
     <script type="text/javascript">
         $(document).ready(function () {
             index.init();
         });
-
         var index = {
             init: function () {
                 $("#exit").lsHeaderMenu({
@@ -79,7 +74,7 @@
         @Html.Partial("Index/_center", Model.SolidNavMenuList)
     </div>
     <div data-options="region:'north',split:false,border:false" class="index-header">
-        @Html.Partial("Index/_north",Model.TopNavMenuList)
+        @Html.Partial("Index/_north", Model.TopNavMenuList)
     </div>
     <div data-options="region:'west',title:'菜单列表',split:true" style="width:200px;" class="sidebar-nav">
         @Html.Partial("Index/_west", Model.LeftNavMenuList)

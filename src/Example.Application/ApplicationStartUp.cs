@@ -47,8 +47,7 @@ namespace Example.Application
                     .ForMember(ts => ts.LastUpdatedTime, opt => opt.MapFrom(td => td.LastUpdatedTime.ToString(DateTimeFormatterConstString.DateStandard)))
                     .ForMember(ts => ts.Role, opt => opt.MapFrom(td => td.Role));
                 config.CreateMap<UserDto, User>()
-                    .ForMember(ts => ts.Name, opt => opt.MapFrom(td => td.UserName))
-                    .ForMember(ts => ts.LoginId, opt => opt.MapFrom(td => td.UserName))
+                    .ForMember(ts => ts.LoginId, opt => opt.MapFrom(td => td.Name))
                     .AfterMap((src, dest) => dest.Id = LsIdGenerator.CreateIdentity());
                 #endregion
 

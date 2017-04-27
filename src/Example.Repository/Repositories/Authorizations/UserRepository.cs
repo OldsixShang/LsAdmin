@@ -17,6 +17,16 @@ namespace ExampleRepository.Repositories.Authorizations
     public class UserRepository : EfRepository<ExampleDbContext, User>, IUserRepository
     {
         /// <summary>
+        /// 获取用户信息
+        /// </summary>
+        /// <param name="loginId">登录名</param>
+        /// <returns></returns>
+        public User GetUser(string loginId)
+        {
+            return Context.Users.Include(t => t.Role).Where(t => t.LoginId == loginId).FirstOrDefault();
+        }
+
+        /// <summary>
         /// 分页查询
         /// </summary>
         /// <param name="name">用户名</param>

@@ -3,23 +3,14 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
-    <script src="~/Scripts/easyui/jquery.easyui.min.js"></script>
-    <script src="~/Components/artDialog/js/dialog-plus.js"></script>
-    <link href="~/Content/easyui/themes/material/easyui.css" rel="stylesheet" />
-    <link href="~/Components/artDialog/css/ui-dialog.css" rel="stylesheet" />
-    <script src="~/Scripts/ls/jquery.easyui.extension.validate.js"></script>
-    <script src="~/Scripts/ls/jquery.ls.extension.js"></script>
-    <script src="~/Scripts/easyui/easyui-lang-zh_CN.js"></script>
-    <script src="~/Scripts/ls/ls.common.js"></script>
-    <script src="~/Scripts/ls/ls.form.js"></script>
-    <script src="~/Scripts/ls/ls.controls.js"></script>
+    @Scripts.Render("~/bundles/baseComponents")
+    @Scripts.Render("~/bundles/ls")
+    @Styles.Render("~/bundles/baseComponentsStyle")
     <link href="~/Content/easyui/tts.easyui.theme.css" rel="stylesheet" />
-    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
     <script type="text/javascript">
         var page = {
-            JsonData: eval('(' + '@Html.Raw(ViewBag.JsonData == null ? "{}" : ViewBag.JsonData)' + ')'),
+            JsonData:JSON.parse ('@Html.Raw(ViewBag.JsonData == null ? "{}" : ViewBag.JsonData)'),
             loaded: function () {
                 $.ls.loading(false);
             }
@@ -46,7 +37,7 @@
                 <div data-options="region:'center',border:false,fit:true">
                     <div class="easyui-layout" data-options="border:false,fit:true">
                         <div data-options="region:'north',height:'auto',border:false,split:false" >
-                            <div class="easyui-panel" style="padding:8px 10px 8px 10px;">
+                            <div class="easyui-panel" style="padding:8px 10px 8px 10px; width:100%;">
                                 <form id="QueryForm">
                                     @RenderSection("queryform")
                                 </form>

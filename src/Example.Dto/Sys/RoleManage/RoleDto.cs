@@ -12,7 +12,7 @@ namespace Example.Dto.Sys.RoleManage
         [Required(ErrorMessage = "请输入角色名称")]
         public string Name { get; set; }
 
-        //[Display(Name = "描述")]
-        //public string Description { get; set; }
+        [Display(Name = "描述")]
+        public string Description { get; set; }
     }
 }

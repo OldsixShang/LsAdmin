@@ -5,7 +5,9 @@ td label[for]{
     text-align: right;
     width: 80px;
     font-size: 12px;
-    padding-right:5px;
+    padding-right:8px;
+    padding-top:5px;
+    font-weight:300;
 }
 /*首页顶部样式*/
 .index-header{height: 50px; background: #4C6983;}
@@ -25,26 +27,28 @@ td label[for]{
 .tabindex-panel-content .right,.tabindex-panel-footter .right {float:right;width:40%;text-align:right; padding-right:10px; margin-top:5px;}
 /*左侧导航栏样式*/
 .sidebar-nav{ background:#F5F5F5; }
-.sidebar-nav ul,li {list-style:none; margin-left:0px;padding:0 5px 0 5px;}
+.sidebar-nav ul,.sidebar-nav li {list-style:none; margin-left:0px;padding:0px;}
+.sidebar-nav li ul li{list-style:none; margin-left:0px;padding-left:0px;}
 .sidebar-nav ul li a {
     position: relative;
     display: block;
-    padding: 6px 20px 6px 5px;
+    padding: 6px 0px 6px 10px;
     font-size: 12px;
-    height: 20px;
-    line-height: 20px;
     cursor: pointer;
     white-space: nowrap;
-    text-overflow: ellipsis;
     overflow: hidden;
-    border-radius:3px;
+    color:#333;
 }
+.sidebar-nav ul li a:hover{text-decoration:none; }
+.sidebar-nav li ul li a {padding: 6px 0px 6px 20px;}
+.sidebar-nav li ul li ul li a { padding: 6px 0px 6px 30px;}
+.sidebar-nav li ui li ul li ul li a { padding: 6px 0px 6px 40px; }
 .sidebar-nav ul li .node:hover { background: #F0F0F0; }
-.selected {background: #38556A;}
-.selected i, .selected b, .selected span {color: #fff;}
-.selected-hover {background: #38556A;}
-.sidebar-nav ul li .selected:hover {background: #38556A;}
-.sidebar-nav .expandable{ position:absolute; right:4px; line-height:20px; }
+.selected {border-left:3px solid #38556A;background:#eee;}
+.selected i, .selected b, .selected span {color: #333;}
+.selected-hover {border-left:3px solid #38556A;}
+.sidebar-nav ul li .selected:hover {background: #eee;}
+.sidebar-nav .expandable{ position:absolute; right:15px; line-height:20px; }
 .textarea {
     position: relative;
     background-color: rgb(255, 255, 255);

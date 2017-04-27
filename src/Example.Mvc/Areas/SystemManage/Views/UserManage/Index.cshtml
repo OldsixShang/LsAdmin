@@ -14,13 +14,13 @@
                 fit: true,
                 columns: [[
                     { title: 'Id', field: 'Id', width: 100, hidden: true },
-                    { title: '用户名', field: 'UserName', width: 150, sortable: true },
-                    { title: '角色', field: 'Role', width: 100, formatter: function (val, row, index) { return val.RoleName; } },
+                    { title: '用户名', field: 'Name', width: 150, sortable: true },
+                    { title: '角色', field: 'Role', width: 100, formatter: function (val, row, index) { return val.Name; } },
                     { title: '真实姓名', field: 'RealName', width: 120, sortable: true },
                     { title: '联系电话', field: 'Phone', width: 150, sortable: true },
                     { title: '邮箱', field: 'Email', width: 200, sortable: true },
                     { title: '创建时间', field: 'CreatedTime', width: 200, sortable: true },
-                    { title: '更新时间', field: 'LastUpdateTime', width: 200, sortable: true }
+                    { title: '更新时间', field: 'LastUpdatedTime', width: 200, sortable: true }
                 ]]
             });
             page.init();
