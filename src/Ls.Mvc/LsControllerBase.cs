@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Ls.Application;
 using Ls.Logging;
+using Ls.IoC;
 
 namespace Ls.Mvc {
     /// <summary>
@@ -26,6 +27,7 @@ namespace Ls.Mvc {
         /// </summary>
         public LsControllerBase() {
             LsSession = NullLsSession.Instance;
+            base.ActionInvoker = IocManager.Instance.Resolve<IActionInvoker>();
         }
 
 

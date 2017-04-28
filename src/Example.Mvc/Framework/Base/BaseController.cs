@@ -12,12 +12,9 @@ using System.Web.Mvc;
 
 namespace Example.Mvc.Framework.Base
 {
+    [Authorize]
     public abstract class BaseController : Ls.Mvc.LsControllerBase
     {
-        public BaseController()
-        {
-            //ActionInvoker = IocManager.Instance.Resolve<IActionInvoker>();
-        }
 
         #region 属性
         /// <summary>

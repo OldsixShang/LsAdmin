@@ -3,6 +3,8 @@ using System.Reflection;
 using System.Web;
 using Ls.Mvc.Fakes;
 using Castle.MicroKernel.Registration;
+using Ls.Mvc.Validate;
+using System.Web.Mvc;
 
 namespace Ls.Mvc {
     /// <summary>
@@ -23,6 +25,9 @@ namespace Ls.Mvc {
         /// </summary>
         public override void Initialize() {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
+            IocManager.Register<IValidation, Validate.Validation>();
+            IocManager.Register<IValidationHandler, ValidateHandler>();
+            IocManager.Register<IActionInvoker, LsControllerActionInvoker>();
             IocManager.IocContainer.Register(Component.For<HttpContextBase>()
                 .LifeStyle.Transient
                 .UsingFactoryMethod(() =>  HttpContext.Current != null ?

@@ -5,15 +5,18 @@ using Ls.Logging;
 using Ls.Session;
 
 
-namespace Ls.Application {
+namespace Ls.Application
+{
     /// <summary>
     /// 应用层服务基类。
     /// </summary>
-    public abstract class ApplicationServiceBase : IApplicationService, ITransientDependency {
+    public abstract class ApplicationServiceBase : IApplicationService, ITransientDependency
+    {
         /// <summary>
         /// 日志记录器。
         /// </summary>
-        public ILogger Log {
+        public ILogger Log
+        {
             get
             {
                 return LogManager.GetLogger(this.GetType());
@@ -23,7 +26,15 @@ namespace Ls.Application {
         /// <summary>
         /// Session，记录用户的租户编号、用户编号。
         /// </summary>
-        public ILsSession LsSession { get; set; }
+        public ILsSession LsSession
+        {
+            get
+            {
+                //if (LsSession == NullLsSession.Instance)
+                //    LsSession = IocManager.Instance.Resolve<ILsSession>();
+                return IocManager.Instance.Resolve<ILsSession>();
+            }
+        }
 
         /// <summary>
         /// 工作单元提供者。
@@ -38,11 +49,9 @@ namespace Ls.Application {
         /// <summary>
         /// 应用层服务基类构造函数。
         /// </summary>
-        public ApplicationServiceBase() {
-
-           // Log = NullLog.Instance;
-            LsSession = NullLsSession.Instance;
-            PermissionChecker = NullPermissionChecker.Instance;
+        public ApplicationServiceBase()
+        {
+            //LsSession = NullLsSession.Instance;
         }
     }
 }

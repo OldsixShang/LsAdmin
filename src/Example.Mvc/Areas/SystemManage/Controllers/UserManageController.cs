@@ -12,6 +12,7 @@ using Ls.Model;
 
 namespace Example.Mvc.Areas.SystemManage.Controllers
 {
+    
     public class UserManageController : BaseController
     {
         private IUserService _userService;
@@ -38,7 +39,7 @@ namespace Example.Mvc.Areas.SystemManage.Controllers
                 });
             }
         }
-        [ActionTemplate(Template = ActionTemplate.Query)]
+        [ActionTemplate(ActionTemplate = ActionTemplate.Query)]
         public ActionResult Index()
         {
             //页面初始化数据
@@ -46,7 +47,7 @@ namespace Example.Mvc.Areas.SystemManage.Controllers
             return View(new PageDto());
         }
 
-        [ActionTemplate(Template = ActionTemplate.Query)]
+        [ActionTemplate(ActionTemplate = ActionTemplate.Query)]
         public ContentResult Query(QueryConditionDto dto, Pager pager)
         {
             var dtos = _userService.QueryPagerUser(dto, pager);
@@ -66,21 +67,21 @@ namespace Example.Mvc.Areas.SystemManage.Controllers
             }
         }
 
-        [ActionTemplate(Template = ActionTemplate.Add)]
+        [ActionTemplate(ActionTemplate = ActionTemplate.Add)]
         public ContentResult Add(UserDto dto)
         {
             _userService.AddUser(dto);
             return ResultSuccess<string>("添加成功");
         }
 
-        [ActionTemplate(Template = ActionTemplate.Modify)]
+        [ActionTemplate(ActionTemplate = ActionTemplate.Modify)]
         public ContentResult Modify(UserDto dto)
         {
             _userService.ModifyUser(dto);
             return ResultSuccess<string>("修改成功");
         }
 
-        [ActionTemplate(Template = ActionTemplate.Delete)]
+        [ActionTemplate(ActionTemplate = ActionTemplate.Delete)]
         public ContentResult Remove(string id)
         {
             _userService.DeleteUser(new UserDto { Id = id});

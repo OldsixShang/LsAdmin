@@ -43,8 +43,8 @@ namespace Example.Application
 
                 #region 用户管理
                 config.CreateMap<User, UserDto>()
-                    .ForMember(ts => ts.CreatedTime, opt => opt.MapFrom(td => td.CreatedTime.ToString(DateTimeFormatterConstString.DateStandard)))
-                    .ForMember(ts => ts.LastUpdatedTime, opt => opt.MapFrom(td => td.LastUpdatedTime.ToString(DateTimeFormatterConstString.DateStandard)))
+                    .ForMember(ts => ts.CreatedTime, opt => opt.MapFrom(td => td.CreatedTime.ToString(DateTimeFormatterConstString.DateTimeH24)))
+                    .ForMember(ts => ts.LastUpdatedTime, opt => opt.MapFrom(td => td.LastUpdatedTime.ToString(DateTimeFormatterConstString.DateTimeH24)))
                     .ForMember(ts => ts.Role, opt => opt.MapFrom(td => td.Role));
                 config.CreateMap<UserDto, User>()
                     .ForMember(ts => ts.LoginId, opt => opt.MapFrom(td => td.Name))

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ls.Authorization;
+using System;
 
 namespace Ls.Mvc.Authorization
 {
@@ -9,7 +10,7 @@ namespace Ls.Mvc.Authorization
         /// <summary>
         /// 操作模板
         /// </summary>
-        public ActionTemplate Template { get; set; }
+        public string ActionTemplate { get; set; }
         /// <summary>
         /// 条件
         /// </summary>

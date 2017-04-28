@@ -26,9 +26,9 @@ namespace Ls {
         /// </summary>
         public override void PreInitialize() {
             IocManager.AddConventionalRegistrar(new BasicConventionalRegistrar());
-            ValidationInterceptorRegistrar.Initialize(IocManager);
+            //ValidationInterceptorRegistrar.Initialize(IocManager);
             UnitOfWorkInterceptorRegistrar.Initialize(IocManager);
-            AuthorizationInterceptorRegistrar.Initialize(IocManager);
+            //AuthorizationInterceptorRegistrar.Initialize(IocManager);
         }
 
         /// <summary>

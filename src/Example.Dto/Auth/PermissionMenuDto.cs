@@ -1,4 +1,5 @@
 ﻿using Ls.Dto;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,32 @@ namespace Example.Dto.Auth
     {
         public PermissionMenuDto() : base() {
 
+        }
+        [JsonProperty("_parentId")]
+        public override string ParentId
+        {
+            get
+            {
+                return base.ParentId;
+            }
+
+            set
+            {
+                base.ParentId = value;
+            }
+        }
+        [JsonProperty("children")]
+        public override List<PermissionMenuDto> Children
+        {
+            get
+            {
+                return base.Children;
+            }
+
+            set
+            {
+                base.Children = value;
+            }
         }
         /// <summary>
         /// 菜单名称

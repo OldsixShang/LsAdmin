@@ -14,10 +14,14 @@
     }
 </div>
 <div id="tab-tools" style="border-top:none;padding:0;height:10px;">
-    <a href="#" class="btn btn-default btn-sm" style="height:18px;border:none;" ><i class="fa fa-refresh"></i></a>
+    <a href="#" onclick="index.refresh_currentTab()" class="btn btn-default btn-sm" style="height:28px;border:none;" ><i class="fa fa-refresh"></i></a>
 </div>
 <script type="text/javascript">
-    function refresh() {
-
-    }
+    $.extend(index, {
+        refresh_currentTab: function () {
+            var tab = $('#tabs').tabs('getSelected');
+            $.ls.loading(true, "页面加载中,请稍后...");
+            tab.find('iframe[tabid]')[0].contentWindow.location.reload(true);
+        }
+    });
 </script>

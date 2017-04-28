@@ -44,6 +44,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -62,12 +63,15 @@
   <ItemGroup>
     <Compile Include="Authorization\ActionTemplateAttribute.cs" />
     <Compile Include="Authorization\ActionTemplate.cs" />
+    <Compile Include="Authorization\IPermissionValidator.cs" />
     <Compile Include="Authorization\PlatformAuthorizationAttribute.cs" />
+    <Compile Include="LsControllerActionInvoker.cs" />
     <Compile Include="LsControllerBase.cs" />
     <Compile Include="LsControllerFactory.cs" />
     <Compile Include="LsHttpApplication.cs" />
     <Compile Include="LsMvcAuthorizeAttribute.cs" />
     <Compile Include="LsMvcComponent.cs" />
+    <Compile Include="LsMvcConst.cs" />
     <Compile Include="LsSession.cs" />
     <Compile Include="LsUserBase.cs" />
     <Compile Include="Fakes\Extensions.cs" />
@@ -80,6 +84,13 @@
     <Compile Include="HttpRequestExtensions.cs" />
     <Compile Include="MvcConventionalRegistrar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validate\DataAnnotations\CompareToAttribute.cs" />
+    <Compile Include="Validate\IValidation.cs" />
+    <Compile Include="Validate\IValidationHandler.cs" />
+    <Compile Include="Validate\ValidateHandler.cs" />
+    <Compile Include="Validate\ValidateRegexString.cs" />
+    <Compile Include="Validate\Validation.cs" />
+    <Compile Include="Validate\ValidationCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ls\Ls.csproj">

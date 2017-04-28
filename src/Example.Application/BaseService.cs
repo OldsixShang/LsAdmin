@@ -1,4 +1,6 @@
 ﻿using Ls.Application;
+using Ls.IoC;
+using Ls.Session;
 
 namespace Example.Application
 {
@@ -6,7 +8,7 @@ namespace Example.Application
     {
         public BaseService()
         {
-
+           
         }
         
     }

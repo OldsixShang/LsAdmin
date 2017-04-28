@@ -16,10 +16,10 @@ namespace Ls.Dto
         /// <summary>
         /// 父级菜单Id
         /// </summary>
-        public string ParentId { get; set; }
+        public virtual string ParentId { get; set; }
         /// <summary>
         /// 子集元素列表
         /// </summary>
-        public List<T> Children { get; set; }
+        public virtual List<T> Children { get; set; }
     }
 }

@@ -6,19 +6,13 @@ using System.Threading.Tasks;
 
 namespace Ls.Mvc.Authorization
 {
-    /// <summary>
-    /// 操作模板
-    /// </summary>
-    public enum ActionTemplate
+    public partial class ActionTemplate
     {
-        Query,
-        Add,
-        Modify,
-        Delete,
-        RePull,
-        Export,
-        Import,
-        DistributePermission,
-        HighCharts,
+        public const string Query = "Query";
+        public const string Add = "Add";
+        public const string Modify = "Modify";
+        public const string Delete = "Delete";
+        public const string Export = "Export";
+        public const string Import = "Import";
     }
 }

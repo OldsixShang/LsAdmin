@@ -17,9 +17,6 @@
     <link href="~/Content/easyui/tts.easyui.theme.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
     <script type="text/javascript">
-        $(document).ready(function () {
-            index.init();
-        });
         var index = {
             init: function () {
                 $("#exit").lsHeaderMenu({
@@ -69,7 +66,7 @@
         }
     </script>
 </head>
-<body class="easyui-layout" fit="true">
+<body class="easyui-layout" fit="true" onload="index.init()">
     <div id="content" data-options="region:'center',split:false">
         @Html.Partial("Index/_center", Model.SolidNavMenuList)
     </div>
