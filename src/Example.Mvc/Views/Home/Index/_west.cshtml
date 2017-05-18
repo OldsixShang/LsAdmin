@@ -5,7 +5,7 @@
 {
     foreach (var item in menus)
     {
-        if (item.Children == null)
+        if (item.children == null)
         {
             <li>
                 <a class="node" onclick="addTab('@Url.Content((item.Url ?? "~/Home/ErrorPage_404") + "?pageId=" + item.Id)','@item.MenuName','@item.Id',this)">
@@ -23,7 +23,7 @@
                     <b class="expandable fa fa-plus" aria-hidden="true"></b>
                 </a>
                 <ul style="display:none;">
-                    @RenderMenu(item.Children)
+                    @RenderMenu(item.children)
                 </ul>
             </li>
         }

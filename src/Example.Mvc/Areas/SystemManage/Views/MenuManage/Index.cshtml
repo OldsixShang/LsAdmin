@@ -35,7 +35,7 @@
                     title: '新增菜单',
                     url: '@Url.Action("MenuEdit")',
                     width: 400,
-                    height: 200,
+                    height: 250,
                     onClose: function (result) {
                         if (result) {
                             $.ls.success($.ls.messages.SuccessAdded);
@@ -51,7 +51,7 @@
                     title: '修改菜单',
                     url: '@Url.Action("MenuEdit")' + "?id=" + row.Id,
                     width: 400,
-                    height: 200,
+                    height: 250,
                     onClose: function (result) {
                         if (result) {
                             $.ls.success($.ls.messages.SuccessModified);

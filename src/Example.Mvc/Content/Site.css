@@ -435,3 +435,8 @@ fieldset[disabled] .btn-link:focus {
 .btn-block + .btn-block {
   margin-top: 5px;
 }
+
+
+.ls-dialog-container table td{
+    padding:5px 3px;
+}
