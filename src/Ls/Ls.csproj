@@ -129,6 +129,7 @@
     <Compile Include="Dto\CreatedAndUpdatedDto.cs" />
     <Compile Include="Dto\Extension\DtoExtension.cs" />
     <Compile Include="Dto\Response\ResponseDto.cs" />
+    <Compile Include="Dto\ITreeNodeDto.cs" />
     <Compile Include="Dto\TreeNodeDto.cs" />
     <Compile Include="Extensions\CollectionExtension.cs" />
     <Compile Include="Extensions\IQueryableExtension.cs" />

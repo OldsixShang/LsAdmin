@@ -11,37 +11,15 @@ namespace Example.Dto.Auth
     /// <summary>
     /// Mvc数据传输对象
     /// </summary>
-    public class PermissionMenuDto : TreeNodeDto<PermissionMenuDto>
+    public class PermissionMenuDto :BaseDto, ITreeNodeDto<PermissionMenuDto>
     {
-        public PermissionMenuDto() : base() {
-
+        public PermissionMenuDto(){
+            children = new List<PermissionMenuDto>();
         }
         [JsonProperty("_parentId")]
-        public override string ParentId
-        {
-            get
-            {
-                return base.ParentId;
-            }
-
-            set
-            {
-                base.ParentId = value;
-            }
-        }
+        public string ParentId { get; set; }
         [JsonProperty("children")]
-        public override List<PermissionMenuDto> Children
-        {
-            get
-            {
-                return base.Children;
-            }
-
-            set
-            {
-                base.Children = value;
-            }
-        }
+        public List<PermissionMenuDto> children { get; set; }
         /// <summary>
         /// 菜单名称
         /// </summary>

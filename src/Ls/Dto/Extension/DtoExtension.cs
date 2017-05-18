@@ -16,7 +16,7 @@ namespace Ls.Dto.Extension
         /// <param name="source">一般格式的树列表</param>
         /// <returns>标准格式的树列表</returns>
         public static List<T> ToStandardFormatTree<T>(this List<T> source)
-            where T : TreeNodeDto<T>
+            where T : ITreeNodeDto<T>
         {
             List<T> roots = source.Where(t => string.IsNullOrEmpty(t.ParentId)).ToList();
             BuidStandardTree(roots, source);
@@ -28,18 +28,18 @@ namespace Ls.Dto.Extension
         /// <param name="nodes">节点列表</param>
         /// <param name="source">节点资源</param>
         private static void BuidStandardTree<T>(List<T> nodes, List<T> source)
-            where T : TreeNodeDto<T>
+            where T : ITreeNodeDto<T>
         {
             foreach (var node in nodes)
             {
                 var children = source.Where(t => t.ParentId == node.Id).ToList();
                 if (children.Count > 0)
                 {
-                    node.Children = children;
-                    BuidStandardTree(node.Children, source);
+                    node.children = children;
+                    BuidStandardTree(node.children, source);
                 }
                 else
-                    node.Children = null;
+                    node.children = null;
             }
         }
         #endregion

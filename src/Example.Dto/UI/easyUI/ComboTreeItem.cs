@@ -14,6 +14,7 @@ namespace Example.Dto.UI.easyUI
     public class ComboTreeItem : TreeNodeDto<ComboTreeItem>
     {
         public ComboTreeItem() : base() { }
+        public string id { get { return Id; } }
         /// <summary>
         /// 值
         /// </summary>

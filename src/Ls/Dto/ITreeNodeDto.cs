@@ -6,20 +6,16 @@ using System.Threading.Tasks;
 
 namespace Ls.Dto
 {
-    public class TreeNodeDto<T> : BaseDto, ITreeNodeDto<T>
-        where T : TreeNodeDto<T>
+    public interface ITreeNodeDto<T> : IDto<string>
+        where T : ITreeNodeDto<T>
     {
-        public TreeNodeDto()
-        {
-            children = new List<T>();
-        }
         /// <summary>
         /// 父级菜单Id
         /// </summary>
-        public string ParentId { get; set; }
+        string ParentId { get; set; }
         /// <summary>
         /// 子集元素列表
         /// </summary>
-        public List<T> children { get; set; }
+        List<T> children { get; set; }
     }
 }
