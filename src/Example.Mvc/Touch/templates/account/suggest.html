@@ -1,0 +1,38 @@
+<ion-view view-title="投诉建议">
+    <ion-content class="padding">
+        <form name="Form">
+            <label class="item item-input">
+                <span class="input-label">姓名：</span>
+                <input type="text" ng-model="form.name" name="Name" required maxlength="20">
+            </label>
+            <label class="item item-input" style="color:red" ng-show="Form.Name.$invalid">
+                <span>请输入合法的姓名</span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">手机号：</span>
+                <input type="text" ng-model="form.phone"  name="Phone" required maxlength="11">
+            </label>
+            <label class="item item-input" style="color:red" ng-show="Form.Phone.$invalid">
+                <span>请输入合法的手机号</span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">邮箱：</span>
+                <input type="email" ng-model="form.email">
+            </label>
+
+            <div class="item">
+                <label class="title">建议或投诉内容</label>
+            </div>
+            <label class="item item-input">
+                <textarea placeholder="请输入建议或投诉内容" rows="3" name="Message" required maxlength="200" ng-model="form.message"></textarea>
+            </label>
+            <label class="item item-input" style="color:red" ng-show="Form.Message.$invalid">
+                <span>请输入建议或投诉内容</span>
+            </label>
+
+            <button class="button button-block button-assertive" ng-click="save()" ng-disabled="!Form.$valid">
+                提交申请
+            </button>
+        </form>
+    </ion-content>
+</ion-view>

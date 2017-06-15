@@ -1,0 +1,36 @@
+<ion-view view-title="个人中心">
+
+    <ion-content class="padding">
+
+
+        <div class="list list-inset">
+            <ion-item class="item item-avatar-right" ng-click="showImageUploadChoices()">
+                <img ng-src="{{getImageSrc(user.profilePictureId)}}" />
+                <div><span class="title">头像</span></div>
+
+            </ion-item>
+            <a class="item">
+                <div><span class="title">帐号</span> <span style="float: right">{{user.name}}</span></div>
+                <!--    <i class="icon ion-chevron-right icon-accessory"></i>-->
+            </a>
+            <a class="item">
+                <div><span class="title">手机号</span> <span style="float: right">{{user.userName}}</span></div> 
+            </a>
+            <a class="item" ng-if="user.idCard">
+                <div><span class="title">身份证</span> <span style="float: right">{{user.idCard}}</span></div>
+            </a>
+           
+            <a class="item">
+                <div><span class="title">注册日期</span> <span style="float: right">{{user.creationTime | date:"yyyy-MM-dd HH:mm:ss"}}</span></div>
+
+            </a>
+            <a class="item item-icon-right" ui-sref="tab.modifyPassword">
+                <div><span class="title">修改密码</span></div>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>           
+        </div>
+
+ 
+    </ion-content>
+
+</ion-view>

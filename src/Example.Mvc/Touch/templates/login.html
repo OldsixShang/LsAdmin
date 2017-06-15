@@ -1,0 +1,52 @@
+<ion-view view-title="用户登录">
+    <div class="bar-stable bar bar-header bar-calm">
+        <button style="border-width: 0px;" ng-click="close()" class="button back-button buttons header-item">
+            <i class="ion-ios-arrow-back" style="font-size:18px"></i> 返回
+        </button>
+        <h1 class="title">用户登录</h1>
+    </div>
+    <ion-content class="has-header padding" >
+        <form name="myForm">
+            <ion-list class="padding">
+                <label class="item item-input">
+                    <span class="input-label">手机号：</span>
+                    <input class="input-label" type="text" name="UsernameOrEmailAddress" ng-model="myLogin.UsernameOrEmailAddress" required maxlength="40"
+                           placeholder="请输入手机号码">
+                </label>
+                <label class="item item-input" style="color:red" ng-show="myForm.UsernameOrEmailAddress.$dirty && myForm.UsernameOrEmailAddress.$invalid">
+                    <span>请输入合法手机号码</span>
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">密码：</span>
+                    <input class="input-label" type="password" name="loginPassword" ng-model="myLogin.Password" required
+                           ng-maxlength="32" placeholder="请输入密码">
+                </label>
+                <label class="item item-input" style="color:red" ng-show="myForm.loginPassword.$dirty && myForm.loginPassword.$invalid" ">
+                    <span>请输入密码</span>
+                </label>
+                <!--<ion-toggle ng-model="myLogin.RememberMe">保存密码：</ion-toggle>-->
+            </ion-list>
+        </form>
+        <ion-list class="list padding">
+            <label>
+                <button class="button button-full button-calm" ng-disabled="myForm.$invalid" ng-click="loginSys()">
+                    登录
+                </button>
+            </label>
+
+            <div class="row">
+
+                <a class="col" style="text-align: left " ng-click="goForgetPW() ">
+                    忘记密码
+                </a>
+                <a class="col" style="text-align: center " ng-click="close()">
+                    暂不登录
+                </a>
+                <a class="col" style="text-align: right " ng-click="regist() ">
+                    立即注册
+                </a>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-view>

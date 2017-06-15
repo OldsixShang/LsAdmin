@@ -1,0 +1,53 @@
+<ion-view view-title="注册">
+   <ion-content>
+                <form name="myForm" novalidate="novalidate">
+                    <div class="list padding">
+
+                        <label class="item item-input " style="border-bottom:1px solid #ccc">
+                            <i class="icon ion-android-phone-portrait  gray"></i>
+                            <input type="text" style="padding-left: 15px" placeholder="请输入手机号" name="phone" ng-model="formData.phone" ng-pattern="/^(((1[0-9]{2}))+\d{8})$/" required>
+
+                        </label>
+
+                        <label class="item item-input" style="color:red" ng-show="myForm.phone.$dirty && myForm.phone.$invalid">
+
+                            <span>请输入合法的手机号</span>
+                        </label>
+                        <div class="item item-input">
+                            <i class="icon ion-key  gray"></i>
+                            <input type="text" style="padding-left: 15px" placeholder="请输入短信验证码" name="phoneCode" ng-model="formData.phoneCode" ng-maxlength=5 required>
+                            <button class="button button-small button-positive " style="margin-right: 10px" ng-click="sendSms()" ng-disabled="myForm.phone.$invalid || isSended">
+                                <span ng-if="!isSended">获取短信验证码</span>
+                                <span ng-if="isSended">再次获取({{countdown}}s) </span> 
+                            </button>
+                        </div>
+
+                        <label class="item item-input" style="color:red" ng-show="myForm.phoneCode.$dirty && myForm.phoneCode.$invalid">
+                            <span>请输入5位短信验证码</span>
+
+                        </label>
+
+
+                        <label class="item item-input ">
+                            <i class="icon ion-android-lock  gray"></i>
+                            <input type="password" style="padding-left: 15px" placeholder="请输入密码" name="password" ng-model="formData.password" ng-maxlength=15 required>
+                        </label>
+
+                        <label class="item item-input" style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+                            <span ng-show="myForm.password.$error.required">请输入密码</span>
+                        </label>
+
+                        <label class="item item-input ">
+                            <i class="icon ion-android-lock  gray"></i>
+                            <input type="password" style="padding-left: 15px" placeholder="请再次输入密码" name="password1" ng-model="formData.password1" ng-maxlength=15 required>
+                        </label>
+
+                        <label class="item item-input" style="color:red" ng-show="myForm.password1.$dirty">
+                            <span ng-show="formData.password!=formData.password1">两次输入的密码不一致</span>
+                        </label>
+
+                        <button class="button button-block button-positive " ng-disabled="myForm.$invalid||(formData.password!=formData.password1)" ng-click="save()">注册</button>
+                    </div>
+                </form>
+    </ion-content>
+</ion-view>

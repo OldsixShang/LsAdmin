@@ -1,0 +1,72 @@
+<ion-view title="">
+    <ion-nav-bar class="bar-calm">
+        <ion-nav-title>
+            <div class="homebg"></div>
+            <div class="homebg2"></div>
+        </ion-nav-title>
+    </ion-nav-bar>
+    <ion-content overflow-scroll="false">
+        <ion-list>
+            <ion-slide-box class="padding" show-pager="false" does-continue="true" slide-interval="4000" on-slide-changed="slideChange()">
+                <ion-slide ng-repeat="item in items">
+                    <i class="icon ion-volume-high"></i> &nbsp;
+                    <a ui-sref="tab.homeNewsDetail({id:item.id})">{{item.title}}</a>
+                </ion-slide>
+            </ion-slide-box>
+            <!--<ion-item class="item item-icon-left item-input item-select">
+                <i class="icon ion-ios-arrow-up"></i>
+
+                <div class="input-label" style="margin: 0px 0px 0px 35px;">
+                    出发城市
+                </div>
+                <select style="padding: 12px 35px 12px 0;text-align: left;font-weight:bolder;" ng-model="query.selectedCity" ng-options="x.cityName for x in city" ng-change="cityChange()"></select>
+            </ion-item>-->
+
+            <ion-item class="item item-icon-left" ng-click="showCitySelect()">
+                <div>
+                    <i class="icon ion-ios-arrow-up"></i>
+                    <span class="title">出发城市</span>
+                    <span style="float: right" ng-bind="query.selectedCity.cityName"></span>
+                </div>
+            </ion-item>
+
+
+            <ion-item class="item item-icon-left" ng-click="showCarryStationSelect()">
+                <div>
+                    <i class="icon ion-ios-arrow-up"></i>
+                    <span class="title">出发城市</span>
+                    <span style="float: right" ng-bind="query.selectedStation.carryStationName"></span>
+                </div>
+            </ion-item>
+            <!--
+            <ion-item class="item item-icon-left item-input item-select">
+                <i class="icon ion-ios-compose-outline"></i>
+                <div class="input-label" style="margin:0px 0px 0px 35px;">
+                    乘车站点
+                </div>
+                <select style="padding: 12px 35px 12px 0;text-align: left;font-weight: bolder ;" ng-model="query.selectedStation" ng-options="x.carryStationName  for x in query.selectedCity.carryStations" ng-change="carrystaionChange()"></select>
+            </ion-item>-->
+
+
+            <ion-item class="item item-icon-left" ng-click="gostop()">
+                <div>
+                    <i class="icon ion-ios-arrow-down"></i>
+                    <span class="title">到达站点</span>
+                    <span style="float: right" ng-bind="schOption.stopName"></span>
+                </div>
+            </ion-item>
+
+            <ion-item class="item item-icon-left" ng-click="openDatePicker()">
+                <div>
+                    <i class="icon  ion-ios-time-outline"></i>
+                    <span class="title">发车日期</span>
+                    <span style="float: right" ng-bind="schOption.drvDate|date:'yyyy年MM月dd日'"></span>
+                </div>
+
+            </ion-item>
+
+        </ion-list>
+
+        <button class="button button-block button-calm" ng-click="searchSch()">查 询</button>
+    </ion-content>
+</ion-view>

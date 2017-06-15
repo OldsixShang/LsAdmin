@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>网售</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link href="~/Touch/lib/ionic/css/ionic.min.css" rel="stylesheet" />
+    <link href="~/Touch/css/style.css" rel="stylesheet">
+    <script src="~/Touch/lib/ionic/js/ionic.bundle.min.js"></script>
+    <!--日期控件-->
+    <script src="~/Touch/lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
+    <!-- your app's js -->
+    <script src="~/Touch/js/app.js"></script>
+    <script src="~/Touch/js/route.js"></script>
+    <script src="~/Touch/js/controllers.js"></script>
+    <script src="~/Touch/js/accountControlers.js"></script>
+    <script src="~/Touch/js/orderControlers.js"></script>
+    <script src="~/Touch/js/services.js"></script>
+    <script src="~/Touch/js/filter.js"></script>
+
+    <script type="text/javascript">
+        //@* This is used to get the application's root path from javascript.
+        //It's useful if you're running application in a virtual directory under IIS. *@
+        //var abp = abp || {};
+        //abp.appPath = '@ApplicationPath';
+        //abp.versionType = 0;//0 touch , 1 app
+        //abp.orderSourceId = 10; //10 touch ,20 android ,30 ios 
+    </script>
+</head>
+<body ng-app="starter">
+    <!--
+      The nav bar that will be updated as we navigate between views.
+    -->
+    <ion-nav-bar class="bar-stable bar bar-myheader bar-calm nav-title-slide-ios7"  style="border-bottom: 10px none #ddd;border-style: none">
+        <ion-nav-back-button style="border-width:0">
+            <i class="ion-ios-arrow-back" style="font-size:18px"></i> 返回
+        </ion-nav-back-button>
+        <ion-nav-buttons side="right" ng-show="hideTabs">
+            <a class="button"  ui-sref="tab.home" title="首页">
+                <i class="icon ion-home"></i>
+            </a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view animation="slide-left-right">
+    </ion-nav-view>
+</body>
+</html>

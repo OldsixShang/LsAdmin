@@ -1,0 +1,40 @@
+<ion-view view-title="{{title}}">
+    <ion-content class="padding" >
+        <form name="myForm">
+            <ion-list class="padding">
+                <label class="item item-input">
+                    <span class="input-label">姓名：</span>
+                    <input class="input-label" type="text" name="Name" ng-model="modefyPassenger.name" required maxlength="20"  ng-minlength="2"
+                          placeholder="请输入姓名号码">
+                </label>
+                <label class="item item-input" style="color:red" ng-show="myForm.Name.$dirty && myForm.Name.$invalid">
+                    <span>请输入姓名</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">手机号码：</span>
+                    <input class="input-label" type="tel" name="Phone" ng-model="modefyPassenger.phone" required maxlength="20" ng-minlength="5" placeholder="请输入手机号码">
+                </label>
+                <label class="item item-input" style="color:red" ng-show="myForm.Phone.$dirty && myForm.Phone.$invalid">
+                    <span>请输入合法的手机号码</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">身份证：</span>
+                    <input class="input-label" type="text"  name="IdCard"   ng-model="modefyPassenger.idCard" required maxlength="18" ng-minlength="15"
+                           placeholder="请输入身份证">
+                </label>
+                <label class="item item-input" style="color:red" ng-show="myForm.IdCard.$dirty && myForm.IdCard.$invalid">
+                    <span>请输入合法的身份证</span>
+                </label>
+              
+            </ion-list>
+        </form>
+        <ion-list class="list padding">
+            <label>
+                <button class="button button-full button-calm" ng-disabled="myForm.$invalid" ng-click="save()">
+                    确定
+                </button>
+            </label>
+
+        </ion-list>
+    </ion-content>
+</ion-view>

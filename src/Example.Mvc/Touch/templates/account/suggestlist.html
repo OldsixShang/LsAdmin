@@ -1,0 +1,41 @@
+<ion-view view-title="投诉建议">
+    <div class="bar bar-subheader">
+        <div class="button-bar">
+            <a class="button button-icon icon ion-ios-plus-outline" ng-click="create()">
+                新的投诉或建议
+            </a>
+        </div>
+    </div>
+    <ion-content class="padding has-header has-subheader">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="refresh()">
+        </ion-refresher>
+
+        <ion-item ng-repeat="item in items" item="item" class="item-text-wrap">
+            <div>
+                <div>
+                    <span style="font-size: 18px;font-weight: bolder">  {{item.creationTime |date:'yyyy-MM-dd HH:mm:ss' }}</span>
+                </div>
+                <div>
+                    <span>  {{item.name }}({{item.phone}}):</span>
+                    <span style="color:red;font-size: small"> {{item.message}}</span>
+                </div>
+                <div>
+                    <span>回复内容：</span>
+                    <span style="color:blue;font-size: small">
+                        {{item.replyMessage}}
+                    </span>
+                </div>
+
+            </div>
+        </ion-item>
+
+        <a class="item item-divider padding font12" ng-if="items.length == 0">
+            <label>暂无记录</label>
+        </a>
+
+        <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()">
+        </ion-infinite-scroll>
+    </ion-content>
+
+
+</ion-view>

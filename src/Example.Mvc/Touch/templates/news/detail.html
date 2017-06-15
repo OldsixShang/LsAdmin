@@ -1,0 +1,16 @@
+<ion-view view-title="公告详情">
+    <ion-content class="padding">
+        <div class="list card">
+            <div class="itemr padding-left">
+                <h4 ng-bind="item.title"></h4>
+            </div>
+            <div class="item item-body item-article-content article">
+                <p ng-bind-html="item.content">
+                </p>
+                <p>
+                    <a href="#" class="subdued">发布时间： {{item.creationTime|date:'yyyy-MM-dd'}}</a>
+                </p>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

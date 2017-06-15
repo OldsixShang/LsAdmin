@@ -1,0 +1,34 @@
+<ion-view view-title="选择到达站点">
+    <div class="bar bar-subheader item-input-inset">
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" ng-model="searchKey" placeholder="请输入关键字">
+        </label>
+    </div>
+    <ion-content class="padding has-subheader">
+        <ion-list ng-if="!searchKey">
+            <div class="item item-divider titleBgColor fontWhite">历史记录</div>
+            <div class="item" ng-repeat="item in historyItems" ng-click="slectStop(item)">
+                <span class="title">{{item.stopName}}</span>
+                <span style="float: right">{{item.stopAbbri}}</span>
+            </div>
+            <ion-item ng-if="historyItems.length==0"  style="padding:0;text-align:center;color:darkgray">
+                <label>
+                    <span>没有历史记录</span>
+                </label>
+            </ion-item>
+        </ion-list>
+        <ion-list ng-if="searchKey">
+            <div class="item item-divider  titleBgColor fontWhite">查询站点</div>
+            <ion-item collection-repeat="item in stops| filter : searchKey| orderBy: stopAbbri" ng-click="slectStop(item)" >
+                <span class="title">{{item.stopName}}</span>
+                <span style="float: right">{{item.stopAbbri}}</span>
+            </ion-item>
+            <ion-item ng-if="(stops| filter : searchKey).length==0"  style="padding:0;text-align:center;color:darkgray">
+                <label>
+                    <span>没有找到相关的到达站</span>
+                </label>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

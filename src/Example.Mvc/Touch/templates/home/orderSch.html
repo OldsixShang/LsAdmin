@@ -1,0 +1,93 @@
+<ion-view view-title="订单提交">
+    <ion-content class="padding">
+        <div class="card  margin-top-0">
+            <div class="item-text-wrap">
+                <label class="item" ng-if="sch.reMark" style="padding: 0;text-align: left">
+                    <span style="color: red"> {{sch.reMark}}</span>
+                </label>
+                <label class="item">
+                    <span style="font-weight: bolder">{{sch.drvDate}}</span>
+                    <span style="padding: 0 20px 0 20px">{{getWeekDate(sch.drvDate)}}</span>
+                    <span style="font-weight: bolder">{{sch.drvTime | timeSpan}}</span>
+                </label>
+                <label class="item row">
+                    <div class="col col-30" style="text-align: center;padding: 14px 0 0 0">
+                        <span>{{sch.carryStaName}}</span>
+                    </div>
+                    <div class="col col-40">
+                        <div class="row " style="border-bottom: thin groove;padding: 0px">
+                            <div class="col" style="padding: 0;text-align: center;">
+                                <span style="text-align: center;color: #AAAAAA;font-size: small;">车次{{sch.schId}}</span>
+                            </div>
+                        </div>
+                        <div class="row" style="padding:4px 0 0 0">
+                            <div class="col" style="padding: 0;text-align: center;">
+                                <span style="font-size: small;color: #AAAAAA">{{sch.motName}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-30" style="text-align: center;padding: 14px 0 0 0">
+                        <span>{{sch.stopName}}</span>
+                    </div>
+                </label>
+
+                <div class="item" style="padding: 0">
+                    <div class="row">
+                        <div class="col ">
+                            <span> 票价：<span style="color: red;font-weight: bolder">{{sch.fullPrice  | currency:'¥':2}}</span></span>
+
+                            <div style="float: right">
+                                <a ui-sref="tab.ticketNotice" class="link icon ion-ios-information" style="font-size: small;color: #007aff">购票、取票、退票须知</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="margin-bottom:10px">
+            <ion-header-bar class="item bar" align-title="left">
+                <span class="title">旅客信息</span>
+                <a class="button icon-right  button-icon icon ion-ios-compose-outline button-outline button-calm" ui-sref="tab.choosePassengers">乘客选择</a>
+            </ion-header-bar>
+
+            <ion-item ng-repeat="item in passengers.passengers" item="item" class="item-text-wrap" ng-if="item.check" style="padding: 0">
+                <div class="row">
+                    <div class="col col-10" style="padding: 10px 0px 0px 0px">
+                        <button class="button button-icon icon ion-minus-circled " style="color: #007aff;" ng-click="removePassenger(item)"></button>
+                    </div>
+                    <div class="col col-90">
+                        <div class="row" style="padding: 0">
+                            <div class="col col-80">
+                                <div><span>{{item.name}}</span> <span style="padding: 0 0 0 10px;">{{item.phone}}</span></div>
+                                <div><span>{{item.idCard}}</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ion-item>
+        </div>
+
+        <div class="card" style="margin-bottom:10px" ng-click="chooseBaoxian()">
+            <div class="item item-divider" align-title="left">
+                <a class="link icon ion-ios-information" style="color: #007aff">保险选择</a>
+                <span style="float: right">共<span style="color: red">{{choosePersonNum}}</span>单</span>
+            </div>
+
+            <div class="item-text-wrap">
+                <div class="item">
+                    <span class="title">{{selectedBaoxian.insuranceProductName}}</span>
+                    <span class="item-note" style="float: right">最高保额{{selectedBaoxian.compensation|currency:'¥':2}}</span>
+                </div>
+            </div>
+        </div>
+
+
+
+    </ion-content>
+    <ion-footer-bar align-title="left">
+        <h1 class="title" style="width:50%">订单总额：<span style="color: red">{{sumPrice | currency:'¥':2}}</span></h1>
+        <div class="buttons" style="width:50%">
+            <button class="button button-assertive ion-star button-block" style="margin:0;padding:0" ng-click="orderSch()" ng-disabled="choosePersonNum<1"> 提交订单</button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,350 @@
+/* Empty. Add your own CSS if you like */
+
+.margin-top-0 {
+    margin-top: 0;
+}
+
+.homebg {
+    height: 47px;
+    background: url(../img/guide_logo.png) no-repeat;
+    background-color: #11c1f3;
+    background-size: 150% 60%;
+    background-position: center;
+    float: left;
+    width: 30%;
+}
+
+.homebg2 {
+    height: 47px;
+    background: url(../img/guide_title.png) no-repeat;
+    background-color: #11c1f3;
+    background-size: 150% 60%;
+    background-position: center;
+    float: right;
+    width: 70%;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.slide-in-right {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+.padding-tb-10 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.slide-in-right.ng-enter,
+.slide-in-right>.ng-enter {
+    -webkit-transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
+    transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
+}
+
+.slide-in-right.ng-enter-active,
+.slide-in-right>.ng-enter-active {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.slide-in-right.ng-leave,
+.slide-in-right>.ng-leave {
+    -webkit-transition: all ease-in-out 250ms;
+    transition: all ease-in-out 250ms;
+}
+
+.er-popup {}
+
+.er-popup2 {}
+
+
+/*����ͷ*/
+
+.er-popup2 .popup-head {
+    display: none;
+}
+
+
+/*Բ��*/
+
+.er-popup .popup {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    width: 80%;
+    /*padding:5px*/
+}
+
+
+/*Բ��*/
+
+.er-popup2 .popup {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    width: 80%;
+    /*padding:5px*/
+}
+
+.mainOutPut {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding: 12px 35px 12px 0;
+    max-width: 65%;
+    background: #fff;
+    color: #333;
+    text-indent: .01px;
+    white-space: nowrap;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: left;
+    font-weight: bolder;
+}
+
+.circle {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    left: 1rem;
+    top: 2rem;
+    background: #dedfe0;
+    border-radius: 50%;
+}
+
+.line {
+    display: block;
+    width: 0.05rem;
+    height: 1.25rem;
+    position: relative;
+    left: 0.5rem;
+    background: #dedfe0;
+}
+
+.icon1 {
+    border-radius: 5px;
+    padding: 0 2px 2px 2px;
+    font-size: 11px;
+    color: #fff;
+}
+
+.icon1-start {
+    background-color: #d06519;
+}
+
+.icon1-end {
+    background-color: #359217;
+}
+
+.busList {
+    -webkit-box-align: center;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    display: -webkit-box;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    height: 66px;
+    margin: 10px 0 0 0;
+    padding: 0 0 0 0;
+    text-align: left;
+    width: 100%;
+}
+
+.busList .leftDiv {
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    border-right: 1px rgb(222, 228, 231) dashed;
+    display: -webkit-box;
+    height: 100%;
+    width: 20%;
+}
+
+.busList .leftDiv .drvtime {
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    text-align: center;
+}
+
+.busList .leftDiv .motname {
+    color: rgb(153, 153, 153);
+    font-size: 12px;
+    font-weight: normal;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    text-align: center;
+    word-break: break-word;
+    white-space: normal;
+    line-height: 12px;
+}
+
+.busList .centerDiv {
+    -webkit-box-align: center;
+    display: -webkit-box;
+    height: 100%;
+    width: 32%;
+}
+
+.busList .centerDiv .innerDiv {
+    padding: 0 0 0 30px;
+    position: relative;
+}
+
+.busList .centerDiv .innerDiv .Icon {
+    background-color: white;
+    border-radius: 10px;
+    border: 1.5px rgb(96, 222, 187) solid;
+    height: 10px;
+    left: 15px;
+    position: absolute;
+    top: 5px;
+    width: 10px;
+}
+
+.busList .centerDiv .innerDiv .Span {
+    display: inline;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.busList .rightDiv {
+    font-size: 14px;
+    height: 42px;
+    padding: 0;
+    width: 20%;
+}
+
+.busList .rightDiv .price {
+    box-sizing: border-box;
+    color: rgb(255, 60, 0);
+    display: block;
+    font-size: 14px;
+    height: 22px;
+    margin: 0;
+    text-align: left;
+    width: 70px;
+}
+
+.busList .rightDiv .price .PriceNum {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0px 0px 0px 0px;
+}
+
+.busList .rightDiv .tkamount {
+    box-sizing: border-box;
+    color: rgb(153, 153, 153);
+    display: block;
+    font-size: 12px;
+    height: 18px;
+    text-align: right;
+    width: 45px;
+}
+
+.busList .lastRightDiv {
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    border-right: 1px rgb(222, 228, 231) dashed;
+    display: -webkit-box;
+    height: 100%;
+    width: 20%;
+}
+
+.busList .jiabanIcon {
+    border-top: 35px solid red;
+    border-left: 35px solid transparent;
+    position: absolute;
+    right: 0;
+}
+
+.busList .jiabanSpan {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: white;
+}
+
+.busList .userPointIcon {
+    border-bottom: 35px solid burlywood;
+    border-left: 35px solid transparent;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.busList .userPointSpan {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: white;
+}
+
+.font12 {
+    font-size: 12px;
+}
+
+.item-thumbnail-left,
+.item-thumbnail-left .item-content {
+    min-height: 60px;
+}
+
+.titleBgColor {
+    background-color: #11c1f3;
+}
+
+.fontWhite {
+    color: #fff;
+}
+
+.arrowleft {
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 15px;
+    top: 30px;
+    border: 3px solid transparent;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    -webkit-animation: arrowleft 1.5s infinite ease-in-out;
+}
+
+@-webkit-keyframes arrowleft {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate(0) rotate(45deg)
+    }
+    50% {
+        opacity: 1;
+        -webkit-transform: translate(-30px) rotate(45deg)
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translate(-60px) rotate(45deg)
+    }
+}
+
+.xuxian {
+    width: 100%;
+    height: 0px;
+    margin: 5px;
+    border-bottom: #000000 1px dashed;
+}
+
+ion-tabs.tabs-color-active-positive .tab-item.activated,
+ion-tabs.tabs-color-active-positive .tab-item.active,
+ion-tabs.tabs-color-active-positive .tab-item.tab-item-active {
+    color: #11c1f3;
+}
+
+.article img {
+    width: 100%
+}

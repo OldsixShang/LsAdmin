@@ -1,0 +1,49 @@
+<ion-view view-title="常用旅客">
+    <div class="bar bar-subheader">
+        <div class="button-bar">
+            <a class="button button-icon icon ion-ios-plus-outline"  ng-click="create()">
+                添加新乘客
+            </a>
+        </div>
+
+    </div>
+    <ion-content class="has-header has-subheader">
+
+        <ion-list 
+                  can-swipe="true">
+            <ion-item ng-repeat="item in items"
+                      class="item">
+                <div class="row">
+                    <div class="col ">
+                        <h2>{{item.name}} {{item.phone}}</h2>
+                        <p>{{item.idCard}}</p>
+                    </div>
+                </div>
+              <span class="arrowleft"></span>
+                
+               
+                <ion-option-button class="button-assertive"
+                                   ng-click="delete(item)">
+                    删除
+                </ion-option-button>
+                <ion-option-button class="button-calm"
+                                   ng-click="edit(item)">
+                    编辑
+                </ion-option-button>
+                <ion-reorder-button class="ion-navicon" on-reorder="moveItem(item, $fromIndex, $toIndex)">
+
+                </ion-reorder-button>
+
+            </ion-item>
+        </ion-list>
+
+        <!--<ion-item ng-repeat="item in items"  class="item item-icon-right">
+
+                <div style=""><span>{{item.name}}</span> <span >{{item.phone}}</span></div>
+                <div><span>{{item.idCard}}</span></div>
+
+            <a class="button button-icon icon ion-ios-compose-outline" ui-sref="tab.createOrUpdatePassenger({passengerId:item.id})"></a>
+        </ion-item>-->
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,25 @@
+<ion-view view-title="选择乘客">
+
+    <div class="bar bar-subheader">
+        <div class="button-bar">
+            <a class="button button-icon icon ion-ios-plus-outline" ui-sref="tab.createOrUpdatePassenger" >
+                添加新乘客
+            </a>
+        </div>
+
+    </div>
+    <ion-content class="has-header has-subheader">
+        <ion-item ng-repeat="item in passengers.passengers" item="item" class="row item-icon-right" style="padding: 0 ;">
+            <ion-checkbox style="border: none" ng-model="item.check" ng-change="itemCheckChange(item)">
+                <div style=""><span>{{item.name}}</span> <span style="padding: 0 0 0 10px;">{{item.phone}}</span></div>
+                <div><span>{{item.idCard}}</span></div>
+            </ion-checkbox>
+            <a class="button button-icon icon ion-ios-compose-outline" ui-sref="tab.createOrUpdatePassenger({passengerId:item.id})"></a>
+        </ion-item>
+
+    </ion-content>
+    <ion-footer-bar align-title="left">
+        <h1 class="title">总人数：<span style="color: red">{{choosePersonNum}}</span></h1>
+        <button class="button button-positive button-large" ng-click="submitChoose()">确定选择</button>
+    </ion-footer-bar>
+</ion-view>

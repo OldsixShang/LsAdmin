@@ -1,0 +1,70 @@
+<ion-view view-title="选择支付方式">
+    <ion-content class="padding">
+        <div class="card  margin-top-0">
+            <div class="item-text-wrap">
+                <label class="item" ng-if="sch.reMark" style="padding: 0;text-align: left">
+                    <span style="color: red">{{sch.reMark}}</span>
+                </label>
+                <label class="item">
+                    <span style="font-weight: bolder">{{sch.drvDate}}</span>
+                    <span style="padding: 0 20px 0 20px">{{getWeekDate(sch.drvDate)}}</span>
+                    <span style="font-weight: bolder">{{sch.drvTime | timeSpan}}</span>
+                </label>
+                <label class="item row">
+                    <div class="col col-30" style="text-align: center;padding: 14px 0 0 0">
+                        <span>{{sch.carryStaName}}</span>
+                    </div>
+                    <div class="col col-40">
+                        <div class="row " style="border-bottom: thin groove;padding: 0px">
+                            <div class="col" style="padding: 0;text-align: center;">
+                                <span style="text-align: center;color: #AAAAAA;font-size: small;">车次{{sch.schId}}</span>
+                            </div>
+                        </div>
+                        <div class="row" style="padding:4px 0 0 0">
+                            <div class="col" style="padding: 0;text-align: center;">
+                                <span style="font-size: small;color: #AAAAAA">{{sch.motName}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-30" style="text-align: center;padding: 14px 0 0 0">
+                        <span>{{sch.stopName}}</span>
+                    </div>
+                </label>
+
+                <label class="item" style="padding: 0">
+                    <div class="row">
+                        <div class="col ">
+                            <span> 旅客：<span style="color: red;font-weight: bolder;padding:5px" ng-repeat="item in passengers.passengers" item="item" ng-if="item.check"> {{item.name}}</span></span>
+                        </div>
+                    </div>                    
+                </label>
+
+                <div ng-repeat="company in baoxians">
+                    <label class="item" style="padding: 0" ng-repeat="item in company.products" ng-if="item.id==selectedBaoxian && item.faceValue>0">
+                                    <div class="row">
+                                        <div class="col ">
+                                            {{item.insuranceProductName}}:<span style="color: red;font-weight: bolder;padding:5px">{{ choosePersonNum }}份</span>
+                                        </div>
+                                    </div>
+                                </label>
+                </div>
+
+                <label class="item" style="padding: 0">
+                    <div class="row">
+                        <div class="col ">
+                            <span> 订单总额：<span style="color: red;font-weight: bolder">{{sumPrice  | currency:'¥':2}}</span></span>
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="list">
+            <ion-radio ng-repeat="item in paymentMethods" class="item item-thumbnail-left item-icon-right" ng-value="item.payMethodSystemName" ng-model="data.payMethodSystemName" ng-change="serverSideChange(item)" name="server-side">
+                <img ng-src="{{getPayPictureUrl(item.payMethodSystemName)}}" style="max-width: 40px;max-height: 40px;">
+                <h2>{{item.friendlyName}}</h2>
+                <i class="icon  ion-ios-circle-outline" style="right:13px"></i>
+            </ion-radio>
+        </div>
+        <button class="button button-block button-assertive" ng-click="saveOrder()">去支付</button>
+    </ion-content>
+</ion-view>

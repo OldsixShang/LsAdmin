@@ -1,0 +1,51 @@
+<ion-view view-title="退票申请">
+
+    <ion-content class="padding">
+        <form name="Form">
+            <div class="item">
+                <label class="title">电子票号</label>
+                <div class="item-note">
+                    {{tickItem.ticketId}}
+                </div>
+            </div>
+            <div class="item">
+                <label class="title">乘客</label>
+                <div class="item-note">
+                    {{tickItem.passengerName}}
+                </div>
+            </div>
+            <div class="item">
+                <label class="title">乘客身份证号</label>
+                <div class="item-note">
+                    {{tickItem.passengerIdCard}}
+                </div>
+            </div>
+            <div class="item">
+                <label class="title">票状态</label>
+                <div class="item-note">
+                    {{tickItem.ticketStatusId}}
+                </div>
+            </div>
+            <div class="item">
+                <label class="title">票价</label>
+                <div class="item-note">
+                    {{tickItem.fullPrice| currency:'¥'}}
+                </div>
+            </div>
+            <div class="item">
+                <label class="title">退票原因</label>
+
+            </div>
+            <label class="item item-input">
+                <textarea placeholder="请输入退款原因" rows="3" name="Message" required maxlength="200" ng-model="tickItem.message"></textarea>
+            </label>
+            <label class="item item-input" style="color:red" ng-show=" Form.Message.$invalid">
+                <span>请输入退款原因</span>
+            </label>
+           
+            <button class="button button-block button-assertive" ng-click="save()" ng-disabled="!Form.$valid">
+                提交申请
+            </button>
+        </form>
+    </ion-content>
+</ion-view>

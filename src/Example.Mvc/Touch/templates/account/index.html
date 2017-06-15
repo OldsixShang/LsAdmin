@@ -1,0 +1,56 @@
+<ion-view view-title="会员中心">
+    <ion-content class="padding">
+        <ion-refresher pulling-text="下拉刷新..." 
+          on-refresh="init()" 
+        refreshing-text="刷新成功"  refreshing-icon="ion-checkmark-round">
+        </ion-refresher>
+        <div class="item item-avatar" >
+            <img ng-src="{{getImageSrc(user.profilePictureId)}}" />
+            <div ng-if="user">
+                <h2> {{user.name}} </h2>
+                <p> {{user.userName}} </p>
+            </div>
+            <div ng-if="!user">
+                <h2> <a ng-click="login()">登录/注册</a> </h2>
+            </div>
+        </div>
+        <a class="item item-icon-left item-icon-right" ui-sref="tab.personl">
+            <i class="icon ion-person"></i>
+            个人信息
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </a>
+        <a class="item item-icon-left item-icon-right" ui-sref="tab.mypassenger">
+            <i class="icon ion-person-add"></i>
+             常用旅客
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </a>
+        <a class="item item-icon-left item-icon-right" ui-sref="tab.point">
+            <i class="icon ion-paper-airplane"></i>
+            我的积分
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </a>      
+        <a class="item item-icon-left item-icon-right" ui-sref="tab.mianze">
+            <i class="icon ion-android-alert"></i>
+            免责声明
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </a>
+        <a class="item item-icon-left item-icon-right"ui-sref="tab.aboutus">
+            <i class="icon ion-pricetags"></i>
+            关于我们
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </a>
+        <a class="item item-icon-left item-icon-right" ui-sref="tab.suggest">
+            <i class="icon ion-chatbubble-working"></i>
+            投诉建议
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </a>
+        <a class="item item-icon-left item-icon-right" ng-if="isApp" ui-sref="tab.vesion">
+            <i class="icon ion-ios-information"></i>
+            版本信息
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </a>
+        <a ng-if="user" class="button button-assertive  button-block margin-left-20 margin-right-20" 
+           ng-click="logout()">注销登录</a>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,62 @@
+<ion-view view-title="选择班次">
+    <div class="bar bar-subheader item-input-inset">
+        <div class="button-bar bar-positive">
+            <button class="button" ng-click="querySch(true)" ng-disabled="control.isDisAbleBefor"> < 前一天</button>
+            <button class="button" ng-click="openDatePicker()">{{schOption.drvDate | date :'MM-dd'}}</button>
+            <button class="button" ng-click="querySch(false)" ng-disabled="control.isDisAbleAfter">后一天 ></button>
+        </div>
+    </div>
+    <ion-content class=" has-subheader padding" overflow-scroll="false">
+
+        <ion-item ng-repeat="item in items | filter :{notAllowBuy:false}" item="item" class="busList">
+            <div class="leftDiv">
+                <div>
+                    <p class="drvtime">{{item.drvTime | timeSpan}}</p>
+                    <p class="motname">{{item.motName | showTextlimit:8}}</p>
+                </div>
+            </div>
+            <div class="centerDiv">
+                <div>
+                    <div class="innerDiv">
+                        <i class="Icon"></i>
+                        <span class="Span">{{item.carryStaName}}</span>
+                    </div>
+                    <div class="innerDiv">
+                        <i class="Icon" style="border-color: rgb(255, 193, 42)"></i>
+                        <span class="Span">{{item.stopName  | showTextlimit:4}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="rightDiv">
+                <p class="price">
+                    <span>¥</span>
+                    <span class="PriceNum">{{item.fullPrice | currency:'':1}}</span>
+                </p>
+                <p class="tkamount">
+                    <span>余票{{item.seatAmount}}</span>
+                </p>
+            </div>
+
+            <div ng-if="!item.notAllowBuy">
+                <button class="button  button-small button-outline button-calm" style="padding: 0 15px 0 15px;left: 10px" ng-click="chooseSchBuy(item)">购买</button>
+            </div>
+            <div style="font-size: 10px;line-height: 13px;padding:5px;color:darkgray" ng-if="item.notAllowBuy">
+                {{item.reMark}}
+            </div>
+
+            <div class="jiabanSpan" ng-if="item.extraSchFlag">
+                <div class="jiabanIcon"></div>
+                <div class="jiabanSpan" style="padding: 2px;">加</div>
+            </div>
+
+            <div>
+                <div class="userPointIcon " ng-if="item.canUserPoint"></div>
+                <div class="userPointSpan " style="padding: 2px;">兑</div>
+            </div>
+        </ion-item>
+
+        <div style="text-align: center;color: #aaaaaa ">
+            <span ng-if="(items | filter :{notAllowBuy:false}).length==0 "> 该线路无班次，请重新选择！</span>
+        </div>
+    </ion-content>
+</ion-view>

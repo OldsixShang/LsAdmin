@@ -1,0 +1,63 @@
+<ion-view view-title="我的订单">
+    <div class="bar bar-subheader">
+        <div class="button-bar">
+            <a class="button " ng-class="{'button-positive': requestParams.orderStatus==''}" ng-click="queryBill('')">全部</a>
+            <a class="button " ng-class="{'button-positive': requestParams.orderStatus=='10'}" ng-click="queryBill('10')">待处理</a>
+            <a class="button " ng-class="{'button-positive': requestParams.orderStatus=='50'}" ng-click="queryBill('50')">处理中</a>
+            <a class="button " ng-class="{'button-positive': requestParams.orderStatus=='20'}" ng-click="queryBill('20')">已完成</a>
+        </div>
+    </div>
+    <ion-content class="padding has-header has-subheader">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="refresh()">
+        </ion-refresher>
+        <div ng-repeat="item in items ">
+            <div class="card" style="margin:5px">
+                <div class="item item-divider" style="padding: 5px" ng-click="orderDetail(item)">
+                    <span>订单号：{{item.id}}</span>
+                    <a style="right: 5px;position: absolute;color: red;">{{item.orderStatusId}}</a>
+                </div>
+                <div class="item item-text-wrap" ng-click="orderDetail(item)">
+                    <div class="row" style="padding:0px">
+                        <div class="col col-30" style="text-align: center;padding: 14px 0 0 0">
+                            <span>{{item.carryStaName}}</span>
+                        </div>
+                        <div class="col col-40">
+                            <div class="row " style="border-bottom: thin groove;padding: 0px">
+                                <div class="col" style="padding: 0;text-align: center;">
+                                    <span style="text-align: center;color: #AAAAAA;font-size: small;">{{item.drvDate}} </span>
+                                </div>
+                            </div>
+                            <div class="row" style="padding:4px 0 0 0">
+                                <div class="col" style="padding: 0;text-align: center;">
+                                    <span style="font-size: small;color: #AAAAAA">{{item.drvTime|timeSpan}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-30" style="text-align: center;padding: 14px 0 0 0">
+                            <span>{{item.stopName}}</span>
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 10px 0px">
+                        <div class="col" style="text-align: left;padding:0">
+                            总额 : <span style="color:red"> {{item.orderTotal | currency:'¥'}}</span>
+
+                        </div>
+                        <div class="col" style="text-align: right;padding:0">
+                            支付状态 : <span style="color:red"> {{item.paymentStatusId }}</span>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+        <div class="item item-divider" ng-if="items.length == 0">
+            <label>暂无订单</label>
+        </div>
+
+
+        <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>

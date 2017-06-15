@@ -1,0 +1,36 @@
+<ion-view view-title="我的积分">
+    <ion-content class="padding">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="refresh()">
+        </ion-refresher>
+
+        <ion-item ng-repeat="item in items" item="item" class="item-text-wrap">
+            <div>
+                <div>
+                    本次剩余积分：
+                    <span style="color: midnightblue">  {{item.pointsBalance}}</span>
+                </div>
+                <div>
+                    <span> {{item.points>0?'获取积分：':'扣除积分：'}}</span>
+                    <span ng-style="{color:(item.points>0?'green':'red')}"> {{item.points}}</span>
+                </div>
+                <div>
+                    处理时间： {{item.creationTime|date:'yyyy-MM-dd HH:mm:ss'}}
+                </div>
+                <div>
+                    <span>说明：</span>
+                    <span style="color: #aaaaaa;font-size: small">
+                        {{item.message}}
+                    </span>
+                </div>
+
+            </div>
+        </ion-item>
+
+        <a class="item item-divider padding font12" ng-if="items.length == 0">
+            <label>暂无积分记录</label>
+        </a>
+
+        <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>

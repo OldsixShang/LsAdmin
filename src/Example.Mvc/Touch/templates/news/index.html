@@ -1,0 +1,11 @@
+<ion-view view-title="公告">
+    <ion-content class="padding">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="refresh()">
+        </ion-refresher>
+        <a ng-repeat="item in items" class="item padding-tb-10" ui-sref="tab.newsDetail({id:item.id})">
+           {{item.title}}
+       </a>
+        <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>
