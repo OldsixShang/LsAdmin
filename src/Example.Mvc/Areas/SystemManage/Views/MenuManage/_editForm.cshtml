@@ -24,6 +24,7 @@
         $(document).ready(function () {
             {//下拉列表初始化
                 $("#cmbMenuType").lsCombobox({ data: page.JsonData.MenuTypes, required: true });
+                $("#sel_icon").lsIconBox();
             }
         });
     </script>
@@ -46,7 +47,9 @@
             </tr>
             <tr>
                 <td>@Html.LabelFor(x => x.Icon)</td>
-                <td>@Html.TextBoxFor(x => x.Icon, new { @class = "easyui-textbox" })</td>
+                <td>
+                    @Html.TextBoxFor(x => x.Icon, new { @id ="sel_icon",@class="easyui-textbox",@readonly= "readonly" })
+                </td>
             </tr>
         </table>
     </form>

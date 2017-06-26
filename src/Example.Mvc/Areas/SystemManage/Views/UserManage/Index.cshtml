@@ -39,7 +39,7 @@
                     title: '新增用户',
                     url: '@Url.Action("UserEdit")',
                     width: 400,
-                    height: 150,
+                    height: 350,
                     onClose: function (result) {
                         if (result) {
                             $.ls.success($.ls.messages.SuccessAdded);
@@ -55,7 +55,7 @@
                     title: '修改用户',
                     url: '@Url.Action("UserEdit")' + "?id=" + row.Id,
                     width: 400,
-                    height: 250,
+                    height: 350,
                     onClose: function (result) {
                         if (result) {
                             $.ls.success($.ls.messages.SuccessModified);

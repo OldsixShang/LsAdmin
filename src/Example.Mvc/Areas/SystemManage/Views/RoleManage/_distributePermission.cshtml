@@ -8,7 +8,7 @@
 {
     foreach (var item in menus)
     {
-        if (item.Children == null)
+        if (item.children == null)
         {
             <li checked="@item.Checked" id="@item.Id">
                 <span>@item.Name</span>
@@ -19,7 +19,7 @@
             <li id="@item.Id">
                 <span>@item.Name</span>
                 <ul style="display:none;">
-                    @RenderMenu(item.Children)
+                    @RenderMenu(item.children)
                 </ul>
             </li>
         }

@@ -70,8 +70,10 @@ namespace Example.Application.ServiceImplements.Sys
         /// <param name="dto">传入权限信息</param>
         public void DeletePermission(PermissionDto dto)
         {
-            Permission entity = _permissionRepository.Get(t => t.Id == dto.Id);
             Permission permission = _permissionRepository.Get(dto.Id);
+            List<Permission> children = _permissionRepository.Table.Where(t=>t.ParentId == dto.Id).ToList();
+            //递归删除子集
+            children.ForEach(p => DeletePermission(new PermissionDto { Id = p.Id}));
             _permissionRepository.Delete(permission);
         }
         /// <summary>

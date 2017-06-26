@@ -28,7 +28,7 @@
 }
 
 /*easyui-icons*/
-.tree-expanded, .tree-collapsed, .tree-folder,.tree-folder-open, .tree-file, .tree-checkbox, .tree-indent {
+.tree-expanded, .tree-collapsed, .tree-folder, .tree-folder-open, .tree-file, .tree-checkbox, .tree-indent {
     display: inline-block;
     width: 16px;
     height: 18px;
@@ -41,17 +41,43 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: none;
-    text-align:center;
+    text-align: center;
     line-height: 18px;
 }
-.tree-file:before { content: "\f15b"; }
-.tree-folder:before { content: "\f07b"; }
-.tree-folder-open:before { content: "\f07c"; }
-.tree-collapsed:before{ width:12px; content:"\f196";}
-.tree-expanded:before{width:12px; content:"\f147";}
-.tree-checkbox:before{ content:"\f046"; }
-.tree-checkbox0:before{ content:"\f096"; }
-.tree-checkbox2:before{ content:"\f0c8"; }
+
+    .tree-file:before {
+        content: "\f15b";
+    }
+
+    .tree-folder:before {
+        content: "\f07b";
+    }
+
+    .tree-folder-open:before {
+        content: "\f07c";
+    }
+
+    .tree-collapsed:before {
+        width: 12px;
+        content: "\f196";
+    }
+
+    .tree-expanded:before {
+        width: 12px;
+        content: "\f147";
+    }
+
+    .tree-checkbox:before {
+        content: "\f046";
+    }
+
+.tree-checkbox0:before {
+    content: "\f096";
+}
+
+.tree-checkbox2:before {
+    content: "\f0c8";
+}
 
 /*
  * artdialog 
@@ -84,18 +110,19 @@
     border: 1px solid #429e42;
 }
 
-.ui-dialog-footer button.ui-dialog-autofocus{
-  color: #ffffff;
-  background-color: #4C6983;
-  border-color: #38556A;
+.ui-dialog-footer button.ui-dialog-autofocus {
+    color: #ffffff;
+    background-color: #4C6983;
+    border-color: #38556A;
 }
-.ui-dialog-footer button.ui-dialog-autofocus:hover,
-.ui-dialog-footer button.ui-dialog-autofocus:focus,
-.ui-dialog-footer button.ui-dialog-autofocus:active {
-  color: #ffffff;
-  background-color: #4C6983;
-  border-color: #38556A;
-}
+
+    .ui-dialog-footer button.ui-dialog-autofocus:hover,
+    .ui-dialog-footer button.ui-dialog-autofocus:focus,
+    .ui-dialog-footer button.ui-dialog-autofocus:active {
+        color: #ffffff;
+        background-color: #4C6983;
+        border-color: #38556A;
+    }
 /*lsUI*/
 .ls-menu-panel {
     position: absolute;
@@ -207,3 +234,34 @@
 .ls-panel-footter-red {
     color: #d9534f;
 }
+
+.ls-btn-icon-sl {
+    position: absolute;
+    right: 0;
+    z-index: 9;
+    line-height: 27px;
+    height: 25px;
+    padding: 1px 6px;
+    margin-right: 1px;
+    margin-top: 1px;
+    border-left: 1px solid #ddd;
+    border-radius: 0 3px 3px 0;
+}
+
+    .ls-btn-icon-sl:hover {
+        background: #eee;
+        cursor: pointer;
+    }
+
+
+.ls-icon-item {
+    padding:8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin:2px;
+}
+
+    .ls-icon-item:hover {
+        background: #eee;
+        cursor: pointer;
+    }
