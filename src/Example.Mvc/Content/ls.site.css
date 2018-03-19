@@ -1,0 +1,194 @@
+﻿body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+textarea {
+    width: 170px;
+    min-height: 100px;
+    overflow-wrap: break-word;
+    overflow-y: scroll;
+}
+
+td label[for] {
+    display: inline-block;
+    text-align: right;
+    width: 80px;
+    font-size: 12px;
+    padding-right: 8px;
+    padding-top: 5px;
+    font-weight: 300;
+}
+/*首页顶部样式*/
+.index-header {
+    height: 50px;
+    background: #3c8dbc;
+}
+
+.index-header-title {
+    float: left;
+    width: 195px;
+    color: white;
+    background: #367fa9;
+    line-height: 50px;
+    font-family: '微软雅黑';
+    font-size: 2em;
+    text-align: center;
+}
+
+.index-header-signout {
+    line-height: 50px;
+    color: white;
+    float: right;
+    padding: 0 20px;
+    background: #3c8dbc;
+}
+
+    .index-header-signout:hover {
+        cursor: pointer;
+        background: #367fa9;
+        text-decoration: none;
+        color: #fff;
+    }
+
+.index-header-title-btn {
+    float: left;
+    width: auto;
+    padding: 0 10px;
+    font-size: 1.5em;
+    background: #38556A;
+    margin-right: 1px;
+}
+
+    .index-header-title-btn:hover {
+        background: #273952;
+        cursor: pointer;
+    }
+/*首页模块样式*/
+.tabindex-panel-heading {
+    border: 1px solid #eee;
+}
+
+.tabindex-panel-body {
+    padding: 10px;
+}
+
+.tabindex-panel-tip {
+    float: left;
+    width: 100%;
+    margin: 30px 0px;
+}
+
+.tabindex-panel-content, .tabindex-panel-footter {
+    width: 100%;
+}
+
+    .tabindex-panel-content .left, .tabindex-panel-footter .left {
+        float: left;
+        width: 40%;
+        text-align: left;
+        padding-left: 10px;
+        margin-top: 5px;
+    }
+
+    .tabindex-panel-content .right, .tabindex-panel-footter .right {
+        float: right;
+        width: 40%;
+        text-align: right;
+        padding-right: 10px;
+        margin-top: 5px;
+    }
+/*左侧导航栏样式*/
+.sidebar-nav {
+    background: #222d32;
+}
+
+    .sidebar-nav ul, .sidebar-nav li {
+        list-style: none;
+        margin-left: 0px;
+        padding: 0px;
+    }
+
+        .sidebar-nav li ul li {
+            list-style: none;
+            margin-left: 0px;
+            padding-left: 0px;
+        }
+
+        .sidebar-nav ul li a {
+            position: relative;
+            display: block;
+            padding: 6px 0px 6px 10px;
+            font-size: 12px;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            color: #b8c7ce;
+        }
+
+            .sidebar-nav ul li a:hover {
+                text-decoration: none;
+            }
+
+        .sidebar-nav li ul li a {
+            padding: 6px 0px 6px 20px;
+        }
+
+        .sidebar-nav li ul li ul li a {
+            padding: 6px 0px 6px 30px;
+        }
+
+        .sidebar-nav li ui li ul li ul li a {
+            padding: 6px 0px 6px 40px;
+        }
+
+        .sidebar-nav ul li .node:hover {
+            background: #1e282c;
+            color:#fff;
+        }
+
+.selected {
+    border-left: 3px solid #3c8dbc;
+    background: #1a2226;
+}
+
+    .selected i, .selected b, .selected span {
+        color: #fff;
+    }
+
+.selected-hover {
+    border-left: 3px solid #3c8dbc;
+}
+
+.sidebar-nav ul li .selected:hover {
+    background: #1e282c;
+}
+
+.sidebar-nav .expandable {
+    position: absolute;
+    right: 15px;
+    line-height: 20px;
+}
+
+.textarea {
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    vertical-align: middle;
+    display: inline-block;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(221, 221, 221);
+    border-image: initial;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 4px;
+}
+
+textarea {
+    width: 170px;
+    min-height: 100px;
+    overflow-wrap: break-word;
+    overflow: scroll;
+}
+.ls-dialog-container form table td{padding:3px 10px;}
+form table td label{line-height:25px;font-weight:bold;display:inline;padding:0 5px 0 15px;}

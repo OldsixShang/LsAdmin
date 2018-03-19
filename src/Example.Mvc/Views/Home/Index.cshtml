@@ -14,8 +14,9 @@
     @Scripts.Render("~/bundles/ls")
     @Styles.Render("~/bundles/baseComponentsStyle")
     <script src="~/Scripts/ls/ls.layout.index.js"></script>
-    <link href="~/Content/easyui/tts.easyui.theme.css" rel="stylesheet" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/ls.admin.css" rel="stylesheet" />
+    <link href="~/Content/ls.site.css" rel="stylesheet" />
+    <link href="~/Content/ls.layout.index.css" rel="stylesheet" />
     <script type="text/javascript">
         var index = {
             init: function () {
@@ -66,7 +67,7 @@
         }
     </script>
 </head>
-<body class="easyui-layout" fit="true" onload="index.init()">
+<body class="easyui-layout ls-layout" fit="true" onload="index.init()">
     <div id="content" data-options="region:'center',split:false">
         @Html.Partial("Index/_center", Model.SolidNavMenuList)
     </div>

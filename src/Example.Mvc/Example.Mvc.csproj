@@ -525,7 +525,6 @@
     <Content Include="Content\easyui\themes\metro\validatebox.css" />
     <Content Include="Content\easyui\themes\metro\window.css" />
     <Content Include="Content\easyui\themes\mobile.css" />
-    <Content Include="Content\easyui\tts.easyui.theme.css" />
     <Content Include="Content\font-awesome\.gitignore" />
     <Content Include="Content\font-awesome\css\font-awesome.css" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
@@ -533,7 +532,8 @@
     <Content Include="Content\Images\logo_Icon.png" />
     <Content Include="Content\Images\logo_word.png" />
     <Content Include="Content\login.css" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\ls.admin.css" />
+    <Content Include="Content\ls.site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -558,7 +558,11 @@
     <Content Include="Areas\SystemManage\Views\UserManage\Index.cshtml" />
     <Content Include="Areas\SystemManage\Views\UserManage\_editForm.cshtml" />
     <Content Include="Areas\SystemManage\Views\UserManage\_queryForm.cshtml" />
-    <Content Include="Areas\SystemManage\Views\web.config" />
+    <Content Include="Areas\SystemManage\Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\ls.layout.index.css" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

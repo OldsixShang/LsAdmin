@@ -1,0 +1,41 @@
+﻿.ls-layout .panel-header{
+    color: #4b646f;
+    background: #1a2226;
+    border:none;
+}
+.ls-layout .panel-header .panel-title{
+    color: #4b646f;
+    font-weight:300;
+}
+.ls-layout .panel-header .layout-button-left,.ls-layout .panel-header .layout-button-right{
+    color: #b8c7ce;
+    background: #1a2226;
+    display: inline-block;
+    font-size:16px;
+    padding:0 5px;
+    font: normal normal normal 14px/1 FontAwesome;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.ls-layout .sidebar-nav{
+    border:none;
+}
+.ls-layout .panel-header .layout-button-left,.ls-layout .panel-header .layout-button-right:hover {
+        text-decoration:none;
+    }
+    .ls-layout .panel-header .layout-button-left:before {
+        content: "\f100";
+    }
+    .ls-layout .panel-header .layout-button-right:before {
+        content: "\f101";
+    }
+
+
+.ls-layout .layout-expand-west .panel-body{
+    background:#222d32;
+    border:0;
+}
+.ls-layout .layout-expand-west .panel-body:hover{
+    background-color:#1e282c;
+} 

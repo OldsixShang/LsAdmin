@@ -6,8 +6,8 @@
     @Scripts.Render("~/bundles/baseComponents")
     @Scripts.Render("~/bundles/ls")
     @Styles.Render("~/bundles/baseComponentsStyle")
-    <link href="~/Content/easyui/tts.easyui.theme.css" rel="stylesheet" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/ls.admin.css" rel="stylesheet" />
+    <link href="~/Content/ls.site.css" rel="stylesheet" />
     <script type="text/javascript">
         var page = {
             JsonData:JSON.parse ('@Html.Raw(ViewBag.JsonData == null ? "{}" : ViewBag.JsonData)'),
@@ -28,7 +28,7 @@
     <input id="_hidPageId" type="hidden" value="@Request.QueryString["pageId"]" />
     <div class="easyui-layout" data-options="fit:true" >
         <div data-options="region:'center',border:false,fit:true">
-            <div class="easyui-layout" data-options="fit:true">
+            <div class="easyui-layout  ls-layout-west" data-options="fit:true">
                 <div data-options="region:'north',split:false,border:false">
                 <div style="float:right;line-height:40px; padding-right:15px;">
                     @RenderPermissionParts()
